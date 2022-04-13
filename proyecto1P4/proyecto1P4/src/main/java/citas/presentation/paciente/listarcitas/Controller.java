@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ESCINF
  */
-@WebServlet(name = "PacienteListarCitasController", urlPatterns = {"/Controller"})
+@WebServlet(name = "PacienteListarCitasController", urlPatterns = {"/presentation/paciente/listarcitas/Controller"})
 public class Controller extends HttpServlet {
 
  
