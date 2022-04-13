@@ -41,7 +41,7 @@
                         <button type="submit" name="entrar" class="btn btn-primary"> <i class="fas fa-sign-in-alt"></i> Entrar</button>
                     </form>
                     <div>
-                        <a href="" class="text-white">Registrarse</a>
+                        <a href="/proyecto1P4/presentation/login/registroView.jsp" class="text-white">Registrarse</a>
                     </div>
                 </div>
             </div>

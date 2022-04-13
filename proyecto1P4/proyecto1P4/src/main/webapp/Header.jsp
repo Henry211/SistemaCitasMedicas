@@ -26,7 +26,7 @@
                     <%  //} %>
                     <% //if( user.getTipo() == 2 ){ %>
                     <li class="navbar-item active">
-                        <a href="" class="nav-link">
+                        <a href="/proyecto1P4/presentation/medico/citas/view.jsp" class="nav-link">
                             Citas
                         </a>
                     </li>
