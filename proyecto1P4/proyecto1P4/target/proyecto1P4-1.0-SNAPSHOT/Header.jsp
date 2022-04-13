@@ -19,7 +19,7 @@
                     </li>
                     <%  //if( userLogued.getTipo() == 1 ){ %>
                     <li class="navbar-item active">
-                        <a href="" class="nav-link">
+                        <a href="/proyecto1P4/presentation/registromedico/view.jsp" class="nav-link">
                             Médicos
                         </a>
                     </li>
