@@ -7,6 +7,7 @@ citas\presentation\registropaciente\Model.class
 citas\presentation\administrador\listamedicos\Controller.class
 com\mycompany\proyecto1p4\resources\JakartaEE8Resource.class
 citas\presentation\paciente\cita\Model.class
+citas\logic\Usuario.class
 citas\presentation\medico\citas\Controller.class
 citas\presentation\login\Controller.class
 citas\presentation\paciente\listarcitas\Controller.class

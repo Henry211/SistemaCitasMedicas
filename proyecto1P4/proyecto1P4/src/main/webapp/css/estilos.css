@@ -1,0 +1,64 @@
+body{
+    background-color: steelblue;
+}
+#user-group{
+    margin-bottom: 20px;
+}
+
+#contrasena-group{
+    margin-bottom: 20px;
+}
+
+button{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.modal-content{
+    background-color: #3b4652 ;
+    opacity: .85;
+    padding: 0 30px;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius:15px;
+}
+.user-img img{
+    width: 200px;
+    height: 200px;
+}
+
+.form-goup input{
+    height: 40px;
+    font-size: 15px;
+    border:0;
+    padding-left: 50px;
+}
+
+.form-goup::before{
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left:40px;
+    font-size: 22px;
+    padding-top: 4px;
+}
+
+.form-goup#user-group::before{
+    content:"\f2bb";
+}
+
+.form-goup#contrasena-group::before{
+    content:"\f023";
+}
+
+.form-goup#name-group::before{
+    content:"\f007";
+}
+
+button{
+    width:60%;
+}
+
+#name-group{
+    padding-bottom: 20px;
+    
+}
