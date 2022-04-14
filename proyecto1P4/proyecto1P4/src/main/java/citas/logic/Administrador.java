@@ -12,14 +12,16 @@ import java.util.Objects;
  */
 public class Administrador {
     String cedula;
-    String clave;
+    String password;
+    String nombre;
 
     public Administrador() {
     }
 
-    public Administrador(String cedula, String clave) {
+    public Administrador(String cedula, String clave,String nombre) {
         this.cedula = cedula;
-        this.clave = clave;
+        this.password = clave;
+        this.nombre=nombre;
     }
 
     public String getCedula() {
@@ -31,18 +33,27 @@ public class Administrador {
     }
 
     public String getClave() {
-        return clave;
+        return password;
     }
 
     public void setClave(String clave) {
-        this.clave = clave;
+        this.password = clave;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 67 * hash + Objects.hashCode(this.cedula);
-        hash = 67 * hash + Objects.hashCode(this.clave);
+        hash = 67 * hash + Objects.hashCode(this.password);
         return hash;
     }
 
@@ -61,12 +72,12 @@ public class Administrador {
         if (!Objects.equals(this.cedula, other.cedula)) {
             return false;
         }
-        return Objects.equals(this.clave, other.clave);
+        return Objects.equals(this.password, other.password);
     }
 
     @Override
     public String toString() {
-        return "Administrador{" + "cedula=" + cedula + ", clave=" + clave + '}';
+        return "Administrador{" + "cedula=" + cedula + ", clave=" + password + '}';
     }
     
     
