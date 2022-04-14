@@ -1,0 +1,32 @@
+.card{
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+    background-color: lightgray;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+
+}
+
+.card-header{
+    background-color: lightseagreen;
+}
+
+.btn-dark{
+    color:whitesmoke;
+    background-color: darkcyan;
+}
+
+.btn-group{
+    margin-left: 150px;
+}
+.btn{
+    box-shadow:10px 10px 20px rgba(0,0,0,0.5);
+}
+
+.order-by{
+    margin-left: 150px;
+    font-size: 20px;
+    font-family: "Times New Roman";
+    font-weight: bold;
+}

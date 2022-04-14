@@ -59,8 +59,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <div class="img1"><img src="/WebApp/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/WebApp/img/img2.jpg" /></div>
+                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                            <div class="img2"><img src="/proyecto1P4/img/img2.jpg" /></div>
                             <div class="main-text">
                                 <h2 >Doctor Four</h2>
                                 <p>Escrituras sobre las ultimas civilizaciones de la antigua roma
@@ -72,8 +72,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <div class="img1"><img src="/WebApp/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/WebApp/img/img3.jpg"/></div>
+                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                            <div class="img2"><img src="/proyecto1P4/img/img3.jpg"/></div>
                             <div class="main-text">
                                 <h2>Doctor Five</h2>
                                 <p>Escrituras sobre las ultimas civilizaciones de la antigua roma
@@ -85,8 +85,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <div class="img1"><img src="/WebApp/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/WebApp/img/img1.jpg"/></div>
+                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                            <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
                             <div class="main-text">
                                 <h2>Doctor Six</h2>
                                 <p>Escrituras sobre las ultimas civilizaciones de la antigua roma

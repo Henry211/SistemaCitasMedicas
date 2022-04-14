@@ -1,5 +1,6 @@
 
 
+<%@page import="citas.presentation.login.Model"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 
@@ -17,7 +18,9 @@
 </head>
     <body>
         <%@ include file="/Header.jsp" %>
-        
+        <% Model model= (Model) request.getAttribute("model"); %>
+        <% Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"); %>
+        <% Map<String,String[]> form = (errores==null)?this.getForm(model):request.getParameterMap();%>
 
         <div class="modal-dialog text-center">
             <div class="col-sm-8 main-section">
@@ -25,23 +28,24 @@
                     <div class="col-12 user-img">
                         <img src="../../img/login.png" />
                     </div>
-                    <form class="col-12" method="POST" name="Entrar" action="" >
+                    <form class="col-12" method="POST" name="Entrar" action="/proyecto1P4/presentation/login/hecho" >
                         <div class="form-goup" id="user-group">
-                            <input type="text" class="form-control" name="cedulaField" placeholder="Ingrese su Id"/>                            
+                            <input type="text" class="form-control" name="cedulaField" placeholder="Ingrese su Id" value="<%=form.get("cedulaField")[0]%>" title="<%=title("cedeulaField",errores)%>"/>                            
                         </div>        
                         <div class="form-goup" id="contrasena-group">
-                            <input type="password" class="form-control" name="claveField" placeholder="Ingrese su Clave"/>                            
+                            <input type="password" class="form-control" name="claveField" placeholder="Ingrese su Clave" value="<%=form.get("claveField")[0]%>" title="<%=title("claveField",errores)%>"/>                            
                         </div>
                         <div class="text-info">
                             <input type="radio" name="tipo" value="1" checked/>Paciente
                             <input type="radio" name="tipo" value="2" /> Médico
                             <input type="radio" name="tipo" value="3" /> Admin
                             </br>
+                            <!--form.get de 'tipo'-->
                         </div>
                         <button type="submit" name="entrar" class="btn btn-primary"> <i class="fas fa-sign-in-alt"></i> Entrar</button>
                     </form>
                     <div>
-                        <a href="" class="text-white">Registrarse</a>
+                        <a href="/proyecto1P4/presentation/login/registroView.jsp" class="text-white">Registrarse</a>
                     </div>
                 </div>
             </div>
@@ -66,6 +70,29 @@
         <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     </body>
 </html>
+
+<%!
+  private Map<String,String[]> getForm(Model model){
+       Map<String,String[]> values = new HashMap<>();
+       values.put("cedulaField", new String[]{String.valueOf(model.getUser().getCedula())});
+       values.put("claveField", new String[]{model.getUser().getPassword()});
+       values.put("tipo", new String[]{String.valueOf(model.getUser().getTipo())});
+       return values;
+    }  
+private String title(String campo, Map<String,String> errores){
+      if ( (errores!=null) && (errores.get(campo)!=null) )
+        return errores.get(campo);
+      else
+        return "";
+    }
+
+    private String erroneo(String campo, Map<String,String> errores){
+      if ( (errores!=null) && (errores.get(campo)!=null) )
+        return "is-invalid";
+      else
+        return "";
+    }
+%>
 
 
 

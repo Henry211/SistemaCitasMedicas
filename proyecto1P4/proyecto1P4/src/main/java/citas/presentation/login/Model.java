@@ -4,10 +4,25 @@
  */
 package citas.presentation.login;
 
-/**
- *
- * @author ESCINF
- */
+
+import citas.logic.Usuario;
+
+
 public class Model {
+    Usuario user;
+    
+    public Model(){
+        this.user = new Usuario();
+    }
+    
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+    
+    
     
 }

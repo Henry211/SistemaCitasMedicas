@@ -1,3 +1,6 @@
+<%@page import="citas.logic.Usuario"%>
+<% Usuario usuario=  (Usuario) session.getAttribute("usuario");  %>
+
 
 <header>
     <div class="container">
@@ -17,7 +20,7 @@
                             Inicio
                         </a>
                     </li>
-                    <%  //if( userLogued.getTipo() == 1 ){ %>
+                    <%  //if( usuario.getTipo() == 1 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/registromedico/view.jsp" class="nav-link">
                             Médicos
@@ -26,21 +29,21 @@
                     <%  //} %>
                     <% //if( user.getTipo() == 2 ){ %>
                     <li class="navbar-item active">
-                        <a href="" class="nav-link">
+                        <a href="/proyecto1P4/presentation/medico/citas/view.jsp" class="nav-link">
                             Citas
                         </a>
                     </li>
                     <% //} %>
                     <% //if( userLogued == null ){ %>
                     <li class="navbar-item active">
-                        <a href="/proyecto1P4/presentation/login/view.jsp" class="nav-link">
+                        <a href="/proyecto1P4/presentation/login/mostrar" class="nav-link">
                             Login
                         </a>
                     </li>
                     <% //} %>
                     <% //if( userLogued != null ){ %>
                     <li class="navbar-item active">
-                        <a href="" class="nav-link">
+                        <a href="/proyecto1P4/presentation/login/logout" class="nav-link">
                             Logout
                         </a>
                     </li>
