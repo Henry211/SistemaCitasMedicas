@@ -24,6 +24,13 @@ public class Paciente {
         this.clave = clave;
     }
     
+        
+    public Paciente() {
+        cedula = "";
+        nombre = "";
+        clave = "";
+    }
+    
     public String getCedula() {
         return cedula;
     }

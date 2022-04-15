@@ -19,6 +19,12 @@ public class Administrador {
         this.nombre = nombre;
         this.clave = clave;
     }
+        
+    public Administrador() {
+        id = 0;
+        nombre = "";
+        clave = "";
+    }
     public int getId() {
         return id;
     }
