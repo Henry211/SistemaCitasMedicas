@@ -16,21 +16,20 @@
         <%@ include file="/Header.jsp" %>
     </head>
     <body>
-        <h1>Hello vista Perfil</h1>
-
-        <div >
+        <div>
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-10 mt-5 pt-5">
                         <div class="row z-depth-3">
                             <div class="col-sm-4 bg-info rounded-left">
                                 <div class="card-block text-center text-white">
-                                    <i class="fas fa-user-tie fa-7x mt-5"></i>
-                                    <h2 class="font-weight-bold mt-4">Henry</h2>
-                                    <p>Desarrollador Web</p>
-                                    <i class="far fa-edit fa-2x mb-4"></i>
+                                    <i class="fas fa-7x mt-5"><img id="img-perfil" src="/proyecto1P4/img/img1.jpg"/></i>
+                                    <h2 class="font-weight-bold mt-4">Nombre..</h2>
+                                    <p>Doctor en medicina</p>
+                                    <a href="/proyecto1P4/presentation/medico/perfil/editView.jsp" class="text-white"><i class="far fa-edit mb-4"> Editar Perfil</i></a>
 
                                 </div>
+
                             </div>
                             <div class="col-sm-8 bg-white rounded-right">
                                 <h3 class="mt-3 text-center">Información</h3>
@@ -45,7 +44,7 @@
                                         <h6 class="text-muted">Pérez Zeledón</h6>
                                     </div>
                                 </div>
-                                <h4>Proyectos</h4>
+
                                 <hr class="bg-primary">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -56,6 +55,12 @@
                                         <p>Telefono:</p>
                                         <h6 class="text-muted">+506 88349812</h6>
                                     </div>
+                                </div>
+
+                                <div class="row">
+                                    <p>Horario: ...</p>
+
+
                                 </div>
                             </div>
                         </div>
