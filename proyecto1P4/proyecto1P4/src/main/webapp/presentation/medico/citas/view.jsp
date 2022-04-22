@@ -12,38 +12,98 @@
         <%@ include file="/Header.jsp" %>    
     </head>
     <body>
-        <h1>Vista Citas</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col paddingTo">
+                    <div class="order-by">Ordenar por  </div>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-dark">Estado de cita</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-dark">Nombre paciente</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-dark">Fecha y hora</button>
+                </div>
 
-        <div class="order-by">Ordenar por  </div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-dark">Estado de cita</button>
-            <button type="button" class="btn btn-dark">Nombre paciente</button>
-            <button type="button" class="btn btn-dark">Fecha y hora</button>
+            </div>
         </div>
+
+
 
         <div class="card">
             <h5 class="card-header">Cita con Will Smith</h5>
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Ver</a>
+                <h5 class="card-title">Cardiología</h5>
+                <p class="card-text">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Estado: Pendiente </br> 
+                        </div>
+                        <div class="col">
+                            Fecha y hora: Jueves 8am </br>
+                        </div>
+                        <div class="col">
+                            Paciente: Kevin Mora </br>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-primary">Asistir</a>
             </div>
         </div>
         <div class="card">
-            <h5 class="card-header">Cita con Winston Chirchill</h5>
+            <h5 class="card-header">Cita con Will Smith</h5>
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Ver</a>
+                <h5 class="card-title">Dermatología</h5>
+                <p class="card-text">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Estado: Pendiente </br> 
+                        </div>
+                        <div class="col">
+                            Fecha y hora: Jueves 8am </br>
+                        </div>
+                        <div class="col">
+                            Paciente: Kevin Mora </br>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-primary">Asistir</a>
             </div>
         </div>
         <div class="card">
-            <h5 class="card-header">Cita con Elon Musk</h5>
+            <h5 class="card-header">Cita con Will Smith</h5>
             <div class="card-body">
                 <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Ver</a>
+                <p class="card-text">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Estado: Pendiente </br> 
+                        </div>
+                        <div class="col">
+                            Fecha y hora: Jueves 8am </br>
+                        </div>
+                        <div class="col">
+                            Paciente: Kevin Mora </br>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-primary">Asistir</a>
             </div>
         </div>
+        
     </body>
 </html>

@@ -27,6 +27,11 @@ button{
     height: 200px;
 }
 
+#img-perfil{
+    border-radius: 55%;
+    box-shadow:0 0 30px rgba(10,10,0,0.5);
+}
+
 .form-goup input{
     height: 40px;
     font-size: 15px;
@@ -58,7 +63,47 @@ button{
     width:60%;
 }
 
+#btn-perfil{
+    width:150px;
+    height: 50px;
+    position: absolute;
+    left: 45%;
+    background-color: #2D99E1;
+    color:white;
+}
+
+.pad{
+   padding-left: 20px;
+   padding-right: 20px;
+   padding-bottom:  20px;
+   padding-top: 20px;
+   background-color: lightblue;
+}
+
+.form-control{
+    background-color: lavender;
+    border-color: darkblue;
+}
+
+.form-select{
+    background-color: lavender;
+    border-color: darkblue;
+}
+
+.sombra{
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
+
 #name-group{
     padding-bottom: 20px;
-    
+}
+
+.btn-editForm{
+    position:relative;
+    align-content: center;
+    align-items: center;
+    margin-left: 25%;
+    border-radius: 9px;
+    width: 200px;
+    height: 40px;
 }
