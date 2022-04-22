@@ -13,12 +13,8 @@
         <%@ include file="/Header.jsp" %>
     </head>
     <body>
-        <h1>Hello Calendar</h1>
-        
         <main class="contenedor">
-            <section class="mes">
-                <h2 class="nombre_mes">Marzo</h2>
-            </section>
+            
             
             <section class="dias">
                 <div class="dias_item">Lunes</div>
@@ -27,42 +23,56 @@
                 <div class="dias_item">Jueves</div>
                 <div class="dias_item">Viernes</div>
                 <div class="dias_item">Sabado</div>
-                <div class="dias_item">Domingo</div>
             </section>
             
             <section class="calendario">
-                <div class="calendario_dia">1</div>
-                <div class="calendario_dia">2</div>
-                <div class="calendario_dia">3</div>
-                <div class="calendario_dia">4</div>
-                <div class="calendario_dia">5</div>
-                <div class="calendario_dia">6</div>
-                <div class="calendario_dia">7</div>
-                <div class="calendario_dia">8</div>
-                <div class="calendario_dia">9</div>
-                <div class="calendario_dia">10</div>
-                <div class="calendario_dia">11</div>
-                <div class="calendario_dia">12</div>
-                <div class="calendario_dia">13</div>
-                <div class="calendario_dia">14</div>
-                <div class="calendario_dia">15</div>
-                <div class="calendario_dia">16</div>
-                <div class="calendario_dia">17</div>
-                <div class="calendario_dia">18</div>
-                <div class="calendario_dia">19</div>
-                <div class="calendario_dia">20</div>
-                <div class="calendario_dia">21</div>
-                <div class="calendario_dia">22</div>
-                <div class="calendario_dia">23</div>
-                <div class="calendario_dia">24</div>
-                <div class="calendario_dia">25</div>
-                <div class="calendario_dia">26</div>
-                <div class="calendario_dia">27</div>
-                <div class="calendario_dia">28</div>
-                <div class="calendario_dia">29</div>
-                <div class="calendario_dia">30</div>
-                <div class="calendario_dia">31</div>
+                <div class="calendario_dia">
+                    
+                    <div class="cita">
+                        <a class="item" href="url">9pm</a>
+                    </div>
+                    <div class="cita">
+                        <a class="item" href="url">2pm</a>
+                    </div>
+                    
+                </div>
+                <div class="calendario_dia">
+                    
+                    <div class=" cita">
+                        <a class="item" href="url">9am</a>
+                    </div>
+                    <div class=" cita">
+                        <a class="item" href="url">3pm</a>
+                    </div>
+                    <div class=" cita">
+                        <a class="item" href="url">9am</a>
+                    </div>
+                    <div class=" cita">
+                        <a class="item" href="url">3pm</a>
+                    </div>
+                </div>
+                <div class="calendario_dia">
+                    <div class="cita">
+                        <a class="item" href="url">9pm</a>
+                    </div>
+                    <div class="cita">
+                        <a class="item" href="url">2pm</a>
+                    </div>
+                </div>
+                <div class="calendario_dia">
+                    
+                </div>
+                <div class="calendario_dia">
+                    
+                </div>
+                <div class="calendario_dia">
+                    
+                </div>
+                
             </section>
         </main>
+        
+                <a href="/proyecto1P4/presentation/medico/perfil/view.jsp" id="ver-perfil-btn">Ver perfil del doctor</a>
+
     </body>
 </html>
