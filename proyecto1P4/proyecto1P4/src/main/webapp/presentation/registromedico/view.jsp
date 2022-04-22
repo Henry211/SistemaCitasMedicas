@@ -47,17 +47,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
-                            <div class="main-text">
-                                <h2>Doctor One</h2>
-                                <p><b>Especialidad:</b> Cardiología </br>
-                                    <b>Localidad:</b> San José</br>
-                                    <b>Atiende:</b> L-M-J</p>
+                        <form class="col-12" method="GET" name="Ver" action="/proyecto1P4/presentation/medico/citas/confirmView.jsp" >
+                            <div class="card">
+                                <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                                <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
+                                <div class="main-text">
+                                    <h2>Doctor One</h2>
+                                    <p><b>Especialidad:</b> Cardiología </br>
+                                        <b>Localidad:</b> San José</br>
+                                        <b>Atiende:</b> L-M-J</p>
+                                </div>
+                                <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
                             </div>
-                            <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                        </div>
+                        </form>
                     </div>
                     <div class="col-md-4">
                         <div class="card">

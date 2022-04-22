@@ -4,6 +4,8 @@
  */
 package citas.presentation.medico.citas;
 
+import citas.logic.Service;
+import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,21 +13,44 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author ESCINF
- */
-@WebServlet(name = "MedicoCitasController", urlPatterns = {"/presentation/medico/citas/Controller"})
+@WebServlet(name = "MedicoCitasController", urlPatterns = {"/presentation/medico/citas/show"})
 public class Controller extends HttpServlet {
 
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-   
+        
+        
+        request.setAttribute("model", new Model());
+        String viewUrl = "";
+        switch (request.getServletPath()) {
+            case "/presentation/medico/citas/show":
+                viewUrl = this.show(request);
+                break;
+        }
+        request.getRequestDispatcher(viewUrl).forward(request, response);
+    }
+    
+    public String show(HttpServletRequest request) {
+        return this.showAction(request);
+    }
+    
+    public String showAction(HttpServletRequest request) {
+        citas.presentation.medico.citas.Model model = (citas.presentation.medico.citas.Model) request.getAttribute("model");
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+ 
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        
+        
+        try {     
+            
+            return "/presentation/medico/citas/view.jsp";
+        } catch (Exception ex) {
+            return "";
         }
     }
 

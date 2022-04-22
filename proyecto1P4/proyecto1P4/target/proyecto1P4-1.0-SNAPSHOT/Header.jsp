@@ -22,14 +22,14 @@
                     </li>
                     <%  //if( usuario.getTipo() == 1 ){ %>
                     <li class="navbar-item active">
-                        <a href="/proyecto1P4/presentation/registromedico/view.jsp" class="nav-link">
+                        <a href="/proyecto1P4/presentation/registromedico/show" class="nav-link">
                             Médicos
                         </a>
                     </li>
                     <%  //} %>
                     <% //if( user.getTipo() == 2 ){ %>
                     <li class="navbar-item active">
-                        <a href="/proyecto1P4/presentation/medico/citas/view.jsp" class="nav-link">
+                        <a href="/proyecto1P4/presentation/medico/citas/show" class="nav-link">
                             Citas
                         </a>
                     </li>
@@ -50,15 +50,22 @@
                     <% //} %>
                     <% //if( userLogued != null ){ %>
                     <li class="navbar-item active">
-                        <a href="/proyecto1P4/presentation/medico/perfil/view.jsp" class="nav-link">
+                        <a href="/proyecto1P4/presentation/medico/perfil/show" class="nav-link">
                             Perfil
                         </a>
                     </li>
                     <% //} %>
                     <% //if( userLogued != null ){ %>
                     <li class="navbar-item active">
-                        <a href="/proyecto1P4/presentation/calendario/view.jsp" class="nav-link">
+                        <a href="/proyecto1P4/presentation/medico/calendario/show" class="nav-link">
                             Calendario
+                        </a>
+                    </li>
+                    <% //} %>
+                    <% //if( userLogued != null ){ %>
+                    <li class="navbar-item active">
+                        <a href="/proyecto1P4/presentation/administrador/especialidad/show" class="nav-link">
+                            Solicitudes (admin)
                         </a>
                     </li>
                     <% //} %>

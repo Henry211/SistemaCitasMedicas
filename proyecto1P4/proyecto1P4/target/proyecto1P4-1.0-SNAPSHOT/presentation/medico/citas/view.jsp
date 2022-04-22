@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 
-                <a href="#" class="btn btn-primary">Asistir</a>
+                <a href="/proyecto1P4/presentation/medico/citas/confirmView.jsp" class="btn btn-primary">Asistir</a>
             </div>
         </div>
         <div class="card">
