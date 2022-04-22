@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
                 viewUrl = this.show(request);
                 break;
             case "/presentation/medico/calendario/show":
-                viewUrl = this.show(request);
+                viewUrl = this.showCalendar(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -55,6 +55,22 @@ public class Controller extends HttpServlet {
         try {     
             
             return "/presentation/medico/perfil/view.jsp";
+        } catch (Exception ex) {
+            return "";
+        }
+    }
+    
+    
+    public String showCalendar(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+ 
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        
+        try {     
+            
+            return "/presentation/calendario/view.jsp";
         } catch (Exception ex) {
             return "";
         }

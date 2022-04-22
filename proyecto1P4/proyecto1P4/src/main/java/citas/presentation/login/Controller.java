@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/presentation/login/mostrar", "/presentation/login/hecho", "/presentation/login/logout"})
+@WebServlet(name = "LoginController", urlPatterns = {"/presentation/login/mostrar", "/presentation/login/hecho", "/presentation/login/logout", "/presentation/login/registro"})
 public class Controller extends HttpServlet {
 
 
@@ -42,6 +42,9 @@ public class Controller extends HttpServlet {
                 break;
             case "/presentation/login/logout":
                viewUrl = this.logout(request);
+                break;
+            case "/presentation/login/registro":
+               viewUrl = this.registro(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -123,6 +126,13 @@ public class Controller extends HttpServlet {
             errores.put("claveField","Usuario o clave incorrectos");
             return "/presentation/login/view.jsp"; 
         }        
+    }
+    
+    public String registro(HttpServletRequest request){
+        
+        // lógica de registro
+        
+        return "/presentation/registromedico/view.jsp";
     }
     
     public String logout(HttpServletRequest request){

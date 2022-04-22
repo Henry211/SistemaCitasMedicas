@@ -19,7 +19,7 @@
                     <div class="col-12 user-img">
                         <img src="/proyecto1P4/img/login.png" />
                     </div>
-                    <form class="col-12" method="POST" name="Entrar" action="/WebApp/views/into" >
+                    <form class="col-12" method="POST" name="Entrar" action="/proyecto1P4/presentation/login/registro" >
                         <div class="form-goup" id="name-group">
                             <input type="text" class="form-control" name="nombreField" placeholder="Ingrese su Nombre"/>                            
                         </div>        
