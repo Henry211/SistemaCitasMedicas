@@ -115,7 +115,7 @@ public class Controller extends HttpServlet {
                     //System.out.println("Clave-> " + m.getClave().toString());
                     
                     session.setAttribute("medico", m);
-                     System.out.println("Name-> "+ m.getCedula());
+                    System.out.println("Name-> "+ m.getCedula());
                      
                     viewUrl = "/presentation/medico/perfil/view.jsp";
                     break;
@@ -163,7 +163,7 @@ public class Controller extends HttpServlet {
                     service.createMedico(real2);
                     session.setAttribute("medico", real2);
                     System.out.println("Name-> "+ real2.getCedula());
-                    viewUrl = "/presentation/registromedico/show";
+                    viewUrl = "/presentation/medico/perfil/view.jsp";
                     break;
                 case "3":
                     Administrador real1 = new Administrador(usuario,cedula, password);
