@@ -22,12 +22,10 @@ public class CiudadDao {
     }
     
         public void create(Ciudad u) throws Exception{
-        String sql="insert into localidad (idLocalidad, provincia,canton) "+
-                "values(?,?,?,?)";
+        String sql="insert into localidad (provincia) "+
+                "values(?)";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, u.getIdProvincia());
-        stm.setString(2, u.getProvincia());
-        stm.setString(3, u.getCanton());
+        stm.setString(1, u.getProvincia());
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Localidad ya existe");
@@ -35,10 +33,10 @@ public class CiudadDao {
     }
         
         public Ciudad read(Ciudad u) throws Exception{
-        String sql = "select * from localidad c where idLocalidad=? and canton =?";
+        String sql = "select * from localidad c where idLocalidad=? and provincia =?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, u.getIdProvincia());
-        stm.setString(2, u.getCanton());
+        stm.setInt(1, u.getIdProvincia());  
+        stm.setString(1, u.getProvincia());
         ResultSet rs =  db.executeQuery(stm);
         if (rs.next()) {
             Ciudad c = from(rs, "c"); 
@@ -55,8 +53,7 @@ public class CiudadDao {
                 "where idLocalidad=?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setInt(1, u.getIdProvincia());
-        stm.setString(2, u.getProvincia());   
-        stm.setString(3, u.getCanton()); 
+        stm.setString(2, u.getProvincia());    
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Ciudad no existe");
@@ -77,7 +74,7 @@ public class CiudadDao {
             Ciudad c= new Ciudad();
             c.setIdProvincia(rs.getInt(alias+".idLocalidad"));
             c.setProvincia(rs.getString(alias+".provincia"));
-            c.setCanton(rs.getString(alias+".canton"));
+            
             return c;
         } catch (SQLException ex) {
             return null;

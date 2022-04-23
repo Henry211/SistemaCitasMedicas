@@ -14,16 +14,16 @@ public class Ciudad {
     
    int idProvincia;
    String provincia;
-   String canton;
+
   
 
     public Ciudad() {
     }
 
-    public Ciudad(int idProvincia, String provincia, String canton) {
+    public Ciudad(int idProvincia, String provincia) {
         this.idProvincia = idProvincia;
         this.provincia = provincia;
-        this.canton = canton;
+       
       
     }
 
@@ -43,17 +43,11 @@ public class Ciudad {
         this.provincia = provincia;
     }
 
-    public String getCanton() {
-        return canton;
-    }
-
-    public void setCanton(String canton) {
-        this.canton = canton;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
+        hash = 19 * hash + this.idProvincia;
+        hash = 19 * hash + Objects.hashCode(this.provincia);
         return hash;
     }
 
@@ -72,16 +66,16 @@ public class Ciudad {
         if (this.idProvincia != other.idProvincia) {
             return false;
         }
-        if (!Objects.equals(this.provincia, other.provincia)) {
-            return false;
-        }
-        return Objects.equals(this.canton, other.canton);
+        return Objects.equals(this.provincia, other.provincia);
     }
 
     @Override
     public String toString() {
-        return "Ciudad{" + "idProvincia=" + idProvincia + ", provincia=" + provincia + ", canton=" + canton + '}';
+        return "Ciudad{" + "idProvincia=" + idProvincia + ", provincia=" + provincia + '}';
     }
+
+  
+
 
   
 
