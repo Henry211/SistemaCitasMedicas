@@ -109,9 +109,9 @@ public class MedicoDao {
             c.setCedula(rs.getString(alias+".idMedicos"));
             c.setNombre(rs.getString(alias+".nombre"));
             c.setClave(rs.getString(alias+".clave"));
-            c.setEstado(rs.getString(alias+".estado"));
-            c.setFoto(rs.getString(alias+".foto"));
-            c.setFoto((String) rs.getObject(alias+".foto"));
+//            c.setEstado(rs.getString(alias+".estado"));
+//            c.setFoto(rs.getString(alias+".foto"));
+//            c.setFoto((String) rs.getObject(alias+".foto"));
             return c;
         } catch (SQLException ex) {
             return null;

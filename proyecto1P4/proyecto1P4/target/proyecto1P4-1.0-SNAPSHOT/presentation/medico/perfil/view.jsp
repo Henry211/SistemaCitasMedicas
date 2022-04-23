@@ -33,7 +33,7 @@
                                 <div class="card-block text-center text-white">
                                     <i class="fas fa-7x mt-5"><img id="img-perfil" src="/proyecto1P4/img/img1.jpg"/></i>
                                     <h2 class="font-weight-bold mt-4">
-                                        <%= pac.getClave().toString() %>
+                                        <%= medico.getNombre() %>
                                         
                                     </h2>
                                     <p>Doctor en medicina</p>
@@ -49,7 +49,7 @@
                                     <div class="col-sm-6">
                                         <p>Especialidad:</p>
                                         <h6 class="text-muted">
-                                            
+                                           
                                         </h6>
                                     </div>
                                     <div class="col-sm-6">
