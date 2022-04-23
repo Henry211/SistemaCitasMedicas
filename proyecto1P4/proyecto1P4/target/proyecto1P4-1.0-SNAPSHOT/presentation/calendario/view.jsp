@@ -29,10 +29,10 @@
                 <div class="calendario_dia">
                     
                     <div class="cita">
-                        <a class="item" href="url">9pm</a>
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&dt=2022-04-23T09:00">9pm</a>
                     </div>
                     <div class="cita">
-                        <a class="item" href="url">2pm</a>
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&dt=2022-04-23T14:00">2pm</a>
                     </div>
                     
                 </div>

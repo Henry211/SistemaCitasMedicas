@@ -18,6 +18,7 @@ public class Medico {
     String estado;
     String foto;
     Ciudad ciudad;
+    String especialidad;
     
     
 
@@ -31,6 +32,11 @@ public class Medico {
         this.clave = clave;
         this.ciudad = ciudad;
     }
+
+    public Medico(String cedula, String clave) {
+        this.cedula = cedula;
+        this.clave = clave;
+    }
     
    
 
@@ -40,6 +46,14 @@ public class Medico {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String es) {
+        this.especialidad = es;
     }
 
     public String getCedula() {

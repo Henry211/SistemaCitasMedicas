@@ -4,6 +4,8 @@
  */
 package citas.presentation.medico.perfil;
 
+import citas.logic.Medico;
+import citas.logic.Paciente;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
@@ -19,14 +21,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show","/presentation/medico/calendario/show"})
+@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show", "/presentation/medico/calendario/show"})
 public class Controller extends HttpServlet {
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         request.setAttribute("model", new Model());
         String viewUrl = "";
         switch (request.getServletPath()) {
@@ -39,37 +40,43 @@ public class Controller extends HttpServlet {
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
-    
+
     public String show(HttpServletRequest request) {
         return this.showAction(request);
     }
-    
+
+
     public String showAction(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
- 
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        
-        
-        try {     
-            
+
+//        Paciente paciente = (Paciente) session.getAttribute("paciente");
+        Medico me = (Medico) session.getAttribute("medico");
+        System.out.println(me.getNombre());
+        System.out.println(me.getClave());
+        System.out.println(me.getCedula());
+
+        model.setMedico(me);
+        request.setAttribute("model", model);
+
+        try {
+
             return "/presentation/medico/perfil/view.jsp";
         } catch (Exception ex) {
             return "";
         }
     }
-    
-    
+
     public String showCalendar(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
- 
+
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        
-        try {     
-            
+
+        try {
+
             return "/presentation/calendario/view.jsp";
         } catch (Exception ex) {
             return "";

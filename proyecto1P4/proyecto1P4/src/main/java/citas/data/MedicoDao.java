@@ -37,10 +37,10 @@ public class MedicoDao {
     }
     
     public Medico read(Medico u) throws Exception{
-        String sql = "select * from medico c where idMedicos=? and nombre =?";
+        String sql = "select * from medico c where idMedicos=? and clave =?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());
-        stm.setString(2, u.getNombre());
+        stm.setString(2, u.getClave());
         ResultSet rs =  db.executeQuery(stm);
         if (rs.next()) {
             Medico c = from(rs, "c"); 

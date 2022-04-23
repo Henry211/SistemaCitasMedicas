@@ -16,30 +16,32 @@
 
 
         <div class="container sombra">
-            <div class="row">
-                <div class="col">
-                    <select id="localidad" class="form-select sombra" aria-label="Default select example">
-                        <option selected>Seleccione la Localidad</option>
-                        <option value="1">San José</option>
-                        <option value="2">Alajuela</option>
-                        <option value="3">Heredia</option>
-                        <option value="3">Cartago</option>
-                    </select>
+            <form class="col-12" method="GET" name="Buscar" action="/proyecto1P4/presentation/registromedico/show" >
+                <div class="row">
+                    <div class="col">
+                        <select id="localidad" class="form-select sombra" aria-label="Default select example">
+                            <option selected>Seleccione la Localidad</option>
+                            <option value="1">San José</option>
+                            <option value="2">Alajuela</option>
+                            <option value="3">Heredia</option>
+                            <option value="3">Cartago</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select id="especialidad" class="form-select sombra" aria-label="Default select example">
+                            <option selected>Seleccione la Especialidad</option>
+                            <option value="1">Cardiología</option>
+                            <option value="2">Dermatología</option>
+                            <option value="3">Pediatría</option>
+                            <option value="3">Medicina General</option>
+                            <option value="3">Gastroenterología</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit" name="buscar" class="btn btn-primary sombra" id="btn-buscar"> Buscar</button>
+                    </div>
                 </div>
-                <div class="col">
-                    <select id="especialidad" class="form-select sombra" aria-label="Default select example">
-                        <option selected>Seleccione la Especialidad</option>
-                        <option value="1">Cardiología</option>
-                        <option value="2">Dermatología</option>
-                        <option value="3">Pediatría</option>
-                        <option value="3">Medicina General</option>
-                        <option value="3">Gastroenterología</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <button type="submit" name="buscar" class="btn btn-primary sombra" id="btn-buscar"> Buscar</button>
-                </div>
-            </div>
+            </form>
         </div>
 
 
@@ -47,7 +49,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <form class="col-12" method="GET" name="Ver" action="/proyecto1P4/presentation/medico/citas/confirmView.jsp" >
+                        <form class="col-12" method="GET" name="Ver" action="/proyecto1P4/presentation/medico/calendario/show" >
                             <div class="card">
                                 <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
                                 <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>

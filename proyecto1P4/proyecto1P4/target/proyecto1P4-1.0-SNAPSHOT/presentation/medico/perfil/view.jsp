@@ -1,5 +1,11 @@
 
+
+<%@page import="citas.logic.Medico"%>
+<%@page import="citas.presentation.medico.perfil.Model"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Medico medico =  (Medico) session.getAttribute("medico");  %>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +30,10 @@
                             <div class="col-sm-4 bg-info rounded-left">
                                 <div class="card-block text-center text-white">
                                     <i class="fas fa-7x mt-5"><img id="img-perfil" src="/proyecto1P4/img/img1.jpg"/></i>
-                                    <h2 class="font-weight-bold mt-4">Nombre..</h2>
+                                    <h2 class="font-weight-bold mt-4">
+                                        <%= medico.getNombre() %>
+                                        
+                                    </h2>
                                     <p>Doctor en medicina</p>
                                     <a href="/proyecto1P4/presentation/medico/perfil/editView.jsp" class="text-white"><i class="far fa-edit mb-4"> Editar Perfil</i></a>
 
@@ -37,11 +46,15 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Especialidad:</p>
-                                        <h6 class="text-muted">Cardiología</h6>
+                                        <h6 class="text-muted">
+                                            <%= medico.getEspecialidad() %>
+                                        </h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Localidad:</p>
-                                        <h6 class="text-muted">Pérez Zeledón</h6>
+                                        <h6 class="text-muted"></h6>
+                                                
+                                        <h6 class="text-muted"> </h6>
                                     </div>
                                 </div>
 
@@ -49,11 +62,11 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Correo:</p>
-                                        <h6 class="text-muted">medico@gmail.com</h6>
+                                        <h6 class="text-muted"><%= medico.getCedula() %></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Telefono:</p>
-                                        <h6 class="text-muted">+506 88349812</h6>
+                                        <h6 class="text-muted"><%= medico.getEstado() %></h6>
                                     </div>
                                 </div>
 
