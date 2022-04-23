@@ -48,9 +48,17 @@ public class Service {
         return aDao.read(administrador); 
     }
      
+     public void createAdministrador(Administrador admi) throws Exception{
+         aDao.create(admi); 
+    }
+     
      //medico
       public Medico medicoLogin(Medico medico) throws Exception{
         return mDao.read(medico); 
+    }
+      
+      public void createMedico(Medico medico) throws Exception{
+         mDao.create(medico); 
     }
     
 }

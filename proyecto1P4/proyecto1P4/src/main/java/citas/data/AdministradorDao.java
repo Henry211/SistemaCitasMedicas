@@ -25,7 +25,7 @@ public class AdministradorDao {
     }
 
      public void create(Administrador u) throws Exception{
-        String sql="insert into administrador (cedula, nombre, clave) "+
+        String sql="insert into administrador (nombre, idAdministrador,clave) "+
                 "values(?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());

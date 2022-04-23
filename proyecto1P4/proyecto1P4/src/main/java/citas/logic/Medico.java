@@ -17,6 +17,7 @@ public class Medico implements Serializable{
     String nombre;
     String clave;
     String estado;
+    Especialidad especialidad;
     String foto;
     Ciudad ciudad;
     
@@ -25,12 +26,11 @@ public class Medico implements Serializable{
     public Medico() {
     }
 
-    public Medico(String cedula,String nombre, String clave, Ciudad ciudad) {
+    public Medico(String cedula,String nombre, String clave) {
        
         this.cedula = cedula;
         this.nombre = nombre;
         this.clave = clave;
-        this.ciudad = ciudad;
     }
 
     public Medico(String cedula, String clave) {
@@ -60,6 +60,14 @@ public class Medico implements Serializable{
 
     public String getClave() {
         return clave;
+    }
+
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
     }
 
     public void setClave(String clave) {

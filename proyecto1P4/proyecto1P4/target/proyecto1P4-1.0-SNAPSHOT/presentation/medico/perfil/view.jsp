@@ -27,13 +27,14 @@
         <div>
             <div class="container">
                 <div class="row d-flex justify-content-center">
+                    <a href="view.jsp"></a>
                     <div class="col-md-10 mt-5 pt-5">
                         <div class="row z-depth-3">
                             <div class="col-sm-4 bg-info rounded-left">
                                 <div class="card-block text-center text-white">
                                     <i class="fas fa-7x mt-5"><img id="img-perfil" src="/proyecto1P4/img/img1.jpg"/></i>
                                     <h2 class="font-weight-bold mt-4">
-                                        <%= medico.getNombre() %>
+                                        <%= medico.getCedula()%>
                                         
                                     </h2>
                                     <p>Doctor en medicina</p>

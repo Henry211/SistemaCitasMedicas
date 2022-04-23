@@ -23,7 +23,7 @@ public class PacienteDao {
       
     
      public void create(Paciente u) throws Exception{
-        String sql="insert into paciente (cedula, nombre, clave) "+
+        String sql="insert into paciente (nombre,cedula,clave) "+
                 "values(?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());

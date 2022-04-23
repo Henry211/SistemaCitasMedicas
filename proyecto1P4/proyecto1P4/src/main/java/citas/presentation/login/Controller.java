@@ -111,17 +111,65 @@ public class Controller extends HttpServlet {
                 case "2":
                     Medico real2 = new Medico(usuario, password);
                     Medico m = service.medicoLogin(real2);
+                   
                     //System.out.println("Clave-> " + m.getClave().toString());
                     
                     session.setAttribute("medico", m);
                      System.out.println("Name-> "+ m.getCedula());
                      
-                    viewUrl = "/presentation/registromedico/show";
+                    viewUrl = "/presentation/medico/perfil/view.jsp";
                     break;
                 case "3":
                     Administrador real1 = new Administrador(usuario, password);
                     Administrador a = service.administradorLogin(real1);
-                    session.setAttribute("admin", a);
+                    session.setAttribute("admin",a);
+                    viewUrl = "/presentation/administrador/especialidades/view.jsp";
+                    break;
+
+            }
+            return viewUrl;
+        } catch (Exception ex) {
+            return "/presentation/login/view.jsp";
+        }
+    }
+
+    public String registro(HttpServletRequest request) {
+
+        // lógica de registro
+        System.out.println("entro");
+        Model model = (Model) request.getAttribute("model");
+
+        HttpSession session = request.getSession(true);
+        String usuario = request.getParameter("nombreField");
+        String cedula = request.getParameter("cedulaField");
+        String password = request.getParameter("claveField");
+        System.out.println("Datos " + usuario + "+" + password);
+        Service service = Service.instance();
+        try {
+            //*Paciente real = service.login(model.getUser().getCedula(),model.getUser().getClave());
+
+            //  session.setAttribute("usuario", real);//ASIGNAR user PARA Header
+            String viewUrl = "";
+            switch (request.getParameter("tipo")) {
+                case "1":
+                    Paciente real = new Paciente(usuario, cedula,password);
+                    service.createPaciente(real);
+                    session.setAttribute("paciente", real);
+                    System.out.println("Name-> " + real.getNombre());
+                    viewUrl = "/presentation/registromedico/show";
+                    break;
+                case "2":
+                    Medico real2 = new Medico(usuario,cedula, password);
+                    service.createMedico(real2);
+                    session.setAttribute("medico", real2);
+                    System.out.println("Name-> "+ real2.getCedula());
+                    viewUrl = "/presentation/registromedico/show";
+                    break;
+                case "3":
+                    Administrador real1 = new Administrador(usuario,cedula, password);
+                    service.createAdministrador(real1);
+                    session.setAttribute("admin", real1);
+                    System.out.println("Name-> "+ real1.getCedula());
                     viewUrl = "/presentation/administrador/especialidades/view.jsp";
                     break;
 
@@ -132,14 +180,10 @@ public class Controller extends HttpServlet {
             request.setAttribute("errores", errores);
             errores.put("cedulaField", "Usuario o clave incorrectos");
             errores.put("claveField", "Usuario o clave incorrectos");
-            return "/presentation/login/view.jsp";
-        }
-    }
 
-    public String registro(HttpServletRequest request) {
-
-        // lógica de registro
+        
         return "/presentation/registromedico/view.jsp";
+    }
     }
 
     public String logout(HttpServletRequest request) {

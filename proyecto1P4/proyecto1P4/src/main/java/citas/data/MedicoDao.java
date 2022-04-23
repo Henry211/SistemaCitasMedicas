@@ -21,14 +21,14 @@ public class MedicoDao {
     }
 
      public void create(Medico u) throws Exception{
-        String sql="insert into medico (idMedicos,nombre,clave,estado,foto,localidad_idLocalidad) "+
+        String sql="insert into medico (nombre,idMedicos,clave,estado,localidad_idLocalidad,id_especialidad) "+
                 "values(?,?,?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());
         stm.setString(2, u.getNombre());
         stm.setString(3, u.getClave());
         stm.setString(4, u.getEstado());
-        stm.setString(5, u.getFoto());
+        stm.setObject(5, u.getEspecialidad());
         stm.setObject(6, u.getCiudad());
         int count=db.executeUpdate(stm);
         if (count==0){
