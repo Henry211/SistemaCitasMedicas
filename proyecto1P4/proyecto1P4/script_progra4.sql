@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `usuarios2`.`localidad` (
 -- Table `usuarios2`.`medico`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuarios2`.`medico` (
-  `idMedicos` VARCHAR(45) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
+  `idMedicos` VARCHAR(45) NOT NULL,
   `clave` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(20),
   `localidad_idLocalidad` INT,
@@ -67,11 +67,11 @@ CREATE TABLE IF NOT EXISTS `usuarios2`.`medico` (
 CREATE INDEX `localidad_idLocalidad` ON `usuarios2`.`medico` (`localidad_idLocalidad` ASC) VISIBLE;
 CREATE INDEX `id_especialidad` ON `usuarios2`.`medico` (`id_especialidad` ASC) VISIBLE;
 
-insert into medico(idMedicos,nombre,clave,estado,localidad_idLocalidad,id_especialidad) values
-('1234','Martín Elías Acosta ','11111',null,null,null);
+insert into medico(nombre,idMedicos,clave,estado,localidad_idLocalidad,id_especialidad) values
+('Martín Elías Acosta','111','11111',null,null,null);
 
-insert into medico(idMedicos,nombre,clave,estado,localidad_idLocalidad,id_especialidad) values
-('5678','Ana María de la Peña','2222',null,null,null);
+insert into medico(nombre,idMedicos,clave,estado,localidad_idLocalidad,id_especialidad) values
+('Ana María de la Peña','2234','2222',null,null,null);
 
 
 
@@ -80,17 +80,16 @@ insert into medico(idMedicos,nombre,clave,estado,localidad_idLocalidad,id_especi
 -- Table `usuarios2`.`paciente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuarios2`.`paciente` (
-  `cedula` VARCHAR(45) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
+  `cedula` VARCHAR(45) NOT NULL,
   `clave` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cedula`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-insert into paciente(cedula,nombre,clave) values ('116400847','Maria','1111');
-insert into paciente(cedula,nombre,clave) values ('23445667','Henry','2222');
-insert into paciente(cedula,nombre,clave) values ('45345675','Daniel','3333');
+insert into paciente(nombre,cedula,clave) values ('Maria','123','1111');
+
 
 
 
