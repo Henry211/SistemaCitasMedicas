@@ -1,9 +1,11 @@
 
 
 <%@page import="citas.logic.Medico"%>
+<%@page import="citas.logic.Paciente"%>
 <%@page import="citas.presentation.medico.perfil.Model"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Medico medico =  (Medico) session.getAttribute("medico");  %>
+<% Paciente pac =  (Paciente) session.getAttribute("paciente");  %>
 
 
 <!DOCTYPE html>
@@ -31,7 +33,7 @@
                                 <div class="card-block text-center text-white">
                                     <i class="fas fa-7x mt-5"><img id="img-perfil" src="/proyecto1P4/img/img1.jpg"/></i>
                                     <h2 class="font-weight-bold mt-4">
-                                        <%= medico.getNombre() %>
+                                        <%= pac.getClave().toString() %>
                                         
                                     </h2>
                                     <p>Doctor en medicina</p>
@@ -47,7 +49,7 @@
                                     <div class="col-sm-6">
                                         <p>Especialidad:</p>
                                         <h6 class="text-muted">
-                                            <%= medico.getEspecialidad() %>
+                                            
                                         </h6>
                                     </div>
                                     <div class="col-sm-6">
@@ -62,11 +64,11 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Correo:</p>
-                                        <h6 class="text-muted"><%= medico.getCedula() %></h6>
+                                        <h6 class="text-muted"></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Telefono:</p>
-                                        <h6 class="text-muted"><%= medico.getEstado() %></h6>
+                                        <h6 class="text-muted"></h6>
                                     </div>
                                 </div>
 

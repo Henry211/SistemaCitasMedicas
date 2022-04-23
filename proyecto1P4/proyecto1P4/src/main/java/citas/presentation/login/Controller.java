@@ -111,6 +111,7 @@ public class Controller extends HttpServlet {
                     Medico real2 = new Medico(usuario, password);
                     Medico m = service.medicoLogin(real2);
                     session.setAttribute("medico", m);
+                    System.out.println("Ha cargado el MEDICO");
                     viewUrl = "/presentation/registromedico/show";
                     break;
                 case "3":

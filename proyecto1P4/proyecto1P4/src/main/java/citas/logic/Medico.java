@@ -4,13 +4,14 @@
  */
 package citas.logic;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author ESCINF
  */
-public class Medico {
+public class Medico implements Serializable{
     
     String cedula;
     String nombre;
@@ -18,7 +19,6 @@ public class Medico {
     String estado;
     String foto;
     Ciudad ciudad;
-    String especialidad;
     
     
 
@@ -48,13 +48,7 @@ public class Medico {
         this.nombre = nombre;
     }
     
-    public String getEspecialidad() {
-        return especialidad;
-    }
 
-    public void setEspecialidad(String es) {
-        this.especialidad = es;
-    }
 
     public String getCedula() {
         return cedula;

@@ -47,18 +47,18 @@ public class Controller extends HttpServlet {
 
 
     public String showAction(HttpServletRequest request) {
-        Model model = (Model) request.getAttribute("model");
-        Service service = Service.instance();
-        HttpSession session = request.getSession(true);
+//        Model model = (Model) request.getAttribute("model");
+//        Service service = Service.instance();
+        //HttpSession session = request.getSession(true);
 
 //        Paciente paciente = (Paciente) session.getAttribute("paciente");
-        Medico me = (Medico) session.getAttribute("medico");
-        System.out.println(me.getNombre());
-        System.out.println(me.getClave());
-        System.out.println(me.getCedula());
-
-        model.setMedico(me);
-        request.setAttribute("model", model);
+        //Medico me = (Medico) session.getAttribute("medico");
+//        System.out.println(me.getNombre());
+//        System.out.println(me.getClave());
+//        System.out.println(me.getCedula());
+//
+//        model.setMedico(me);
+//        request.setAttribute("model", model);
 
         try {
 
