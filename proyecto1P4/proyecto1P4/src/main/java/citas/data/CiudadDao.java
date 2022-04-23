@@ -79,7 +79,7 @@ public class CiudadDao {
       public List<Ciudad> findAll(){
         List<Ciudad> resultado=new ArrayList<>();
         try {
-            String sql="select * from Usuario c";
+            String sql="select * from localidad c";
             PreparedStatement stm = db.prepareStatement(sql);
             ResultSet rs =  db.executeQuery(stm);
             Ciudad c;
