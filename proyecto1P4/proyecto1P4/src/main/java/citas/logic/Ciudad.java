@@ -23,8 +23,10 @@ public class Ciudad {
     public Ciudad(int idProvincia, String provincia) {
         this.idProvincia = idProvincia;
         this.provincia = provincia;
-       
-      
+    }
+    
+    public Ciudad(String name){
+        this.provincia = name;
     }
 
     public int getIdProvincia() {

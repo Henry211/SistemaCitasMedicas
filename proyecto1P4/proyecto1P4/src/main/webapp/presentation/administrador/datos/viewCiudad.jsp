@@ -23,7 +23,7 @@
                     <h4>Agregar Ciudad</h4>
                 </div>
                 <div class="mb-2">
-                    <form  method="POST" name="Crear" action="/proyecto1P4/presentation/administrador/hecho">
+                    <form  method="POST" name="Crear" action="/proyecto1P4/presentation/administrador/ciudad/crear">
                         <div class="mb-2">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre">

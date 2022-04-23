@@ -4,6 +4,8 @@
  */
 package citas.presentation.administrador.especialidad;
 
+import citas.logic.Ciudad;
+import citas.logic.Especialidad;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "AdministradorEspecialidadController", urlPatterns = {"/presentation/administrador/especialidad/show"})
+@WebServlet(name = "AdministradorEspecialidadController", urlPatterns = {"/presentation/administrador/especialidad/show","/presentation/administrador/ciudad/crear"})
 public class Controller extends HttpServlet {
 
    
@@ -32,6 +34,13 @@ public class Controller extends HttpServlet {
         switch (request.getServletPath()) {
             case "/presentation/administrador/especialidad/show":
                 viewUrl = this.show(request);
+                break;
+            case "/presentation/administrador/ciudad/crear":
+                System.out.println("Servlet creatCity");
+                viewUrl = this.createCity(request);
+                break;
+            case "/presentation/administrador/especialidad/crear":
+                viewUrl = this.createEspe(request);
                 break;
             
         }
@@ -57,6 +66,47 @@ public class Controller extends HttpServlet {
             return "";
         }
     }
+    
+    private String createCity(HttpServletRequest request) {
+
+        Service service = Service.instance();
+        String name = request.getParameter("nombre");
+        String viewUrl = "";
+        try{
+
+            Ciudad ciudad = new Ciudad(name);
+            service.createCiudad(ciudad);
+            
+            viewUrl = "/presentation/administrador/especialidades/view.jsp";
+            
+        }catch(Exception e){
+            
+        }
+
+        return viewUrl;
+    }
+
+    private String createEspe(HttpServletRequest request) {
+
+        
+        Service service = Service.instance();
+        String name = request.getParameter("nombre");
+        String viewUrl = "";
+        try{
+
+            Especialidad ciudad = new Especialidad(name);
+            //service. .createEspecialidad(ciudad);
+            
+            viewUrl = "/presentation/administrador/especialidades/view.jsp";
+            
+        }catch(Exception e){
+            
+        }
+
+        return viewUrl;
+    }
+
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -97,4 +147,5 @@ public class Controller extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
 }
