@@ -101,38 +101,4 @@ public class AdministradorDao {
         }
     }  
         
-        
-    /* Dao para lista
-    public List<Usuario> findAll(){
-        List<Usuario> resultado=new ArrayList<>();
-        try {
-            String sql="select * from Usuario c";
-            PreparedStatement stm = db.prepareStatement(sql);
-            ResultSet rs =  db.executeQuery(stm);
-            Usuario c;
-            while (rs.next()) {
-                c = from(rs, "c"); 
-                resultado.add(c);
-            }
-        } catch (SQLException ex) { }
-        return resultado;        
-    }
-
-    public List<Usuario> findByCedula(String cedula){
-        List<Usuario> resultado = new ArrayList<>();
-        try {
-            String sql="select * from Usuario c "+
-                    "where c.usuario like ?";            
-            PreparedStatement stm = db.prepareStatement(sql);
-            stm.setString(1, cedula+"%");
-            ResultSet rs =  db.executeQuery(stm); 
-            Usuario c;
-            while (rs.next()) {
-                c = from(rs, "c"); 
-                resultado.add(c);
-            }
-        } catch (SQLException ex) {  }
-        return resultado;
-    }
-    */
 }

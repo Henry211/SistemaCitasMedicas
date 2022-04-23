@@ -9,6 +9,8 @@ import citas.logic.Especialidad;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -69,7 +71,45 @@ public class CiudadDao {
         }
     }
 
-      Ciudad from(ResultSet rs, String alias){
+ 
+    
+    
+    // Dao para lista
+    
+      public List<Ciudad> findAll(){
+        List<Ciudad> resultado=new ArrayList<>();
+        try {
+            String sql="select * from Usuario c";
+            PreparedStatement stm = db.prepareStatement(sql);
+            ResultSet rs =  db.executeQuery(stm);
+            Ciudad c;
+            while (rs.next()) {
+                c = from(rs, "c"); 
+                resultado.add(c);
+            }
+        } catch (SQLException ex) { }
+        return resultado;        
+    }
+/*
+    public List<Ciudad> findByCedula(String cedula){
+        List<Usuario> resultado = new ArrayList<>();
+        try {
+            String sql="select * from Usuario c "+
+                    "where c.usuario like ?";            
+            PreparedStatement stm = db.prepareStatement(sql);
+            stm.setString(1, cedula+"%");
+            ResultSet rs =  db.executeQuery(stm); 
+            Usuario c;
+            while (rs.next()) {
+                c = from(rs, "c"); 
+                resultado.add(c);
+            }
+        } catch (SQLException ex) {  }
+        return resultado;
+    }
+    */
+          
+    Ciudad from(ResultSet rs, String alias){
         try {
             Ciudad c= new Ciudad();
             c.setIdProvincia(rs.getInt(alias+".idLocalidad"));
@@ -79,9 +119,5 @@ public class CiudadDao {
         } catch (SQLException ex) {
             return null;
         }
-    }  
-    
-    
-    
-    
+    } 
 }
