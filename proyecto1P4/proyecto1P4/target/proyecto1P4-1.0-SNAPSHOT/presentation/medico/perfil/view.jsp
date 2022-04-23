@@ -50,18 +50,20 @@
                                     <div class="col-sm-6">
                                         <p>Especialidad:</p>
                                         <h6 class="text-muted">
-                                           
+                                            <%= medico.getEspecialidad().getNombre() %>
                                         </h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Localidad:</p>
-                                        <h6 class="text-muted"></h6>
+                                        <h6 class="text-muted">
+                                            <%= medico.getCiudad().getProvincia() %>                                            
+                                        </h6>
                                                 
-                                        <h6 class="text-muted"> </h6>
+                                        
                                     </div>
                                 </div>
 
-                                <hr class="bg-primary">
+<!--                                <hr class="bg-primary">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Correo:</p>
@@ -71,10 +73,12 @@
                                         <p>Telefono:</p>
                                         <h6 class="text-muted"></h6>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="row">
-                                    <p>Horario: ...</p>
+                                    <p>Horario: 
+                                        
+                                    </p>
 
 
                                 </div>

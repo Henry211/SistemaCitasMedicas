@@ -30,12 +30,15 @@
             </div>
         </div>
 
-
+        <div class="div-addNew text-center">
+            <a class="add-btn" href="/proyecto1P4/presentation/administrador/datos/viewCiudad.jsp">Agregar nueva Ciudad</a>    
+            <a class="add-btn" href="/proyecto1P4/presentation/administrador/datos/viewEspecialidad.jsp">Agregar nueva Especialidad</a>    
+        </div>
 
         <div class="card">
-            <h5 class="card-header">Solicitud de..</h5>
+            <h5 class="card-header">Ciudad.</h5>
             <div class="card-body">
-                <h5 class="card-title">Agregar Nueva Ciudad</h5>
+                <h5 class="card-title"> Ciudad</h5>
                 <p class="card-text">
 
                 <div class="container">
@@ -46,12 +49,10 @@
                         <div class="col">
                             ... </br>
                         </div>
-                        
+
                     </div>
                 </div>
-                
-                <a href="#" class="btn btn-primary">Aceptar</a>
-                <a href="#" class="btn btn-primary">Rechazar</a>
+
             </div>
         </div>
         <div class="card">
@@ -68,12 +69,10 @@
                         <div class="col">
                             ... </br>
                         </div>
-                        
+
                     </div>
                 </div>
-                
-                <a href="#" class="btn btn-primary">Aceptar</a>
-                <a href="#" class="btn btn-primary">Rechazar</a>
+
             </div>
         </div>
         <div class="card">
@@ -90,37 +89,14 @@
                         <div class="col">
                             ... </br>
                         </div>
-                        
-                    </div>
-                </div>
-                
-                <a href="#" class="btn btn-primary">Aceptar</a>
-                <a href="#" class="btn btn-primary">Rechazar</a>
-            </div>
-        </div>
-        <div class="card">
-            <h5 class="card-header">Solicitud de..</h5>
-            <div class="card-body">
-                <h5 class="card-title">Agregar Nueva Ciudad</h5>
-                <p class="card-text">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            ... </br> 
-                        </div>
-                        <div class="col">
-                            ... </br>
-                        </div>
-                        
                     </div>
                 </div>
-                
-                <a href="#" class="btn btn-primary">Aceptar</a>
-                <a href="#" class="btn btn-primary">Rechazar</a>
+
             </div>
         </div>
-       
-        
+
+
+
     </body>
 </html>
