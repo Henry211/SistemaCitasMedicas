@@ -29,8 +29,8 @@
                             <input type="text" class="form-control" name="nombre" id="nombre">
                         </div>
                         
-                        <button  type="submit" name="guardar" class="btn-editForm btn-primary" > <i class="fas fa-sign-in-alt"></i> Guardar</button>
-                        <button  type="submit" name="cancelar" class="btn-editForm btn-primary"> <i class="fas fa-sign-in-alt"></i> Cancelar</button>
+                        <button  type="submit" name="guardar" class="btn-editForm btn-primary" > <i class="fas fa-sign-in-alt"href="/proyecto1P4/presentation/administrador/datos/viewCiudad.jsp"></i> Guardar</button>
+                        <button  type="submit" name="cancelar" class="btn-editForm btn-primary"> <i class="fas fa-sign-in-alt"href="/proyecto1P4/presentation/administrador/datos/viewCiudad.jsp"></i> Cancelar</button>
                     </form>
                 </div>
 
