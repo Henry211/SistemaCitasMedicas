@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "PacienteCitaController", urlPatterns = {"/presentation/paciente/cita/make"})
+@WebServlet(name = "PacienteCitaController", urlPatterns = {"/presentation/paciente/cita/make", "/presentation/paciente/cita/selectDate"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -32,8 +32,8 @@ public class Controller extends HttpServlet {
             case "/presentation/paciente/cita/make":
                 viewUrl = this.makeCita(request);
                 break;
-            case "":
-               //viewUrl = this.login(request);
+            case "/presentation/paciente/cita/selectDate":
+               viewUrl = this.selectDate(request);
                 break;
             case " ":
                //viewUrl = this.logout(request);
@@ -56,6 +56,11 @@ public class Controller extends HttpServlet {
         session.setAttribute("dateTime", request.getAttribute("dt"));
         
         return "/presentation/paciente/cita/confirmView.jsp";
+    }
+    
+    public String selectDate(HttpServletRequest request){
+        
+        return "/presentation/calendario/view.jsp";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

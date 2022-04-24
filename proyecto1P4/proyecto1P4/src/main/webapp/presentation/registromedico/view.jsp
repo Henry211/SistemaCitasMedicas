@@ -1,6 +1,8 @@
 
-<%@page import="citas.logic.Usuario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="citas.logic.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% ArrayList<Medico> medicos = (ArrayList<Medico>) session.getAttribute("listaMedicos"); %>
 
 <!DOCTYPE html>
 <html>
@@ -48,22 +50,36 @@
         <div class="profile-area">
             <div class="container">
                 <div class="row">
+                    
+                    <% int i = medicos.size(); %>
+                    <% do{ %>
+                    <% i--; %>
+                    
                     <div class="col-md-4">
-                        <form class="col-12" method="GET" name="Ver" action="/proyecto1P4/presentation/medico/calendario/show" >
+                        <form class="col-12" method="POST" name="Ver" action="/proyecto1P4/presentation/paciente/cita/selectDate" >
+                            <!--Cómo pasar el medico seleccionado en el request?-->
                             <div class="card">
                                 <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
                                 <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
                                 <div class="main-text">
-                                    <h2>Doctor One</h2>
-                                    <p><b>Especialidad:</b> Cardiología </br>
-                                        <b>Localidad:</b> San José</br>
+                                    <h2>
+                                        <%= medicos.get(i).getNombre() %>
+                                    </h2>
+                                    <p><b>Especialidad:</b> 
+                                        <%= medicos.get(i).getEspecialidad().getNombre() %>
+                                        </br>
+                                        <b>Localidad:</b> 
+                                        <%= medicos.get(i).getCiudad().getProvincia() %>
+                                        </br>
                                         <b>Atiende:</b> L-M-J</p>
                                 </div>
                                 <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-4">
+                    
+                    <% }while(i != 0); %>
+<!--                    <div class="col-md-4">
                         <div class="card">
                             <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
                             <div class="img2"><img src="/proyecto1P4/img/img2.jpg"/></div>
@@ -89,46 +105,8 @@
                             </div>
                             <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/proyecto1P4/img/img2.jpg" /></div>
-                            <div class="main-text">
-                                <h2 >Doctor Four</h2>
-                                <p><b>Especialidad:</b> Cardiología </br>
-                                    <b>Localidad:</b> San José</br>
-                                    <b>Atiende:</b> L-M-J</p>
-                            </div>
-                            <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/proyecto1P4/img/img3.jpg"/></div>
-                            <div class="main-text">
-                                <h2>Doctor Five</h2>
-                                <p><b>Especialidad:</b> Cardiología </br>
-                                    <b>Localidad:</b> San José</br>
-                                    <b>Atiende:</b> L-M-J</p>
-                            </div>
-                            <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
-                            <div class="main-text">
-                                <h2>Doctor Six</h2>
-                                <p><b>Especialidad:</b> Cardiología </br>
-                                    <b>Localidad:</b> San José</br>
-                                    <b>Atiende:</b> L-M-J</p>
-                            </div>
-                            <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                        </div>
-                    </div>
+                    </div>-->
+                    
                 </div>
             </div>
         </div>

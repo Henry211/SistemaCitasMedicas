@@ -55,6 +55,10 @@ public class Service {
         return mDao.read(medico);
     }
 
+    public void editarMedico(Medico medico) throws Exception {
+        mDao.update(medico);
+    }
+
     public void createMedico(Medico medico) throws Exception {
         mDao.create(medico);
     }
@@ -62,11 +66,11 @@ public class Service {
     public Ciudad ciudadread(Ciudad ciudad) throws Exception {
         return cidDao.read(ciudad);
     }
-    
-    
+
     public ArrayList<Ciudad> findAllCyties() throws Exception {
         return cidDao.findAll();
     }
+
     public ArrayList<Especialidad> findAllSpetials() throws Exception {
         return esDao.findAll();
     }
@@ -74,6 +78,7 @@ public class Service {
     public void createCiudad(Ciudad ciudad) throws Exception {
         cidDao.create(ciudad);
     }
+
     public void createEspecialidad(Especialidad especialidad) throws Exception {
         esDao.create(especialidad);
     }

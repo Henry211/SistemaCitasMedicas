@@ -88,6 +88,14 @@ public class Controller extends HttpServlet {
     
     public String editProfile(HttpServletRequest request){
         
+        HttpSession session = request.getSession(true);
+        
+        // 1-- Traer datos de DB --
+        // 2--Guardar datos en Model--
+        // 3--Guardar Model en session--
+        Medico medico = new Medico();
+        session.setAttribute("medico", medico);        
+        
         return "/presentation/medico/perfil/editView.jsp";
     }
 

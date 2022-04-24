@@ -4,10 +4,12 @@
  */
 package citas.presentation.registromedico;
 
+import citas.logic.Medico;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,6 +48,14 @@ public class Controller extends HttpServlet {
  
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         
+        ArrayList<Medico> medicos = new ArrayList<>();
+        Medico m = new Medico("555","doctosh","555","fisioterapeuta","Springfield");
+        medicos.add(m);
+        medicos.add(m);
+        medicos.add(m);
+        System.out.println("Index----> " + medicos.size());
+        
+        session.setAttribute("listaMedicos", medicos);
         
         try {     
             

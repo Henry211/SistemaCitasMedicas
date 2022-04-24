@@ -1,6 +1,9 @@
 
 
+<%@page import="citas.logic.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Medico medico = (Medico) session.getAttribute("medico");
+   %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,26 +24,28 @@
                     <form action="action">
                         <div class="mb-2">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre">
+                            <input type="text" class="form-control" value= "<%= medico.getNombre()%>" id="nombre">
                         </div>
+                       
                         <div class="mb-2">
                             <label for="nombre">Localidad</label>
                             <select id="localidad" class="form-select" aria-label="Default select example">
                                 <option selected>Seleccione la Localidad</option>
+                                <!--HAcer metodo de ciudades admin en session-->
                                 <option value="1">San José</option>
                                 <option value="2">Alajuela</option>
                                 <option value="3">Heredia</option>
                                 <option value="3">Cartago</option>
                             </select>
                         </div>
-                        <div class="mb-2">
-                            <label for="correo">Correo</label>
-                            <input type="text" class="form-control" name="correo" id="correo">
-                        </div>
-                        <div class="mb-2">
-                            <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono">
-                        </div>
+                        <!--                        <div class="mb-2">
+                                                    <label for="correo">Correo</label>
+                                                    <input type="text" class="form-control" name="correo" id="correo">
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="telefono">Telefono</label>
+                                                    <input type="text" class="form-control" name="telefono" id="telefono">
+                                                </div>-->
                         <div class="mb-2">
                             <label for="especialidad">Especialidad</label>
                             <select id="especialidad" class="form-select" aria-label="Default select example">
@@ -55,7 +60,7 @@
                         <div class="mb-2">
                             <label for="dias">Días de atención:</label> </br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                 <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -98,9 +103,23 @@
                         </div>
                     </div>
                 </div>
-           
+
             </div>
+                        
         </section>
+
+
 
     </body>
 </html>
+
+                                <%!
+            private String checkLunes() {
+
+                //if (medico.getNombre()) {
+                //}
+                return "";
+            }
+        %>
+
+
