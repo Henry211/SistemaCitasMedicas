@@ -105,18 +105,14 @@ public class Controller extends HttpServlet {
                     Paciente real = new Paciente(usuario, password);
                     Paciente p = service.pacienteLogin(real);
                     session.setAttribute("paciente", p);
-                    System.out.println("Name-> " + p.getNombre());
+
                     viewUrl = "/presentation/registromedico/show";
                     break;
                 case "2":
                     Medico real2 = new Medico(usuario, password);
                     Medico m = service.medicoLogin(real2);
-                   
-                    //System.out.println("Clave-> " + m.getClave().toString());
-                    
                     session.setAttribute("medico", m);
-                     System.out.println("Name-> "+ m.getCedula());
-                     
+    
                     viewUrl = "/presentation/medico/perfil/view.jsp";
                     break;
                 case "3":
@@ -163,7 +159,7 @@ public class Controller extends HttpServlet {
                     service.createMedico(real2);
                     session.setAttribute("medico", real2);
                     System.out.println("Name-> "+ real2.getCedula());
-                    viewUrl = "/presentation/registromedico/show";
+                    viewUrl = "/presentation/medico/perfil/editar";
                     break;
                 case "3":
                     Administrador real1 = new Administrador(usuario,cedula, password);

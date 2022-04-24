@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show", "/presentation/medico/calendario/show"})
+@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show", "/presentation/medico/calendario/show", "/presentation/medico/perfil/editar"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -36,6 +36,9 @@ public class Controller extends HttpServlet {
                 break;
             case "/presentation/medico/calendario/show":
                 viewUrl = this.showCalendar(request);
+                break;
+            case "/presentation/medico/perfil/editar":
+                viewUrl = this.editProfile(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -81,6 +84,11 @@ public class Controller extends HttpServlet {
         } catch (Exception ex) {
             return "";
         }
+    }
+    
+    public String editProfile(HttpServletRequest request){
+        
+        return "/presentation/medico/perfil/editView.jsp";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
