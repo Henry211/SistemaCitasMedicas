@@ -4,11 +4,13 @@
  */
 package citas.data;
 
+import citas.logic.Ciudad;
 import citas.logic.Especialidad;
 import citas.logic.Medico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,12 +24,10 @@ public class EspecialidadDao {
     }
 
     public void create(Especialidad u) throws Exception{
-        String sql="insert into Especialidad (idEspecialidad,nombre,Medico_idMedico) "+
-                "values(?,?,?)";
+        String sql="insert into especialidad (nombre) "+
+                "values(?)";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, u.getId());
-        stm.setString(2, u.getNombre());
-        stm.setObject(3, u.getMedico());
+        stm.setString(1, u.getNombre());
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Especialidad ya existe");
@@ -69,6 +69,21 @@ public class EspecialidadDao {
             throw new Exception("Especialidad no existe");
         }
     }
+    
+      public ArrayList<Especialidad> findAll(){
+        ArrayList<Especialidad> resultado=new ArrayList<>();
+        try {
+            String sql="select * from especialidad c";
+            PreparedStatement stm = db.prepareStatement(sql);
+            ResultSet rs =  db.executeQuery(stm);
+            Especialidad c;
+            while (rs.next()) {
+                c = from(rs, "c"); 
+                resultado.add(c);
+            }
+        } catch (SQLException ex) { }
+        return resultado;        
+    }
         
         
     Especialidad from(ResultSet rs, String alias){
@@ -76,7 +91,6 @@ public class EspecialidadDao {
             Especialidad c= new Especialidad();
             c.setId(rs.getInt(alias+".idEspecialidad"));
             c.setNombre(rs.getString(alias+".nombre"));
-            c.setMedico((Medico) rs.getObject(alias+".nombre"));
             return c;
         } catch (SQLException ex) {
             return null;

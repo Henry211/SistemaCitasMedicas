@@ -64,11 +64,17 @@ public class Service {
     }
     
     
-    public ArrayList<Ciudad> findAll() throws Exception {
+    public ArrayList<Ciudad> findAllCyties() throws Exception {
         return cidDao.findAll();
+    }
+    public ArrayList<Especialidad> findAllSpetials() throws Exception {
+        return esDao.findAll();
     }
 
     public void createCiudad(Ciudad ciudad) throws Exception {
         cidDao.create(ciudad);
+    }
+    public void createEspecialidad(Especialidad especialidad) throws Exception {
+        esDao.create(especialidad);
     }
 }

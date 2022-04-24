@@ -25,19 +25,21 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "AdministradorEspecialidadController", urlPatterns = {"/presentation/administrador/especialidad/show","/presentation/administrador/ciudad/crear"})
+@WebServlet(name = "AdministradorEspecialidadController", urlPatterns = {"/presentation/administrador/especialidad/show", "/presentation/administrador/ciudad/crear", "/presentation/administrador/especialidad/crear", "/presentation/administrador/especialidad/buscar"})
 public class Controller extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         request.setAttribute("model", new Model());
         String viewUrl = "";
         switch (request.getServletPath()) {
             case "/presentation/administrador/especialidad/show":
                 viewUrl = this.show(request);
+                break;
+            case "/presentation/administrador/especialidad/buscar":
+                viewUrl = this.buscarEsp(request);
                 break;
             case "/presentation/administrador/ciudad/crear":
                 viewUrl = this.createCity(request);
@@ -45,51 +47,74 @@ public class Controller extends HttpServlet {
             case "/presentation/administrador/especialidad/crear":
                 viewUrl = this.createEspe(request);
                 break;
-            
+
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
-    
+
     public String show(HttpServletRequest request) throws Exception {
         return this.showAction(request);
     }
-    
+
     public String showAction(HttpServletRequest request) throws Exception {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
- 
+
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        
-        ArrayList<Ciudad> ciudades = service.findAll();
-        Ciudad city = ciudades.get(0);
-        
+
+        ArrayList<Ciudad> ciudades = service.findAllCyties();
         session.setAttribute("ciudades", ciudades);
-        session.setAttribute("city", city);
-        
-        System.out.println("City--->" + ciudades.size());
-        try {     
-            
-            return "/presentation/administrador/especialidades/view.jsp";
+        try {
+
+            return "/presentation/administrador/ciudad/view.jsp";
         } catch (Exception ex) {
             return "";
         }
     }
-    
+
+    private String buscarEsp(HttpServletRequest request) throws Exception {
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+        String viewUrl = "";
+        switch (request.getParameter("lookFor")) {
+
+            case "1":
+                ArrayList<Ciudad> ciudades = service.findAllCyties();
+                session.setAttribute("ciudades", ciudades);
+                viewUrl = "/presentation/administrador/ciudad/view.jsp";
+                break;
+
+            case "2":
+                ArrayList<Especialidad> especialidades = service.findAllSpetials();
+                System.out.println("---->" + especialidades.get(0).getNombre());
+                session.setAttribute("especialidades", especialidades);
+                viewUrl = "/presentation/administrador/especialidades/view.jsp";
+
+                break;
+        }
+        try {
+
+            return viewUrl;
+        } catch (Exception ex) {
+            return "";
+        }
+    }
+
     private String createCity(HttpServletRequest request) {
 
         Service service = Service.instance();
         String name = request.getParameter("nombre");
         String viewUrl = "";
-        try{
+        try {
 
             Ciudad ciudad = new Ciudad(name);
             service.createCiudad(ciudad);
-            
+
             viewUrl = "/presentation/administrador/especialidades/view.jsp";
-            
-        }catch(Exception e){
-            
+
+        } catch (Exception e) {
+
         }
 
         return viewUrl;
@@ -97,25 +122,22 @@ public class Controller extends HttpServlet {
 
     private String createEspe(HttpServletRequest request) {
 
-        
         Service service = Service.instance();
         String name = request.getParameter("nombre");
         String viewUrl = "";
-        try{
+        try {
 
-            Especialidad ciudad = new Especialidad(name);
-            //service. .createEspecialidad(ciudad);
-            
+            Especialidad especialidad = new Especialidad(name);
+            service.createEspecialidad(especialidad);
+
             viewUrl = "/presentation/administrador/especialidades/view.jsp";
-            
-        }catch(Exception e){
-            
+
+        } catch (Exception e) {
+
         }
 
         return viewUrl;
     }
-
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -164,5 +186,4 @@ public class Controller extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
 }

@@ -17,7 +17,7 @@
                     <h4>Agregar Especialidad</h4>
                 </div>
                 <div class="mb-2">
-                    <form action="action">
+                    <form action="/proyecto1P4/presentation/administrador/especialidad/crear" method="POST" name="crear">
                         <div class="mb-2">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre">

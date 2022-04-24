@@ -73,11 +73,11 @@ button{
 }
 
 .pad{
-   padding-left: 20px;
-   padding-right: 20px;
-   padding-bottom:  20px;
-   padding-top: 20px;
-   background-color: lightblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom:  20px;
+    padding-top: 20px;
+    background-color: lightblue;
 }
 
 .form-control{
@@ -109,11 +109,20 @@ button{
 }
 
 .add-btn{
-   background-color: lightgreen;
-   text-decoration: none;
-   width: 400px;
-   border-radius: 20%;
-   margin-left: 20px;
+    background-color: lightgreen;
+    text-decoration: none;
+    width: 400px;
+    border-radius: 20%;
+    margin-left: 20px;
+}
+
+.radioLabels{
+
+    color: lightsalmon;
+    font-weight: bold;
+    display: block;
+    width: 450px;
+    float: left;
 }
 
 
