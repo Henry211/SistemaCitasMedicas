@@ -10,6 +10,10 @@ import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +30,7 @@ public class Controller extends HttpServlet {
 
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         
         request.setAttribute("model", new Model());
@@ -36,7 +40,6 @@ public class Controller extends HttpServlet {
                 viewUrl = this.show(request);
                 break;
             case "/presentation/administrador/ciudad/crear":
-                System.out.println("Servlet creatCity");
                 viewUrl = this.createCity(request);
                 break;
             case "/presentation/administrador/especialidad/crear":
@@ -47,18 +50,24 @@ public class Controller extends HttpServlet {
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
     
-    public String show(HttpServletRequest request) {
+    public String show(HttpServletRequest request) throws Exception {
         return this.showAction(request);
     }
     
-    public String showAction(HttpServletRequest request) {
+    public String showAction(HttpServletRequest request) throws Exception {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
  
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         
+        ArrayList<Ciudad> ciudades = service.findAll();
+        Ciudad city = ciudades.get(0);
         
+        session.setAttribute("ciudades", ciudades);
+        session.setAttribute("city", city);
+        
+        System.out.println("City--->" + ciudades.size());
         try {     
             
             return "/presentation/administrador/especialidades/view.jsp";
@@ -120,7 +129,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -134,7 +147,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

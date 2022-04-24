@@ -76,8 +76,8 @@ public class CiudadDao {
     
     // Dao para lista
     
-      public List<Ciudad> findAll(){
-        List<Ciudad> resultado=new ArrayList<>();
+      public ArrayList<Ciudad> findAll(){
+        ArrayList<Ciudad> resultado=new ArrayList<>();
         try {
             String sql="select * from localidad c";
             PreparedStatement stm = db.prepareStatement(sql);

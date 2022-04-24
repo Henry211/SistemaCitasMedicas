@@ -6,6 +6,8 @@ import citas.data.CiudadDao;
 import citas.data.EspecialidadDao;
 import citas.data.MedicoDao;
 import citas.data.PacienteDao;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Service {
 
@@ -59,6 +61,11 @@ public class Service {
 
     public Ciudad ciudadread(Ciudad ciudad) throws Exception {
         return cidDao.read(ciudad);
+    }
+    
+    
+    public ArrayList<Ciudad> findAll() throws Exception {
+        return cidDao.findAll();
     }
 
     public void createCiudad(Ciudad ciudad) throws Exception {

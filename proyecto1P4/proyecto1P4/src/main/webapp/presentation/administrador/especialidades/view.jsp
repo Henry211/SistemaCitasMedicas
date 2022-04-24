@@ -1,5 +1,9 @@
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="citas.logic.Ciudad"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% ArrayList<Ciudad> ciudades = (ArrayList<Ciudad>) session.getAttribute("ciudades"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,10 +39,15 @@
             <a class="add-btn" href="/proyecto1P4/presentation/administrador/datos/viewEspecialidad.jsp">Agregar nueva Especialidad</a>    
         </div>
 
+        <% int i = ciudades.size(); %>
+        <% do{ %>
+        <% i--; %>
         <div class="card">
             <h5 class="card-header">Ciudad.</h5>
             <div class="card-body">
-                <h5 class="card-title"> Ciudad</h5>
+                <h5 class="card-title"> 
+                    <%= ciudades.get(i).getProvincia() %>
+                </h5>
                 <p class="card-text">
 
                 <div class="container">
@@ -55,46 +64,7 @@
 
             </div>
         </div>
-        <div class="card">
-            <h5 class="card-header">Solicitud de..</h5>
-            <div class="card-body">
-                <h5 class="card-title">Agregar Nueva Ciudad</h5>
-                <p class="card-text">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            ... </br> 
-                        </div>
-                        <div class="col">
-                            ... </br>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="card">
-            <h5 class="card-header">Solicitud de..</h5>
-            <div class="card-body">
-                <h5 class="card-title">Agregar Nueva Ciudad</h5>
-                <p class="card-text">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            ... </br> 
-                        </div>
-                        <div class="col">
-                            ... </br>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <% }while(i != 0); %>
 
 
 
