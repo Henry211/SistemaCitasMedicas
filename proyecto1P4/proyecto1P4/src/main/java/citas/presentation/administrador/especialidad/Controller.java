@@ -87,7 +87,7 @@ public class Controller extends HttpServlet {
 
             case "2":
                 ArrayList<Especialidad> especialidades = service.findAllSpetials();
-                System.out.println("---->" + especialidades.get(0).getNombre());
+                System.out.println("---->" + especialidades.size());
                 session.setAttribute("especialidades", especialidades);
                 viewUrl = "/presentation/administrador/especialidades/view.jsp";
 

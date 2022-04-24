@@ -45,8 +45,33 @@
         </div>
 
 
+        <% int i = especialidades.size(); %>
+        <% do { %>
+        <% i--;%>
+        <div class="card">
+            <h5 class="card-header">Especialidad.</h5>
+            <div class="card-body">
+                <h5 class="card-title"> 
+                    <%= especialidades.get(i).getNombre() %>
+                </h5>
+                <p class="card-text">
 
-        
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            ... </br> 
+                        </div>
+                        <div class="col">
+                            ... </br>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <% } while (i != 0);%>
+
 
 
 
