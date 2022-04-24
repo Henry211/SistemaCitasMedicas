@@ -4,6 +4,8 @@
  */
 package citas.presentation.paciente.cita;
 
+import citas.logic.Horario;
+import citas.logic.Medico;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -59,6 +61,27 @@ public class Controller extends HttpServlet {
     }
     
     public String selectDate(HttpServletRequest request){
+        
+        HttpSession session = request.getSession(true);
+        String id = request.getParameter("mid");
+        System.out.println("Medico--->" + id);
+        
+        Horario horario = new Horario();
+        horario.setDateTime("L", "8am");
+        horario.setDateTime("L", "10am");
+        horario.setDateTime("L", "1pm");
+        horario.setDateTime("L", "3pm");
+        horario.setDateTime("M", "8am");
+        horario.setDateTime("M", "10am");
+        horario.setDateTime("I", "10am");
+        horario.setDateTime("I", "1pm");
+        horario.setDateTime("J", "8am");
+        horario.setDateTime("J", "10am");
+        horario.setDateTime("J", "1pm");
+        horario.setDateTime("J", "3pm");
+        horario.setDateTime("V", "1pm");
+        
+        session.setAttribute("horario", horario);
         
         return "/presentation/calendario/view.jsp";
     }

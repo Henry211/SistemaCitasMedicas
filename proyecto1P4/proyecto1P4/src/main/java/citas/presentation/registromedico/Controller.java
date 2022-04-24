@@ -53,7 +53,7 @@ public class Controller extends HttpServlet {
         medicos.add(m);
         medicos.add(m);
         medicos.add(m);
-        System.out.println("Index----> " + medicos.size());
+        
         
         session.setAttribute("listaMedicos", medicos);
         

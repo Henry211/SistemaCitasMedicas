@@ -1,6 +1,8 @@
 
 
+<%@page import="citas.logic.Horario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Horario horario = (Horario) session.getAttribute("horario"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,45 +30,72 @@
             <section class="calendario">
                 <div class="calendario_dia">
                     
+                    <% int i = horario.getLunes().size(); %>
+                    <% while(i != 0){ %>
+                    <% i--; %>
                     <div class="cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&dt=2022-04-23T09:00">9pm</a>
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&dt=2022-04-23T09:00">
+                            <%= horario.getLunes().get(i).toString() %>
+                        </a>
                     </div>
-                    <div class="cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&dt=2022-04-23T14:00">2pm</a>
-                    </div>
+                    <% } %>
                     
                 </div>
                 <div class="calendario_dia">
-                    
+                    <% int i2 = horario.getMartes().size(); %>
+                    <% while(i2 != 0){ %>
+                    <% i2--; %>
                     <div class=" cita">
-                        <a class="item" href="url">9am</a>
+                        <a class="item" href="url">
+                            <%= horario.getMartes().get(i2).toString() %>
+                        </a>
                     </div>
-                    <div class=" cita">
-                        <a class="item" href="url">3pm</a>
-                    </div>
-                    <div class=" cita">
-                        <a class="item" href="url">9am</a>
-                    </div>
-                    <div class=" cita">
-                        <a class="item" href="url">3pm</a>
-                    </div>
+                    <% } %>
                 </div>
                 <div class="calendario_dia">
-                    <div class="cita">
-                        <a class="item" href="url">9pm</a>
+                    <% int i3 = horario.getMiercoles().size(); %>
+                    <% while(i3 != 0){ %>
+                    <% i3--; %>
+                    <div class=" cita">
+                        <a class="item" href="url">
+                            <%= horario.getMiercoles().get(i3).toString() %>
+                        </a>
                     </div>
-                    <div class="cita">
-                        <a class="item" href="url">2pm</a>
-                    </div>
-                </div>
-                <div class="calendario_dia">
+                    <% } %>
                     
                 </div>
                 <div class="calendario_dia">
-                    
+                    <% int i4 = horario.getJueves().size(); %>
+                    <% while(i4 != 0){ %>
+                    <% i4--; %>
+                    <div class=" cita">
+                        <a class="item" href="url">
+                            <%= horario.getJueves().get(i4).toString() %>
+                        </a>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="calendario_dia">
-                    
+                    <% int i5 = horario.getViernes().size(); %>
+                    <% while(i5 != 0){ %>
+                    <% i5--; %>
+                    <div class=" cita">
+                        <a class="item" href="url">
+                            <%= horario.getViernes().get(i5).toString() %>
+                        </a>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="calendario_dia">
+                    <% int i6 = horario.getSabado().size(); %>
+                    <% while(i6 != 0){ %>
+                    <% i6--; %>
+                    <div class=" cita">
+                        <a class="item" href="url">
+                            <%= horario.getSabado().get(i6).toString() %>
+                        </a>
+                    </div>
+                    <% } %>
                 </div>
                 
             </section>
