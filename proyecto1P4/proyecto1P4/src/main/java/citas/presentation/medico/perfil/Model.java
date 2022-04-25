@@ -12,7 +12,12 @@ import citas.logic.Paciente;
  * @author ESCINF
  */
 public class Model {
+    
     Medico medico;
+    String actualDay;
+    String actualDate;
+    String Horario;
+    
     
     Model(){
         medico = new Medico();

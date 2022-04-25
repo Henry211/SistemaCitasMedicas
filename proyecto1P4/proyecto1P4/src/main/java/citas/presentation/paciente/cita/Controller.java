@@ -8,7 +8,12 @@ import citas.logic.Horario;
 import citas.logic.Medico;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -82,6 +87,74 @@ public class Controller extends HttpServlet {
         horario.setDateTime("V", "1pm");
         
         session.setAttribute("horario", horario);
+        
+        
+        
+        String lunes="",martes="",miercoles="",jueves="",viernes="",sabado = "";
+ 
+        LocalDate today = LocalDate.now();
+        session.setAttribute("actualDate", today);
+        
+        Format f = new SimpleDateFormat("EEEE");
+        String day = f.format(new Date());
+        
+        switch(day){
+            case "lunes":
+                lunes = "Lunes " + today.getDayOfMonth();
+                martes = "Martes "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
+                miercoles = "Miercoles "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
+                jueves = "Jueves "+ today.plus(3, ChronoUnit.DAYS).getDayOfMonth();
+                viernes = "Viernes "+ today.plus(4, ChronoUnit.DAYS).getDayOfMonth();
+                sabado = "Sabado "+ today.plus(5, ChronoUnit.DAYS).getDayOfMonth();
+                break;
+            case "martes":
+                lunes = "Lunes";
+                martes = "Martes "+ today.getDayOfMonth();
+                miercoles = "Miercoles "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
+                jueves = "Jueves "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
+                viernes = "Viernes "+ today.plus(3, ChronoUnit.DAYS).getDayOfMonth();
+                sabado = "Sabado "+ today.plus(4, ChronoUnit.DAYS).getDayOfMonth();
+                break;
+            case "miercoles":
+                lunes = "Lunes";
+                martes = "Martes";
+                miercoles = "Miercoles "+ today.getDayOfMonth();
+                jueves = "Jueves "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
+                viernes = "Viernes "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
+                sabado = "Sabado "+ today.plus(3, ChronoUnit.DAYS).getDayOfMonth();
+                break;
+            case "jueves":
+                lunes = "Lunes";
+                martes = "Martes";
+                miercoles = "Miercoles";
+                jueves = "Jueves "+ today.getDayOfMonth();
+                viernes = "Viernes "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
+                sabado = "Sabado "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
+                break;
+            case "viernes":
+                lunes = "Lunes";
+                martes = "Martes";
+                miercoles = "Miercoles";
+                jueves = "Jueves";
+                viernes = "Viernes "+ today.getDayOfMonth();
+                sabado = "Sabado "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
+                break;
+            case "sabado":
+                lunes = "Lunes";
+                martes = "Martes";
+                miercoles = "Miercoles";
+                jueves = "Jueves";
+                viernes = "Viernes";
+                sabado = "Sabado "+ today.getDayOfMonth();
+                break;
+        }
+        
+        session.setAttribute("lunes", lunes);
+        session.setAttribute("martes", martes);
+        session.setAttribute("miercoles", miercoles);
+        session.setAttribute("jueves", jueves);
+        session.setAttribute("viernes", viernes);
+        session.setAttribute("sabado", sabado);
         
         return "/presentation/calendario/view.jsp";
     }

@@ -82,8 +82,6 @@ public class Controller extends HttpServlet {
         ArrayList<Especialidad> especialidades = service.findAllSpetials();
         ArrayList<Ciudad> ciudades = service.findAllCyties();
 
-        System.out.println("--->" + medicos.get(0).getNombre());
-        
         session.setAttribute("especialidadesCombo", especialidades);
         session.setAttribute("ciudadesCombo", ciudades);
         session.setAttribute("listaMedicos", medicos);

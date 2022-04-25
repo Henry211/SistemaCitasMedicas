@@ -109,8 +109,6 @@ public class MedicoDao {
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, ci);
         stm.setString(2, es);
-        System.out.println("SQL->" + sql);
-        System.out.println("STM->" + stm);
         ResultSet rs = db.executeQuery(stm);
         Medico c;
         int i=0;
