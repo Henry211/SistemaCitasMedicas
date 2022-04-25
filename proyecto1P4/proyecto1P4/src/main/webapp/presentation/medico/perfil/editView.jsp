@@ -60,7 +60,7 @@
                                 <% }%>
                             </select>
                         </div>
-                        <div class="mb-2">
+<!--                        <div class="mb-2">
                             <label for="estado">Estado</label>
                             <select name="estadoCmb" id="estado" class="form-select" aria-label="Default select example">
                                 <option  selected>Seleccione la Estado</option>
@@ -69,7 +69,7 @@
                                 <option value="inactivo">Inactivo</option>
 
                             </select>
-                        </div>
+                        </div>-->
                         <div class="mb-2">
                             <label for="dias">Días de atención:</label> </br>
                             <div class="form-check form-check-inline">

@@ -69,6 +69,13 @@
                         </a>
                     </li>
                     <% //} %>
+                    <% //if( userLogued != null ){ %>
+                    <li class="navbar-item active">
+                        <a href="/proyecto1P4/presentation/administrador/listamedicos/show" class="nav-link">
+                            Solicitudes medicos (admin)
+                        </a>
+                    </li>
+                    <% //} %>
                 </ul>
 
             </div>

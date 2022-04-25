@@ -104,18 +104,19 @@ public class MedicoDao {
 
     public ArrayList<Medico> busca(String ci, String es) throws Exception {
         ArrayList<Medico> resultado = new ArrayList<>();
-        String sql = "select * from medico "
+        String sql = "select * from medico c "
                 + "where nombre_provincia=? and nombre_especialidad=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1, "Heredia");
-        stm.setString(2, "Fisioterapia");
+        stm.setString(1, ci);
+        stm.setString(2, es);
+        System.out.println("SQL->" + sql);
+        System.out.println("STM->" + stm);
         ResultSet rs = db.executeQuery(stm);
         Medico c;
         int i=0;
         while (rs.next()) {
             c = from(rs, "c");
             resultado.add(c);
-            System.out.println("-->" + resultado.size());
         }
         return resultado;
     }

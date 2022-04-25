@@ -4,28 +4,60 @@
  */
 package citas.presentation.administrador.listamedicos;
 
+import citas.logic.Ciudad;
+import citas.logic.Medico;
+import citas.logic.Service;
+import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ESCINF
  */
-@WebServlet(name = "AdministradorListaMedicosController", urlPatterns = {"/presentation/administrador/listamedicos/Controller"})
+@WebServlet(name = "AdministradorListaMedicosController", urlPatterns = {"/presentation/administrador/listamedicos/show"})
 public class Controller extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            throws ServletException, IOException, Exception {
         
+        String viewUrl = "";
+        switch (request.getServletPath()) {
+            case "/presentation/administrador/listamedicos/show":
+                viewUrl = this.show(request);
+                break;
+        }
+        request.getRequestDispatcher(viewUrl).forward(request, response);
+        
+    }
+    
+     public String show(HttpServletRequest request) throws Exception {
+        return this.showAction(request);
+    }
+
+    public String showAction(HttpServletRequest request) throws Exception {
+        
+       
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+
+        ArrayList<Medico> medicos = service.findAllMedicos();
+        session.setAttribute("listaMedicos", medicos);
+        try {
+
+            return "/presentation/administrador/listamedicos/view.jsp";
+        } catch (Exception ex) {
+            return "";
         }
     }
 
@@ -41,7 +73,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -55,7 +91,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
