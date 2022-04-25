@@ -125,4 +125,12 @@ button{
     float: left;
 }
 
+.parent-day{
+    text-align: center;
+}
 
+.child-day{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 10px;
+}

@@ -60,42 +60,229 @@
                                 <% }%>
                             </select>
                         </div>
-<!--                        <div class="mb-2">
-                            <label for="estado">Estado</label>
-                            <select name="estadoCmb" id="estado" class="form-select" aria-label="Default select example">
-                                <option  selected>Seleccione la Estado</option>
+                            
+                            <div class="mb-2">
+                                <label>Duración de cita</label>
+                                <select class="form-select">
+                                    <option>30 minutos</option>
+                                    <option>1 hora</option>
+                                    <option>1 hora  y 30 minutos</option>
+                                    <option>2 horas</option>
+                                </select>
+                            </div>
 
-                                <option value="activo">Activo</option>
-                                <option value="inactivo">Inactivo</option>
-
-                            </select>
-                        </div>-->
                         <div class="mb-2">
                             <label for="dias">Días de atención:</label> </br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
-                                <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
+                                <div class="parent-day">
+                                    <div class="child-day">
+                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 25px;">Lunes</label>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de inicio</option>
+                                            <option>8am</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>1pm</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                        </select>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de finalización</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>11am</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                            <option>5pm</option>
+                                            <option>6pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            </br>
+                            
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Martes</label>
+                                <div class="parent-day">
+                                    <div class="child-day">
+                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 20px;">Martes</label>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de inicio</option>
+                                            <option>8am</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>1pm</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                        </select>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de finalización</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>11am</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                            <option>5pm</option>
+                                            <option>6pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            </br>
+                            
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Miercoles</label>
+                                <div class="parent-day">
+                                    <div class="child-day">
+                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <label class="form-check-label day" for="inlineCheckbox1">Miercoles</label>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de inicio</option>
+                                            <option>8am</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>1pm</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                        </select>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de finalización</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>11am</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                            <option>5pm</option>
+                                            <option>6pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            </br>
+                            
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Jueves</label>
+                                <div class="parent-day">
+                                    <div class="child-day">
+                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 23px;">Jueves</label>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de inicio</option>
+                                            <option>8am</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>1pm</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                        </select>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de finalización</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>11am</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                            <option>5pm</option>
+                                            <option>6pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            </br>
+                            
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Viernes</label>
+                                <div class="parent-day">
+                                    <div class="child-day">
+                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 20px;">Viernes</label>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de inicio</option>
+                                            <option>8am</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>1pm</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                        </select>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de finalización</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>11am</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                            <option>5pm</option>
+                                            <option>6pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            </br>
+                            
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Sabado</label>
+                                <div class="parent-day">
+                                    <div class="child-day">
+                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 18px;">Sabado</label>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de inicio</option>
+                                            <option>8am</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>1pm</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                        </select>
+                                    </div>
+                                    <div class="child-day">
+                                        <select class="form-select day" aria-label="Default select example">
+                                            <option>Hora de finalización</option>
+                                            <option>9am</option>
+                                            <option>10am</option>
+                                            <option>11am</option>
+                                            <option>2pm</option>
+                                            <option>3pm</option>
+                                            <option>4pm</option>
+                                            <option>5pm</option>
+                                            <option>6pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            </br>
+
                         </div>
                         <div class="mb-2">
                             <label for="formFile" class="form-label">Foto de perfil</label>
