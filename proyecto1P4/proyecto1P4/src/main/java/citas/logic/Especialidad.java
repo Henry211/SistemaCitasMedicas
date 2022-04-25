@@ -1,12 +1,13 @@
 package citas.logic;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author ESCINF
  */
-public class Especialidad {
+public class Especialidad implements Serializable{
 
     String especialidad;
 

@@ -4,12 +4,16 @@
  */
 package citas.presentation.registromedico;
 
+import citas.logic.Ciudad;
+import citas.logic.Especialidad;
 import citas.logic.Medico;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +29,7 @@ import javax.servlet.http.HttpSession;
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
 
         request.setAttribute("model", new Model());
         String viewUrl = "";
@@ -37,24 +41,22 @@ public class Controller extends HttpServlet {
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
     
-    public String show(HttpServletRequest request) {
+    public String show(HttpServletRequest request) throws Exception {
         return this.showAction(request);
     }
     
-    public String showAction(HttpServletRequest request) {
+    public String showAction(HttpServletRequest request) throws Exception {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
- 
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+         
+        ArrayList<Medico> medicos = service.findAllMedicos();
+        ArrayList<Especialidad> especialidades = service.findAllSpetials();
+        ArrayList<Ciudad> ciudades = service.findAllCyties();
+
         
-        ArrayList<Medico> medicos = new ArrayList<>();
-        Medico m = new Medico("555","doctosh","555","true","Springfield","fisioterapeuta");
-        medicos.add(m);
-        medicos.add(m);
-        medicos.add(m);
-        
-        
+        session.setAttribute("especialidadesCombo", especialidades);
+        session.setAttribute("ciudadesCombo", ciudades);
         session.setAttribute("listaMedicos", medicos);
         
         try {     
@@ -77,7 +79,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -91,7 +97,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

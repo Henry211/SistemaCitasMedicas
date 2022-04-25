@@ -6,6 +6,7 @@ import citas.logic.Medico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -84,6 +85,22 @@ public class MedicoDao {
         }
         return "Clave actualizada exitosamente";
     }
+    
+     public ArrayList<Medico> findAll() {
+        ArrayList<Medico> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from medico c";
+            PreparedStatement stm = db.prepareStatement(sql);
+            ResultSet rs = db.executeQuery(stm);
+            Medico c;
+            while (rs.next()) {
+                c = from(rs, "c");
+                resultado.add(c);
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
 
     /*
 public String cambiarCostoConculta(String cedula, String cambioCostoConsulta) throws Exception{
@@ -105,8 +122,12 @@ return "Costo de la consulta actualizada exitosamente";
             c.setNombre(rs.getString(alias + ".nombre"));
             c.setClave(rs.getString(alias + ".clave"));
             c.setEstado(rs.getString(alias + ".estado"));
-            c.setCiudad((Ciudad) rs.getObject(alias + ".nombre_provincia"));
-            c.setEspecialidad((Especialidad) rs.getObject(alias + ".nombre_especialidad"));
+            String str = rs.getString(alias + ".nombre_provincia");
+            Ciudad ciuu = new Ciudad(str);
+            c.setCiudad(ciuu);
+            String str2 = rs.getString(alias + ".nombre_especialidad");
+            Especialidad espe = new Especialidad(str2);
+            c.setEspecialidad(espe);
             
 // c.setFoto(rs.getString(alias+".foto"));
 // c.setFoto((String) rs.getObject(alias+".foto"));

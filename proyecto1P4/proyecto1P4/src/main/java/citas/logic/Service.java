@@ -74,6 +74,10 @@ public class Service {
     public ArrayList<Especialidad> findAllSpetials() throws Exception {
         return esDao.findAll();
     }
+    
+    public ArrayList<Medico> findAllMedicos() throws Exception {
+        return mDao.findAll();
+    }
 
     public void createCiudad(Ciudad ciudad) throws Exception {
         cidDao.create(ciudad);

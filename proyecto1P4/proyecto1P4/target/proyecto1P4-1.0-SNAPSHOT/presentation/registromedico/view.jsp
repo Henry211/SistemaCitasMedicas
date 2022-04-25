@@ -1,8 +1,13 @@
 
+<%@page import="citas.logic.Ciudad"%>
+<%@page import="citas.logic.Especialidad"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="citas.logic.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% ArrayList<Medico> medicos = (ArrayList<Medico>) session.getAttribute("listaMedicos"); %>
+<% ArrayList<Especialidad> especialidades = (ArrayList<Especialidad>) session.getAttribute("especialidadesCombo"); %>
+<% ArrayList<Ciudad> ciudades = (ArrayList<Ciudad>) session.getAttribute("ciudadesCombo");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -23,20 +28,25 @@
                     <div class="col">
                         <select id="localidad" class="form-select sombra" aria-label="Default select example">
                             <option selected>Seleccione la Localidad</option>
-                            <option value="1">San José</option>
-                            <option value="2">Alajuela</option>
-                            <option value="3">Heredia</option>
-                            <option value="3">Cartago</option>
+                            <% int c = ciudades.size(); %>
+                            <% while (c != 0) { %>
+                            <% c--;%>
+                            <option value="<%= ciudades.get(c).getProvincia()%>">
+                                <%= ciudades.get(c).getProvincia()%>
+                            </option>
+                            <% } %>
                         </select>
                     </div>
                     <div class="col">
                         <select id="especialidad" class="form-select sombra" aria-label="Default select example">
                             <option selected>Seleccione la Especialidad</option>
-                            <option value="1">Cardiología</option>
-                            <option value="2">Dermatología</option>
-                            <option value="3">Pediatría</option>
-                            <option value="3">Medicina General</option>
-                            <option value="3">Gastroenterología</option>
+                            <% int e = especialidades.size(); %>
+                            <% while (e != 0) { %>
+                            <% e--;%>
+                            <option value="<%= especialidades.get(e).getEspecialidad()%>">
+                                <%= especialidades.get(e).getEspecialidad()%>
+                            </option>
+                            <% }%>
                         </select>
                     </div>
                     <div class="col">
@@ -50,26 +60,26 @@
         <div class="profile-area">
             <div class="container">
                 <div class="row">
-                    
+
                     <% int i = medicos.size(); %>
-                    <% do{ %>
-                    <% i--; %>
-                    
+                    <% do { %>
+                    <% i--;%>
+
                     <div class="col-md-4">
-                        <form class="col-12" method="POST" name="Ver" action="/proyecto1P4/presentation/paciente/cita/selectDate?mid=<%= medicos.get(0).getCedula() %>" >
+                        <form class="col-12" method="POST" name="Ver" action="/proyecto1P4/presentation/paciente/cita/selectDate?mid=<%= medicos.get(0).getCedula()%>" >
                             <!--Cómo pasar el medico seleccionado en el request?-->
                             <div class="card">
                                 <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
                                 <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
                                 <div class="main-text">
                                     <h2>
-                                        <%= medicos.get(i).getNombre() %>
+                                        <%= medicos.get(i).getNombre()%>
                                     </h2>
                                     <p><b>Especialidad:</b> 
-                                        <%= medicos.get(i).getEspecialidad() %>
+                                        <%= medicos.get(i).getEspecialidad().getEspecialidad()%>
                                         </br>
                                         <b>Localidad:</b> 
-                                        <%= medicos.get(i).getCiudad().getProvincia() %>
+                                        <%= medicos.get(i).getCiudad().getProvincia()%>
                                         </br>
                                         <b>Atiende:</b> L-M-J</p>
                                 </div>
@@ -77,36 +87,36 @@
                             </div>
                         </form>
                     </div>
-                    
-                    <% }while(i != 0); %>
-<!--                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/proyecto1P4/img/img2.jpg"/></div>
-                            <div class="main-text">
-                                <h2>Doctor Two</h2>
-                                <p><b>Especialidad:</b> Cardiología </br>
-                                    <b>Localidad:</b> San José</br>
-                                    <b>Atiende:</b> L-M-J</p>
-                            </div>
-                            <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
 
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                            <div class="img2"><img src="/proyecto1P4/img/img3.jpg"/></div>
-                            <div class="main-text">
-                                <h2>Doctor Three</h2>
-                                <p><b>Especialidad:</b> Cardiología </br>
-                                    <b>Localidad:</b> San José</br>
-                                    <b>Atiende:</b> L-M-J</p>
-                            </div>
-                            <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                        </div>
-                    </div>-->
+                    <% } while (i != 0);%>
+                    <!--                    <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                                                <div class="img2"><img src="/proyecto1P4/img/img2.jpg"/></div>
+                                                <div class="main-text">
+                                                    <h2>Doctor Two</h2>
+                                                    <p><b>Especialidad:</b> Cardiología </br>
+                                                        <b>Localidad:</b> San José</br>
+                                                        <b>Atiende:</b> L-M-J</p>
+                                                </div>
+                                                <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
                     
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                                                <div class="img2"><img src="/proyecto1P4/img/img3.jpg"/></div>
+                                                <div class="main-text">
+                                                    <h2>Doctor Three</h2>
+                                                    <p><b>Especialidad:</b> Cardiología </br>
+                                                        <b>Localidad:</b> San José</br>
+                                                        <b>Atiende:</b> L-M-J</p>
+                                                </div>
+                                                <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
+                                            </div>
+                                        </div>-->
+
                 </div>
             </div>
         </div>

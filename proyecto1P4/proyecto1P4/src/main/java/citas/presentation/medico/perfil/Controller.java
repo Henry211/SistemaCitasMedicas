@@ -134,11 +134,7 @@ public class Controller extends HttpServlet {
         medico.setEspecialidad(e);
         medico.setEstado(estado);
         medico.setCedula(medicSession.getCedula());
-        
-        System.out.println("-->" + medico.getCedula());
-        System.out.println("-->" + medico.getCiudad().getProvincia());
-        System.out.println("-->" + medico.getEspecialidad().getEspecialidad());
-        System.out.println("-->" + medico.getEstado());
+
         
         service.editarMedico(medico);
         
