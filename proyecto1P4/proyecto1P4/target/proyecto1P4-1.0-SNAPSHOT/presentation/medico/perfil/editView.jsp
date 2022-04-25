@@ -1,9 +1,15 @@
 
 
+<%@page import="citas.logic.Ciudad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="citas.logic.Especialidad"%>
 <%@page import="citas.logic.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% Medico medico = (Medico) session.getAttribute("medico");
-   %>
+<% Medico medico = (Medico) session.getAttribute("medico"); %>
+<% ArrayList<Especialidad> especialidades = (ArrayList<Especialidad>) session.getAttribute("especialidadesCombo"); %>
+<% ArrayList<Ciudad> ciudades = (ArrayList<Ciudad>) session.getAttribute("ciudadesCombo");
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,46 +21,53 @@
     </head>
     <body>
         </br>
-        <section class="d-flex justify-content-center">
-            <div class="card col-md-5 pad">
-                <div class="mb-3">
-                    <h4>Editar Perfil</h4>
-                </div>
-                <div class="mb-2">
-                    <form action="action">
-                        <div class="mb-2">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" value= "<%= medico.getNombre()%>" id="nombre">
-                        </div>
-                       
+        <form method="POST" name="Update" action="/proyecto1P4/presentation/medico/perfil/update">
+
+            <section class="d-flex justify-content-center">
+                <div class="card col-md-5 pad">
+                    <div class="mb-3">
+                        <h4>Editar Perfil</h4>
+                    </div>
+                    <div class="mb-2">
+
+
                         <div class="mb-2">
                             <label for="nombre">Localidad</label>
-                            <select id="localidad" class="form-select" aria-label="Default select example">
+                            <select name="localidadCmb" id="localidad" class="form-select" aria-label="Default select example">
                                 <option selected>Seleccione la Localidad</option>
-                                <!--HAcer metodo de ciudades admin en session-->
-                                <option value="1">San José</option>
-                                <option value="2">Alajuela</option>
-                                <option value="3">Heredia</option>
-                                <option value="3">Cartago</option>
+
+                                <% int c = ciudades.size(); %>
+                                <% while (c != 0) { %>
+                                <% c--;%>
+                                <option value="<%= ciudades.get(c).getProvincia()%>">
+                                    <%= ciudades.get(c).getProvincia()%>
+                                </option>
+                                <% } %>
+
                             </select>
                         </div>
-                        <!--                        <div class="mb-2">
-                                                    <label for="correo">Correo</label>
-                                                    <input type="text" class="form-control" name="correo" id="correo">
-                                                </div>
-                                                <div class="mb-2">
-                                                    <label for="telefono">Telefono</label>
-                                                    <input type="text" class="form-control" name="telefono" id="telefono">
-                                                </div>-->
+
                         <div class="mb-2">
                             <label for="especialidad">Especialidad</label>
-                            <select id="especialidad" class="form-select" aria-label="Default select example">
+                            <select name="especialidadCmb" id="especialidad" class="form-select" aria-label="Default select example">
                                 <option selected>Seleccione la Especialidad</option>
-                                <option value="1">Cardiología</option>
-                                <option value="2">Dermatología</option>
-                                <option value="3">Pediatría</option>
-                                <option value="3">Medicina General</option>
-                                <option value="3">Gastroenterología</option>
+                                <% int e = especialidades.size(); %>
+                                <% while (e != 0) { %>
+                                <% e--;%>
+                                <option value="<%= especialidades.get(e).getEspecialidad()%>">
+                                    <%= especialidades.get(e).getEspecialidad()%>
+                                </option>
+                                <% }%>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="estado">Estado</label>
+                            <select name="estadoCmb" id="estado" class="form-select" aria-label="Default select example">
+                                <option  selected>Seleccione la Estado</option>
+
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+
                             </select>
                         </div>
                         <div class="mb-2">
@@ -88,38 +101,40 @@
                             <label for="formFile" class="form-label">Foto de perfil</label>
                             <input class="form-control" type="file" id="formFile">
                         </div>
-                    </form>
-                </div>
+
+                    </div>
 
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <button  type="submit" name="guardar" class="btn-editForm btn-primary"> <i class="fas fa-sign-in-alt"></i> Guardar</button>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button  type="submit" name="guardar" class="btn-editForm btn-primary"> <i class="fas fa-sign-in-alt"></i> Guardar</button>
 
-                        </div>
-                        <div class="col">
-                            <button  type="submit" name="cancelar" class="btn-editForm btn-primary"> <i class="fas fa-sign-in-alt"></i> Cancelar</button>
+                            </div>
+                            <div class="col">
+                                <button  type="submit" name="cancelar" class="btn-editForm btn-primary"> <i class="fas fa-sign-in-alt"></i> Cancelar</button>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
 
-            </div>
-                        
-        </section>
 
+            </section>
 
+        </form>
 
     </body>
 </html>
 
-                                <%!
-            private String checkLunes() {
+<%!
+    private String checkLunes() {
 
-                //if (medico.getNombre()) {
-                //}
-                return "";
-            }
-        %>
+        //if (medico.getNombre()) {
+        //}
+        return "";
+    }
+%>
 
 

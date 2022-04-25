@@ -66,7 +66,7 @@
                                         <%= medicos.get(i).getNombre() %>
                                     </h2>
                                     <p><b>Especialidad:</b> 
-                                        <%= medicos.get(i).getEspecialidad().getNombre() %>
+                                        <%= medicos.get(i).getEspecialidad() %>
                                         </br>
                                         <b>Localidad:</b> 
                                         <%= medicos.get(i).getCiudad().getProvincia() %>

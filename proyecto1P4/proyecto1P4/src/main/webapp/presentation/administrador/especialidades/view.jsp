@@ -52,7 +52,7 @@
             <h5 class="card-header">Especialidad.</h5>
             <div class="card-body">
                 <h5 class="card-title"> 
-                    <%= especialidades.get(i).getNombre() %>
+                    <%= especialidades.get(i).getEspecialidad() %>
                 </h5>
                 <p class="card-text">
 

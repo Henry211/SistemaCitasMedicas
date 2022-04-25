@@ -49,7 +49,7 @@ public class Controller extends HttpServlet {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         
         ArrayList<Medico> medicos = new ArrayList<>();
-        Medico m = new Medico("555","doctosh","555","fisioterapeuta","Springfield");
+        Medico m = new Medico("555","doctosh","555","true","Springfield","fisioterapeuta");
         medicos.add(m);
         medicos.add(m);
         medicos.add(m);

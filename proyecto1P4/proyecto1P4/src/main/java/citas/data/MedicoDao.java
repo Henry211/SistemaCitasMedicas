@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package citas.data;
 
+import citas.logic.Ciudad;
+import citas.logic.Especialidad;
 import citas.logic.Medico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,15 +20,15 @@ public class MedicoDao {
     }
 
     public void create(Medico u) throws Exception {
-        String sql = "insert into medico (nombre,idMedicos,clave,estado,localidad_idLocalidad,id_especialidad) "
+        String sql = "insert into medico (nombre,idMedicos,clave,estado,nombre_provincia,nombre_especialidad) "
                 + "values(?,?,?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());
         stm.setString(2, u.getNombre());
         stm.setString(3, u.getClave());
         stm.setString(4, u.getEstado());
-        stm.setObject(5, u.getEspecialidad());
-        stm.setObject(6, u.getCiudad());
+        stm.setObject(5, u.getCiudad());
+        stm.setObject(6, u.getEspecialidad());
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Medico ya existe");
@@ -51,21 +49,19 @@ public class MedicoDao {
         }
     }
 
-    
-
     public void update(Medico u) throws Exception {
-        String sql = "update medico set estado=?,localidad_idLocalidad=?,id_especialidad=?"
+        String sql = "update medico set estado=?,nombre_provincia=?,nombre_especialidad=?"
                 + "where idMedicos=?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getEstado());
-        stm.setObject(2, u.getCiudad());
-        stm.setObject(3, u.getEspecialidad());
+        stm.setObject(2, u.getCiudad().getProvincia());
+        stm.setObject(3, u.getEspecialidad().getEspecialidad());
+        stm.setString(4, u.getCedula());
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Medico no existe");
         }
     }
-    
 
     public void delete(Medico c) throws Exception {
         String sql = "delete from medico where idMedicos=?";
@@ -90,17 +86,17 @@ public class MedicoDao {
     }
 
     /*
-    public String cambiarCostoConculta(String cedula, String cambioCostoConsulta) throws Exception{
-        String sql="UPDATE  SET clave=? WHERE cedula=?";
-        PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1, cambioCostoConsulta);
-        stm.setString(2, cedula);
-        int count=db.executeUpdate(stm);
-        if (count==0){
-            throw new Exception("Medico no existe");
-        }
-        return "Costo de la consulta actualizada exitosamente";
-    }
+public String cambiarCostoConculta(String cedula, String cambioCostoConsulta) throws Exception{
+String sql="UPDATE SET clave=? WHERE cedula=?";
+PreparedStatement stm = db.prepareStatement(sql);
+stm.setString(1, cambioCostoConsulta);
+stm.setString(2, cedula);
+int count=db.executeUpdate(stm);
+if (count==0){
+throw new Exception("Medico no existe");
+}
+return "Costo de la consulta actualizada exitosamente";
+}
      */
     Medico from(ResultSet rs, String alias) {
         try {
@@ -108,9 +104,12 @@ public class MedicoDao {
             c.setCedula(rs.getString(alias + ".idMedicos"));
             c.setNombre(rs.getString(alias + ".nombre"));
             c.setClave(rs.getString(alias + ".clave"));
-//            c.setEstado(rs.getString(alias+".estado"));
-//            c.setFoto(rs.getString(alias+".foto"));
-//            c.setFoto((String) rs.getObject(alias+".foto"));
+            c.setEstado(rs.getString(alias + ".estado"));
+            c.setCiudad((Ciudad) rs.getObject(alias + ".nombre_provincia"));
+            c.setEspecialidad((Especialidad) rs.getObject(alias + ".nombre_especialidad"));
+            
+// c.setFoto(rs.getString(alias+".foto"));
+// c.setFoto((String) rs.getObject(alias+".foto"));
             return c;
         } catch (SQLException ex) {
             return null;

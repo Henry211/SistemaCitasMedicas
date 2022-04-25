@@ -4,12 +4,17 @@
  */
 package citas.presentation.medico.perfil;
 
+import citas.logic.Ciudad;
+import citas.logic.Especialidad;
 import citas.logic.Medico;
 import citas.logic.Paciente;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +26,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show", "/presentation/medico/calendario/show", "/presentation/medico/perfil/editar"})
+@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show", "/presentation/medico/calendario/show", "/presentation/medico/perfil/editar","/presentation/medico/perfil/update"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
 
         request.setAttribute("model", new Model());
@@ -39,6 +44,9 @@ public class Controller extends HttpServlet {
                 break;
             case "/presentation/medico/perfil/editar":
                 viewUrl = this.editProfile(request);
+                break;
+            case "/presentation/medico/perfil/update":
+                viewUrl = this.updateProfile(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -86,17 +94,55 @@ public class Controller extends HttpServlet {
         }
     }
     
-    public String editProfile(HttpServletRequest request){
+    public String editProfile(HttpServletRequest request) throws Exception{
         
         HttpSession session = request.getSession(true);
+        Service service = Service.instance();
         
         // 1-- Traer datos de DB --
         // 2--Guardar datos en Model--
-        // 3--Guardar Model en session--
-        Medico medico = new Medico();
-        session.setAttribute("medico", medico);        
+        // 3--Guardar Model en session-- 
+        ArrayList<Especialidad> especialidades = service.findAllSpetials();
+        ArrayList<Ciudad> ciudades = service.findAllCyties();
+
+        
+        session.setAttribute("especialidadesCombo", especialidades);
+        session.setAttribute("ciudadesCombo", ciudades);
         
         return "/presentation/medico/perfil/editView.jsp";
+    }
+    
+    public String updateProfile(HttpServletRequest request) throws  Exception{
+        
+        HttpSession session = request.getSession(true);
+        Service service = Service.instance();
+        
+        Medico medicSession = (Medico) session.getAttribute("medico");
+        //No está llegando el 'medico' de session
+        String cedula = medicSession.getCedula();
+        String nombre = request.getParameter("nameField");
+        String localidad = request.getParameter("localidadCmb");
+        String especialidad = request.getParameter("especialidadCmb");
+        String estado = request.getParameter("estadoCmb");
+
+              
+        
+        Medico medico = new Medico();
+        Ciudad c = new Ciudad(localidad);
+        Especialidad e = new Especialidad(especialidad);
+        medico.setCiudad(c);
+        medico.setEspecialidad(e);
+        medico.setEstado(estado);
+        medico.setCedula(medicSession.getCedula());
+        
+        System.out.println("-->" + medico.getCedula());
+        System.out.println("-->" + medico.getCiudad().getProvincia());
+        System.out.println("-->" + medico.getEspecialidad().getEspecialidad());
+        System.out.println("-->" + medico.getEstado());
+        
+        service.editarMedico(medico);
+        
+        return "/presentation/medico/perfil/view.jsp";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -111,7 +157,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -125,7 +175,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

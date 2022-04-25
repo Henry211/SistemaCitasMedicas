@@ -37,7 +37,7 @@
                                         
                                     </h2>
                                     <p>Doctor en medicina</p>
-                                    <a href="/proyecto1P4/presentation/medico/perfil/editView.jsp" class="text-white"><i class="far fa-edit mb-4"> Editar Perfil</i></a>
+                                    <a href="/proyecto1P4/presentation/medico/perfil/editar" class="text-white"><i class="far fa-edit mb-4"> Editar Perfil</i></a>
 
                                 </div>
 

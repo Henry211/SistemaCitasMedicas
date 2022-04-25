@@ -1,78 +1,50 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package citas.logic;
+
+import java.util.Objects;
 
 /**
  *
  * @author ESCINF
  */
 public class Especialidad {
-    int id;
-    String nombre;
-    Medico medico;
 
-    public Especialidad(String nombre) {
-        this.nombre = nombre;
+    String especialidad;
+
+    public Especialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
-    
+
     public Especialidad() {
     }
 
-    public Especialidad(int id, String nombre, Medico medico) {
-        this.id = id;
-        this.nombre = nombre;
-        this.medico = medico;
+    public String getEspecialidad() {
+        return especialidad;
     }
 
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-   
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.id;
+        hash = 71 * hash + Objects.hashCode(this.especialidad);
         return hash;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Especialidad other = (Especialidad) obj;
-        return this.id == other.id;
-    }
-    
-    
-    
+    /*
+@Override
+public boolean equals(Object obj) {
+if (this == obj) {
+return true;
+}
+if (obj == null) {
+return false;
+}
+if (getClass() != obj.getClass()) {
+return false;
+}
+final Especialidad other = (Especialidad) obj;
+return this.id == other.id;
+}
+     */
 }
