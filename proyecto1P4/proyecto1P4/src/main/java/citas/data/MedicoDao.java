@@ -85,8 +85,8 @@ public class MedicoDao {
         }
         return "Clave actualizada exitosamente";
     }
-    
-     public ArrayList<Medico> findAll() {
+
+    public ArrayList<Medico> findAll() {
         ArrayList<Medico> resultado = new ArrayList<>();
         try {
             String sql = "select * from medico c";
@@ -98,6 +98,24 @@ public class MedicoDao {
                 resultado.add(c);
             }
         } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+
+    public ArrayList<Medico> busca(String ci, String es) throws Exception {
+        ArrayList<Medico> resultado = new ArrayList<>();
+        String sql = "select * from medico "
+                + "where nombre_provincia=? and nombre_especialidad=?";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setString(1, "Heredia");
+        stm.setString(2, "Fisioterapia");
+        ResultSet rs = db.executeQuery(stm);
+        Medico c;
+        int i=0;
+        while (rs.next()) {
+            c = from(rs, "c");
+            resultado.add(c);
+            System.out.println("-->" + resultado.size());
         }
         return resultado;
     }
@@ -128,7 +146,7 @@ return "Costo de la consulta actualizada exitosamente";
             String str2 = rs.getString(alias + ".nombre_especialidad");
             Especialidad espe = new Especialidad(str2);
             c.setEspecialidad(espe);
-            
+
 // c.setFoto(rs.getString(alias+".foto"));
 // c.setFoto((String) rs.getObject(alias+".foto"));
             return c;

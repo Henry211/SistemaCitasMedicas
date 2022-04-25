@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "RegistroMedicoController", urlPatterns = {"/presentation/registromedico/show"})
+@WebServlet(name = "RegistroMedicoController", urlPatterns = {"/presentation/registromedico/show","/presentation/registromedico/searching"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -36,6 +36,9 @@ public class Controller extends HttpServlet {
         switch (request.getServletPath()) {
             case "/presentation/registromedico/show":
                 viewUrl = this.show(request);
+                break;
+            case "/presentation/registromedico/searching":
+                viewUrl = this.searching(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -65,6 +68,27 @@ public class Controller extends HttpServlet {
         } catch (Exception ex) {
             return "";
         }
+    }
+    
+    public String searching(HttpServletRequest request) throws Exception{
+        
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+        
+        String ci = (String) request.getParameter("localidad");
+        String es = (String) request.getParameter("especialidad");
+        
+        ArrayList<Medico> medicos = service.medicoBuscar(ci,es);
+        ArrayList<Especialidad> especialidades = service.findAllSpetials();
+        ArrayList<Ciudad> ciudades = service.findAllCyties();
+
+        System.out.println("--->" + medicos.get(0).getNombre());
+        
+        session.setAttribute("especialidadesCombo", especialidades);
+        session.setAttribute("ciudadesCombo", ciudades);
+        session.setAttribute("listaMedicos", medicos);
+        
+        return "/presentation/registromedico/view.jsp";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

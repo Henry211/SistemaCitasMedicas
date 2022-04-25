@@ -40,7 +40,13 @@ public class Medico implements Serializable {
 
  
 
- 
+    public void setCiudad(String c){
+        this.nombre_ciudad = new Ciudad(c);
+    }
+    
+    public void setEspecialidad(String c){
+        this.nombre_especialidad = new Especialidad(c);
+    }
     
     
 

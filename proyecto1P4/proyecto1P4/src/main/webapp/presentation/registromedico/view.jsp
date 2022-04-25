@@ -23,10 +23,10 @@
 
 
         <div class="container sombra">
-            <form class="col-12" method="GET" name="Buscar" action="/proyecto1P4/presentation/registromedico/show" >
+            <form class="col-12" method="GET" name="Buscar" action="/proyecto1P4/presentation/registromedico/searching" >
                 <div class="row">
                     <div class="col">
-                        <select id="localidad" class="form-select sombra" aria-label="Default select example">
+                        <select name="localidad" id="localidad" class="form-select sombra" aria-label="Default select example">
                             <option selected>Seleccione la Localidad</option>
                             <% int c = ciudades.size(); %>
                             <% while (c != 0) { %>
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                     <div class="col">
-                        <select id="especialidad" class="form-select sombra" aria-label="Default select example">
+                        <select name="especialidad" id="especialidad" class="form-select sombra" aria-label="Default select example">
                             <option selected>Seleccione la Especialidad</option>
                             <% int e = especialidades.size(); %>
                             <% while (e != 0) { %>
@@ -89,33 +89,7 @@
                     </div>
 
                     <% } while (i != 0);%>
-                    <!--                    <div class="col-md-4">
-                                            <div class="card">
-                                                <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                                                <div class="img2"><img src="/proyecto1P4/img/img2.jpg"/></div>
-                                                <div class="main-text">
-                                                    <h2>Doctor Two</h2>
-                                                    <p><b>Especialidad:</b> Cardiología </br>
-                                                        <b>Localidad:</b> San José</br>
-                                                        <b>Atiende:</b> L-M-J</p>
-                                                </div>
-                                                <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                    
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="card">
-                                                <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                                                <div class="img2"><img src="/proyecto1P4/img/img3.jpg"/></div>
-                                                <div class="main-text">
-                                                    <h2>Doctor Three</h2>
-                                                    <p><b>Especialidad:</b> Cardiología </br>
-                                                        <b>Localidad:</b> San José</br>
-                                                        <b>Atiende:</b> L-M-J</p>
-                                                </div>
-                                                <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
-                                            </div>
-                                        </div>-->
+
 
                 </div>
             </div>
