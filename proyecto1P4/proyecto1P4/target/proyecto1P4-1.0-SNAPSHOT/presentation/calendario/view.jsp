@@ -80,7 +80,7 @@
                            <% do { %>
                            <% String cita = citasOcupadas.get(b1); %>                                
                            <% if (lunes == "Lunes" || date1.equals(cita)) { %>
-                           style="pointer-events: none;"
+                           style="pointer-events: none; color: gray;"
                            <% }b1--; %>                          
                            <% }while (b1 != -1);%>
                            <% }%>
@@ -103,7 +103,7 @@
                            <% do { %>
                            <% String cita2 = citasOcupadas.get(b2); %>                                
                            <% if (martes == "Martes" || date2.equals(cita2)) { %>
-                           style="pointer-events: none;"
+                           style="pointer-events: none; color: gray;"
                            <% }b2--; %>                          
                            <% }while (b2 != -1);%>
                            <% }%>
@@ -125,7 +125,7 @@
                            <%do { %>
                            <% String cita3 = citasOcupadas.get(b3); %>                                
                            <% if (miercoles == "Miercoles" || date3.equals(cita3)) { %>
-                           style="pointer-events: none;"
+                           style="pointer-events: none; color: gray;"
                            <% }b3--; %>                          
                            <% } while (b3 != -1);%>
                            <% } %>
@@ -149,7 +149,7 @@
                            <% do { %>
                            <% String cita4 = citasOcupadas.get(bou); %>                                
                            <% if (jueves == "Jueves" || date4.equals(cita4)) { %>
-                           style="pointer-events: none;"
+                           style="pointer-events: none; color: gray;"
                            <% }bou--; %>                          
                            <% }while (bou != -1);%>
                            <% }%>
@@ -173,7 +173,7 @@
                            <% do { %>
                            <% String cita5 = citasOcupadas.get(b4); %>                                
                            <% if (viernes == "Viernes" || date5.equals(cita5)) { %>
-                           style="pointer-events: none;"
+                           style="pointer-events: none; color: gray;"
                            <% }b4--; %>                          
                            <% }while (b4 != -1);%>
                            <% }%>
@@ -190,7 +190,7 @@
                     <div class=" cita">
                         <a class="item"
                            <% if (sabado == "Sabado") { %>
-                           style="pointer-events: none;"
+                           style="pointer-events: none; color: gray;"
                            <% }%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=sabado%>&hora=<%=horario.getSabado().get(i6).toString()%>">
                             <%= horario.getSabado().get(i6).toString()%>

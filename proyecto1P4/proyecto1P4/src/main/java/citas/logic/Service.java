@@ -143,6 +143,10 @@ public class Service {
                 str.add(value);
                 i--;
             } 
+            
+        }else{
+            str.add("null");
+            
         }
 
         return str;
