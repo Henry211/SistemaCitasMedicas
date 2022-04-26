@@ -168,7 +168,7 @@ public class Controller extends HttpServlet {
                     Administrador real1 = new Administrador(usuario,cedula, password);
                     service.createAdministrador(real1);
                     session.setAttribute("admin", real1);
-                    viewUrl = "/presentation/administrador/especialidades/view.jsp";
+                    viewUrl = "/presentation/administrador/especialidad/show";
                     break;
 
             }
