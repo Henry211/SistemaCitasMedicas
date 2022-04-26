@@ -194,7 +194,7 @@ public class Controller extends HttpServlet {
 //        session.removeAttribute("medico");
 //        session.removeAttribute("admin");
         session.invalidate();
-        return "/proyecto1P4/index.jsp";
+        return "/presentation/login/logout.jsp";
     }
 
     public String show(HttpServletRequest request) {
