@@ -35,7 +35,14 @@
                         <div class="row z-depth-3">
                             <div class="col-sm-4 bg-info rounded-left">
                                 <div class="card-block text-center text-white">
-                                    <i class="fas fa-7x mt-5"><img id="img-perfil" src="/proyecto1P4/img/img1.jpg"/></i>
+                                    <i class="fas fa-7x mt-5">
+                                        
+                                        <% if(medico.getImage() != null){ %> 
+                                            <img src="data:image/jpg;base64,${medico.getBase64Image()}" width="240" height="300"/> 
+                                        <% } if(medico.getImage() == null){ %>
+                                            <img src="/proyecto1P4/img/default.jpg" />
+                                        <% }%>
+                                    </i>
                                     <h2 class="font-weight-bold mt-4">
                                         <%= medico.getNombre()%>
 

@@ -19,7 +19,7 @@ public class Service {
     CitaDao citDao = new CitaDao();
     EspecialidadDao esDao = new EspecialidadDao();
     HorarioDao horDao = new HorarioDao();
-    
+
     public Service() {
     }
 
@@ -86,7 +86,7 @@ public class Service {
     }
 
     public ArrayList<Medico> medicoBuscar(String ci, String es) throws Exception {
-        return mDao.busca(ci,es);
+        return mDao.busca(ci, es);
     }
 
     public void createCiudad(Ciudad ciudad) throws Exception {
@@ -96,63 +96,68 @@ public class Service {
     public void createEspecialidad(Especialidad especialidad) throws Exception {
         esDao.create(especialidad);
     }
+
     public void createHorario(Horario horario) throws Exception {
         horDao.create(horario);
     }
+
     public Horario findHorario(String idMEdico) throws Exception {
         return horDao.read(idMEdico);
     }
-    
-    public void updateHorario(Horario horario) throws Exception{
+
+    public void updateHorario(Horario horario) throws Exception {
         horDao.update(horario);
     }
-    
-    public void setEstadoMedico(String estado,String id) throws Exception{
+
+    public void setEstadoMedico(String estado, String id) throws Exception {
         mDao.setEstado(estado, id);
     }
-   
-    public ArrayList<Cita> citaPaciente(String cedula) throws Exception{
+
+    public ArrayList<Cita> citaPaciente(String cedula) throws Exception {
         return citDao.citasPaciente(cedula);
     }
-    public ArrayList<Cita> readCitasByPaciente(String cedula) throws Exception{
+
+    public ArrayList<Cita> readCitasByPaciente(String cedula) throws Exception {
         return citDao.readByPaciente(cedula);
     }
-    
-    public ArrayList<Cita> readCitasByMedico(String cedula) throws Exception{
+
+    public ArrayList<Cita> readCitasByMedico(String cedula) throws Exception {
         return citDao.readByMedico(cedula);
     }
-    
-    public void crearCita(Cita cita) throws Exception{
+
+    public void crearCita(Cita cita) throws Exception {
         citDao.create(cita);
     }
-    
-    public ArrayList<String> verifyCitasOcupadas(String idMedico) throws Exception{
-        
+
+    public ArrayList<String> verifyCitasOcupadas(String idMedico) throws Exception {
+
         ArrayList<String> str = new ArrayList<String>();
         ArrayList<Cita> citas = citDao.readByMedico(idMedico);
-        
-        int i = citas.size()-1;
-        do{
-            
-            String value = citas.get(i).getDateStr() + " " + citas.get(i).getHoraStr();
-            System.out.println("value->"+value);
-            str.add(value);
-            i--;            
-        }while(i != 0);
-        
+
+        if (citas.size() != 0) {
+            int i = citas.size() - 1;
+            while (i != 0) {
+
+                String value = citas.get(i).getDateStr() + " " + citas.get(i).getHoraStr();
+                System.out.println("value->" + value);
+                str.add(value);
+                i--;
+            } 
+        }
+
         return str;
     }
-    
-    public Paciente findPaciente(String str) throws Exception{
+
+    public Paciente findPaciente(String str) throws Exception {
         return pDao.find(str);
     }
-    public Medico findMedico(String str) throws Exception{
+
+    public Medico findMedico(String str) throws Exception {
         return mDao.find(str);
     }
-    
-    public void eliminarCita(String id) throws Exception{
+
+    public void eliminarCita(String id) throws Exception {
         citDao.delete(id);
     }
-    
-    
+
 }

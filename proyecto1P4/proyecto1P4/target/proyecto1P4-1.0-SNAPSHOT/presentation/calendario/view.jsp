@@ -75,6 +75,7 @@
                     <div class="cita">
                         <a class="item"
                            <% int b1 = citasOcupadas.size() - 1; %>
+                           <% if(b1 != 0 && b1 != -1){ %>
                            <% String date1 = lunes + " " + horario.getLunes().get(i).toString(); %>
                            <% do { %>
                            <% String cita = citasOcupadas.get(b1); %>                                
@@ -82,6 +83,7 @@
                            style="pointer-events: none;"
                            <% }b1--; %>                          
                            <% }while (b1 != -1);%>
+                           <% }%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
                             <%= horario.getLunes().get(i).toString()%>
                         </a>
@@ -96,6 +98,7 @@
                     <div class=" cita">
                         <a class="item"
                           <% int b2 = citasOcupadas.size() - 1; %>
+                          <% if(b2 != 0 && b2 != -1){ %>
                            <% String date2 = martes + " " + horario.getMartes().get(i2).toString(); %>
                            <% do { %>
                            <% String cita2 = citasOcupadas.get(b2); %>                                
@@ -103,6 +106,7 @@
                            style="pointer-events: none;"
                            <% }b2--; %>                          
                            <% }while (b2 != -1);%>
+                           <% }%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=martes%>&hora=<%=horario.getMartes().get(i2).toString()%>">
                             <%= horario.getMartes().get(i2).toString()%>
                         </a>
@@ -116,6 +120,7 @@
                     <div class=" cita">
                         <a class="item"
                            <% int b3 = citasOcupadas.size() - 1; %>
+                           <% if(b3 != 0 && b3 != -1){ %>
                            <% String date3 = miercoles + " " + horario.getMiercoles().get(i3).toString(); %>
                            <%do { %>
                            <% String cita3 = citasOcupadas.get(b3); %>                                
@@ -123,6 +128,7 @@
                            style="pointer-events: none;"
                            <% }b3--; %>                          
                            <% } while (b3 != -1);%>
+                           <% } %>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=miercoles%>&hora=<%=horario.getMiercoles().get(i3).toString()%>">
                             <%= horario.getMiercoles().get(i3).toString()%>
                         </a>
@@ -138,6 +144,7 @@
                     <div class=" cita">
                         <a class="item"
                            <% int bou = citasOcupadas.size() - 1; %>
+                           <% if(bou != 0 && bou != -1){ %>
                            <% String date4 = jueves + " " + horario.getJueves().get(i4).toString(); %>
                            <% do { %>
                            <% String cita4 = citasOcupadas.get(bou); %>                                
@@ -145,6 +152,7 @@
                            style="pointer-events: none;"
                            <% }bou--; %>                          
                            <% }while (bou != -1);%>
+                           <% }%>
 
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=jueves%>&hora=<%=horario.getJueves().get(i4).toString()%>">
                             <%= horario.getJueves().get(i4).toString()%>
@@ -158,7 +166,9 @@
                     <% i5--;%>
                     <div class=" cita">
                         <a class="item"
+                           
                            <% int b4 = citasOcupadas.size() - 1; %>
+                           <% if(b4 != 0 && b4 != -1){ %>
                            <% String date5 = viernes + " " + horario.getViernes().get(i4).toString(); %>
                            <% do { %>
                            <% String cita5 = citasOcupadas.get(b4); %>                                
@@ -166,6 +176,7 @@
                            style="pointer-events: none;"
                            <% }b4--; %>                          
                            <% }while (b4 != -1);%>
+                           <% }%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=viernes%>&hora=<%=horario.getViernes().get(i5).toString()%>">
                             <%= horario.getViernes().get(i5).toString()%>
                         </a>

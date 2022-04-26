@@ -104,7 +104,7 @@ public class Controller extends HttpServlet {
         Medico medico = service.findMedico(id);
         citasOcupadas = service.verifyCitasOcupadas(id);
         System.out.println("citasOcupadas size: "+citasOcupadas.size());
-        System.out.println("citasOcupadas 0 elements: "+citasOcupadas.get(0));
+        //System.out.println("citasOcupadas 0 elements: "+citasOcupadas.get(0));
         session.setAttribute("medicoSelected", medico);
         session.setAttribute("horarioCita", horario);
         session.setAttribute("citasOcupadas",citasOcupadas);

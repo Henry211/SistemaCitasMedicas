@@ -326,7 +326,9 @@ public class Controller extends HttpServlet {
         String checkJ = request.getParameter("checkJ");
         String checkV = request.getParameter("checkV");
         String checkS = request.getParameter("checkS");
-        System.out.println("checkLunes->"+checkL);
+        int cmbFrecuencia = Integer.valueOf(request.getParameter("duracionCmb"));
+        System.out.println("Frecuencia->"+cmbFrecuencia);
+        
 
         Medico medico = (Medico) session.getAttribute("medico");
         Ciudad c = new Ciudad(localidad);
@@ -379,7 +381,7 @@ public class Controller extends HttpServlet {
         }
         
         
-        horario.setFrecuencia(1);
+        horario.setFrecuencia(cmbFrecuencia);
         horario.calcDias();
         
         horario.setMedico(medico);      
