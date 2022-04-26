@@ -81,7 +81,7 @@
                            <% if (lunes == "Lunes" || date1.equals(cita)) { %>
                            style="pointer-events: none;"
                            <% }b1--; %>                          
-                           <% }while (b1 != 0);%>
+                           <% }while (b1 != -1);%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
                             <%= horario.getLunes().get(i).toString()%>
                         </a>
@@ -102,7 +102,7 @@
                            <% if (martes == "Martes" || date2.equals(cita2)) { %>
                            style="pointer-events: none;"
                            <% }b2--; %>                          
-                           <% }while (b2 != 0);%>
+                           <% }while (b2 != -1);%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=martes%>&hora=<%=horario.getMartes().get(i2).toString()%>">
                             <%= horario.getMartes().get(i2).toString()%>
                         </a>
@@ -122,7 +122,7 @@
                            <% if (miercoles == "Miercoles" || date3.equals(cita3)) { %>
                            style="pointer-events: none;"
                            <% }b3--; %>                          
-                           <% } while (b3 != 0);%>
+                           <% } while (b3 != -1);%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=miercoles%>&hora=<%=horario.getMiercoles().get(i3).toString()%>">
                             <%= horario.getMiercoles().get(i3).toString()%>
                         </a>
@@ -144,7 +144,7 @@
                            <% if (jueves == "Jueves" || date4.equals(cita4)) { %>
                            style="pointer-events: none;"
                            <% }bou--; %>                          
-                           <% }while (bou != 0);%>
+                           <% }while (bou != -1);%>
 
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=jueves%>&hora=<%=horario.getJueves().get(i4).toString()%>">
                             <%= horario.getJueves().get(i4).toString()%>
@@ -165,7 +165,7 @@
                            <% if (viernes == "Viernes" || date5.equals(cita5)) { %>
                            style="pointer-events: none;"
                            <% }b4--; %>                          
-                           <% }while (b4 != 0);%>
+                           <% }while (b4 != -1);%>
                            href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=viernes%>&hora=<%=horario.getViernes().get(i5).toString()%>">
                             <%= horario.getViernes().get(i5).toString()%>
                         </a>

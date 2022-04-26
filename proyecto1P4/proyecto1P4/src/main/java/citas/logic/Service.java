@@ -131,14 +131,14 @@ public class Service {
         ArrayList<String> str = new ArrayList<String>();
         ArrayList<Cita> citas = citDao.readByMedico(idMedico);
         
-        int i = citas.size();
-        while(i != 0){
-            i--;
+        int i = citas.size()-1;
+        do{
+            
             String value = citas.get(i).getDateStr() + " " + citas.get(i).getHoraStr();
             System.out.println("value->"+value);
             str.add(value);
-            
-        }
+            i--;            
+        }while(i != 0);
         
         return str;
     }
