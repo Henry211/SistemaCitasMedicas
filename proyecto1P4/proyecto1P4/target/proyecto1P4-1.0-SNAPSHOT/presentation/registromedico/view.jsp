@@ -85,8 +85,7 @@
                                         </br>
                                         <b>Localidad:</b> 
                                         <%= medicos.get(i).getCiudad().getProvincia()%>
-                                        </br>
-                                        <b>Atiende:</b> L-M-J</p>
+                                        
                                 </div>
                                 <button type="submit" name="entrar" class="btn btn-primary"> Ver</button>
                             </div>

@@ -10,7 +10,7 @@
     </head>
     <body>
         <%@ include file="/Header.jsp" %></br>
-        <h1>Esta es la pantalla principal</h1>
+        <h1 style="text-align:center;">Sistema de Citas Médicas</h1>
        
         
         

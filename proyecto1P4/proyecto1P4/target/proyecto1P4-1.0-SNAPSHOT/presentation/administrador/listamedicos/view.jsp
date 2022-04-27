@@ -20,7 +20,7 @@
 
 
         <div class="container sombra">
-            <form class="col-12" method="GET" name="Buscar" action="/proyecto1P4/presentation/registromedico/searching" >
+            <form class="col-12" method="GET" name="Buscar" action="/proyecto1P4/presentation/administrador/listamedicos/show" >
                 <div class="row">
                     <div class="col">
                         <select name="medicos" id="medicos" class="form-select sombra" aria-label="Default select example" style="margin-top: 50px; ">
