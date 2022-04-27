@@ -75,7 +75,7 @@
                     <div class="cita">
                         <a class="item"
                            <% int b1 = citasOcupadas.size() - 1; %>
-                           <% if(b1 != 0 && b1 != -1){ %>
+                           <% if( b1 != -1){ %>
                            <% String date1 = lunes + " " + horario.getLunes().get(i).toString(); %>
                            <% do { %>
                            <% String cita = citasOcupadas.get(b1); %>                                
@@ -98,7 +98,7 @@
                     <div class=" cita">
                         <a class="item"
                           <% int b2 = citasOcupadas.size() - 1; %>
-                          <% if(b2 != 0 && b2 != -1){ %>
+                          <% if( b2 != -1){ %>
                            <% String date2 = martes + " " + horario.getMartes().get(i2).toString(); %>
                            <% do { %>
                            <% String cita2 = citasOcupadas.get(b2); %>                                
@@ -120,7 +120,7 @@
                     <div class=" cita">
                         <a class="item"
                            <% int b3 = citasOcupadas.size() - 1; %>
-                           <% if(b3 != 0 && b3 != -1){ %>
+                           <% if( b3 != -1){ %>
                            <% String date3 = miercoles + " " + horario.getMiercoles().get(i3).toString(); %>
                            <%do { %>
                            <% String cita3 = citasOcupadas.get(b3); %>                                
@@ -144,7 +144,7 @@
                     <div class=" cita">
                         <a class="item"
                            <% int bou = citasOcupadas.size() - 1; %>
-                           <% if(bou != 0 && bou != -1){ %>
+                           <% if( bou != -1){ %>
                            <% String date4 = jueves + " " + horario.getJueves().get(i4).toString(); %>
                            <% do { %>
                            <% String cita4 = citasOcupadas.get(bou); %>                                
@@ -168,7 +168,7 @@
                         <a class="item"
                            
                            <% int b4 = citasOcupadas.size() - 1; %>
-                           <% if(b4 != 0 && b4 != -1){ %>
+                           <% if( b4 != -1){ %>
                            <% String date5 = viernes + " " + horario.getViernes().get(i4).toString(); %>
                            <% do { %>
                            <% String cita5 = citasOcupadas.get(b4); %>                                
