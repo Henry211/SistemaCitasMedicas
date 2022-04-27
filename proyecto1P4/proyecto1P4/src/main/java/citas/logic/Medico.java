@@ -16,6 +16,7 @@ public class Medico implements Serializable {
     Ciudad nombre_ciudad;
     Especialidad nombre_especialidad;
     String foto;
+    Horario horario;
 
     public Medico() {
     }
@@ -37,6 +38,16 @@ public class Medico implements Serializable {
         this.nombre_especialidad = new Especialidad(nombre_especialidad);
         
     }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
+    }
+    
+    
 
  
 

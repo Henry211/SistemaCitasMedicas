@@ -12,13 +12,187 @@ import java.util.Collections;
  * @author Usuario
  */
 public class Horario {
-    
+
     ArrayList<String> lunes = new ArrayList<String>();
+    int iniLunes, finLunes;
     ArrayList<String> martes = new ArrayList<String>();
+    int iniMartes, finMartes;
     ArrayList<String> miercoles = new ArrayList<String>();
+    int iniMiercoles, finMiercoles;
     ArrayList<String> jueves = new ArrayList<String>();
+    int iniJueves, finJueves;
     ArrayList<String> viernes = new ArrayList<String>();
+    int iniViernes, finViernes;
     ArrayList<String> sabado = new ArrayList<String>();
+    int iniSabado, finSabado;
+
+    ArrayList<String> horasDia = new ArrayList<String>();
+
+    public ArrayList<String> calcArrayHrs(int ini, int fin) {
+        
+        int tot, iniAux;
+        ArrayList<String> arreglo = new ArrayList<String>();
+        tot = fin - ini;
+        iniAux = ini;
+        for (int n = 0; n <= tot; n++) {
+            arreglo.add(horasDia.get(iniAux++));
+        }
+
+        return arreglo;
+    }
+    
+    public void calcDias(){
+        
+        createArrayHoras();
+        
+        lunes = calcArrayHrs(iniLunes,finLunes);
+        martes = calcArrayHrs(iniMartes,finMartes);
+        miercoles = calcArrayHrs(iniMiercoles,finMiercoles);
+        jueves = calcArrayHrs(iniJueves,finJueves);
+        viernes = calcArrayHrs(iniViernes,finViernes);
+        sabado = calcArrayHrs(iniSabado,finSabado);
+        
+        
+    }
+
+    public void createArrayHoras() {
+
+        String a0 = "0";
+        String a1 = "1";
+        String a2 = "2";
+        String a3 = "3";
+        String a4 = "4";
+        String a5 = "5";
+        String a6 = "6";
+        String a7 = "7";
+        String a8 = "08:00am";
+        String a9 = "09:00am";
+        String a10 = "10:00am";
+        String a11 = "11:00am";
+        String a12 = "12:00pm";
+        String a13 = "1:00pm";
+        String a14 = "2:00pm";
+        String a15 = "3:00pm";
+        String a16 = "4:00pm";
+        String a17 = "5:00pm";
+
+        this.horasDia = new ArrayList<String>();
+        horasDia.add(a0);
+        horasDia.add(a1);
+        horasDia.add(a2);
+        horasDia.add(a3);
+        horasDia.add(a4);
+        horasDia.add(a5);
+        horasDia.add(a6);
+        horasDia.add(a7);
+        horasDia.add(a8);
+        horasDia.add(a9);
+        horasDia.add(a10);
+        horasDia.add(a11);
+        horasDia.add(a12);
+        horasDia.add(a13);
+        horasDia.add(a14);
+        horasDia.add(a15);
+        horasDia.add(a16);
+        horasDia.add(a17);
+
+    }
+
+    public int getIniLunes() {
+        return iniLunes;
+    }
+
+    public void setIniLunes(int iniLunes) {
+        this.iniLunes = iniLunes;
+    }
+
+    public int getFinLunes() {
+        return finLunes;
+    }
+
+    public void setFinLunes(int finLunes) {
+        this.finLunes = finLunes;
+    }
+
+    public int getIniMartes() {
+        return iniMartes;
+    }
+
+    public void setIniMartes(int iniMartes) {
+        this.iniMartes = iniMartes;
+    }
+
+    public int getFinMartes() {
+        return finMartes;
+    }
+
+    public void setFinMartes(int finMartes) {
+        this.finMartes = finMartes;
+    }
+
+    public int getIniMiercoles() {
+        return iniMiercoles;
+    }
+
+    public void setIniMiercoles(int iniMiercoles) {
+        this.iniMiercoles = iniMiercoles;
+    }
+
+    public int getFinMiercoles() {
+        return finMiercoles;
+    }
+
+    public void setFinMiercoles(int finMiercoles) {
+        this.finMiercoles = finMiercoles;
+    }
+
+    public int getIniJueves() {
+        return iniJueves;
+    }
+
+    public void setIniJueves(int iniJueves) {
+        this.iniJueves = iniJueves;
+    }
+
+    public int getFinJueves() {
+        return finJueves;
+    }
+
+    public void setFinJueves(int finJueves) {
+        this.finJueves = finJueves;
+    }
+
+    public int getIniViernes() {
+        return iniViernes;
+    }
+
+    public void setIniViernes(int iniViernes) {
+        this.iniViernes = iniViernes;
+    }
+
+    public int getFinViernes() {
+        return finViernes;
+    }
+
+    public void setFinViernes(int finViernes) {
+        this.finViernes = finViernes;
+    }
+
+    public int getIniSabado() {
+        return iniSabado;
+    }
+
+    public void setIniSabado(int iniSabado) {
+        this.iniSabado = iniSabado;
+    }
+
+    public int getFinSabado() {
+        return finSabado;
+    }
+
+    public void setFinSabado(int finSabado) {
+        this.finSabado = finSabado;
+    }
 
     public Horario() {
     }
@@ -70,50 +244,47 @@ public class Horario {
     public void setSabado(ArrayList<String> sabado) {
         this.sabado = sabado;
     }
-    
-    
-    
-    
-    public void setDateTime(String dia, String hora){
-        
-        switch(dia){
-            
+
+    public void setDateTime(String dia, String hora) {
+
+        switch (dia) {
+
             case "L":
-                if(validar(dia,hora)){
+                if (validar(dia, hora)) {
                     lunes.add(hora);
                     Collections.sort(lunes);
                 }
                 break;
             case "M":
-                if(validar(dia,hora)){
+                if (validar(dia, hora)) {
                     martes.add(hora);
                     Collections.sort(martes);
                 }
                 break;
             case "I":
-                if(validar(dia,hora)){
+                if (validar(dia, hora)) {
                     miercoles.add(hora);
                 }
                 break;
             case "J":
-                if(validar(dia,hora)){
+                if (validar(dia, hora)) {
                     jueves.add(hora);
                 }
                 break;
             case "V":
-                if(validar(dia,hora)){
+                if (validar(dia, hora)) {
                     viernes.add(hora);
                 }
                 break;
             case "S":
-                if(validar(dia,hora)){
+                if (validar(dia, hora)) {
                     sabado.add(hora);
                 }
                 break;
         }
     }
-    
-    public boolean validar(String dia, String hora){
+
+    public boolean validar(String dia, String hora) {
         return true;
     }
 }

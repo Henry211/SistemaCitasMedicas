@@ -63,7 +63,7 @@
                             
                             <div class="mb-2">
                                 <label>Duración de cita</label>
-                                <select class="form-select">
+                                <select name="duracionCmb" class="form-select">
                                     <option>30 minutos</option>
                                     <option>1 hora</option>
                                     <option>1 hora  y 30 minutos</option>
@@ -71,12 +71,15 @@
                                 </select>
                             </div>
 
+                            
+                            <!--***************-->
+                            
                         <div class="mb-2">
                             <label for="dias">Días de atención:</label> </br>
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkL" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 25px;">Lunes</label>
                                     </div>
                                     <div class="child-day">
@@ -111,7 +114,7 @@
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkM" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 20px;">Martes</label>
                                     </div>
                                     <div class="child-day">
@@ -146,7 +149,7 @@
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkI" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1">Miercoles</label>
                                     </div>
                                     <div class="child-day">
@@ -181,7 +184,7 @@
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkJ" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 23px;">Jueves</label>
                                     </div>
                                     <div class="child-day">
@@ -216,7 +219,7 @@
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkV" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 20px;">Viernes</label>
                                     </div>
                                     <div class="child-day">
@@ -251,7 +254,7 @@
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkS" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 18px;">Sabado</label>
                                     </div>
                                     <div class="child-day">
