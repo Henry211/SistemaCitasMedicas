@@ -59,7 +59,6 @@ public class Controller extends HttpServlet {
         ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitasByMedico(medico.getCedula());
         
             
-        System.out.println("sizeArray->"+citas.size());
         for(int i=0;i<=citas.size()-1;i++){
             citas.get(i).setMedico(medico);
         }

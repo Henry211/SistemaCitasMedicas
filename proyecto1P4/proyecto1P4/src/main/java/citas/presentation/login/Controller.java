@@ -158,7 +158,10 @@ public class Controller extends HttpServlet {
                     break;
                 case "2":
                     Medico real2 = new Medico(usuario,cedula, password,"Pendiente");
+                    real2.setImage(null);
+                    System.out.println("Creando medico, espere...");
                     service.createMedico(real2);
+                    System.out.println("Medico creado");
                     Medico realAux = new Medico(cedula, password);
                     Medico m = service.medicoLogin(realAux);
                     session.setAttribute("medico", m);

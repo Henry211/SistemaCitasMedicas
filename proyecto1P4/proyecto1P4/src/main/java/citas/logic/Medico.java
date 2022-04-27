@@ -36,6 +36,7 @@ public class Medico implements Serializable {
         this.cedula = cedula;
         this.nombre = nombre;
         this.clave = clave;
+        this.image = new byte[]{0,0};
 
     }
 
@@ -46,7 +47,7 @@ public class Medico implements Serializable {
         this.clave = clave;
         this.estado = estado;
     }
-
+    
     public Medico(String cedula, String nombre, String clave, String estado, String nombre_ciudad, String nombre_especialidad) {
 
         this.cedula = cedula;

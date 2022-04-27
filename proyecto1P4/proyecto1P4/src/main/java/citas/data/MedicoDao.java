@@ -37,7 +37,8 @@ public class MedicoDao {
 
         stm.setObject(5, u.getCiudad());
         stm.setObject(6, u.getEspecialidad());
-        InputStream targetStream = new ByteArrayInputStream(u.getImage());
+        byte[] image = new byte[]{0} ;
+        InputStream targetStream = new ByteArrayInputStream(image);
         stm.setBlob(7, targetStream);
 
         int count = db.executeUpdate(stm);
