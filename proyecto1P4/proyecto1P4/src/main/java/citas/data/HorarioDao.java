@@ -22,8 +22,8 @@ import java.time.LocalDateTime;
 public class HorarioDao {
     Database db;
 
-    public HorarioDao(Database db) {
-        this.db = db;
+    public HorarioDao() {
+        db = Database.instance();
     }
     
      public void create(Horario u) throws Exception {
@@ -51,10 +51,10 @@ public class HorarioDao {
         }
     }
      
-     public Horario read(Horarios u) throws Exception {
-        String sql = "select * from horario c where idMedicos=? ";
+     public Horario read(String u) throws Exception {
+        String sql = "select * from horario c where id_doctor=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1, u.getIdmedico().getCedula());
+        stm.setString(1, u);
       
         ResultSet rs = db.executeQuery(stm);
         if (rs.next()) {
@@ -69,7 +69,7 @@ public class HorarioDao {
     Horario from(ResultSet rs, String alias){
         try {
             Horario c= new Horario();
-            c.setMedico((Medico) rs.getObject(alias+".id_doctor"));
+            c.getMedico().setCedula(rs.getString(alias+".id_doctor"));
             c.setIniLunes(rs.getInt(alias+".comienzo_lunes"));
             c.setFinLunes(rs.getInt(alias+".finaliza_lunes"));
             c.setIniMartes(rs.getInt(alias+".comienzo_martes"));

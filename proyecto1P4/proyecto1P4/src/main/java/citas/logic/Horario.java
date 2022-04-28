@@ -4,6 +4,7 @@
  */
 package citas.logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,7 +12,7 @@ import java.util.Collections;
  *
  * @author Usuario
  */
-public class Horario {
+public class Horario implements Serializable{
 
     ArrayList<String> lunes = new ArrayList<String>();
     int iniLunes, finLunes;
@@ -27,7 +28,7 @@ public class Horario {
     int iniSabado, finSabado;
     
     int frecuencia;
-    Medico medico;
+    Medico medico = new Medico();
 
     ArrayList<String> horasDia = new ArrayList<String>();
 

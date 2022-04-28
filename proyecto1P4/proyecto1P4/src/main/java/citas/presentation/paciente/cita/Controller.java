@@ -8,6 +8,7 @@ import citas.logic.Cita;
 import citas.logic.Horario;
 import citas.logic.Medico;
 import citas.logic.Paciente;
+import citas.logic.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.Format;
@@ -17,6 +18,8 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +35,7 @@ import javax.servlet.http.HttpSession;
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         
         request.setAttribute("model", new Model());
@@ -74,21 +77,25 @@ public class Controller extends HttpServlet {
         return "/presentation/paciente/cita/confirmView.jsp";
     }
     
-    public String selectDate(HttpServletRequest request){
+    public String selectDate(HttpServletRequest request) throws Exception{
         
         HttpSession session = request.getSession(true);
+        Service service = Service.instance();
         
         String id = request.getParameter("mid");// <--- Id del Médico
         System.out.println("Medico--->" + id);
         
-        Horario horario = new Horario();//----Cargar aquí horario de Medico
-        horario.setIniLunes(8);
-        horario.setFinLunes(11);
-        horario.setIniMartes(13);
-        horario.setFinMartes(16);
-        horario.setIniJueves(10);
-        horario.setFinJueves(15);
+        
+        Horario horario = service.findHorario(id);//----Cargar aquí horario de Medico
+//        horario.setIniLunes(8);
+//        horario.setFinLunes(11);
+//        horario.setIniMartes(13);
+//        horario.setFinMartes(16);
+//        horario.setIniJueves(10);
+//        horario.setFinJueves(15);
         horario.calcDias();
+        
+        
         
         session.setAttribute("horario", horario);
         
@@ -174,7 +181,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -188,7 +199,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

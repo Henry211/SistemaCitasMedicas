@@ -19,6 +19,7 @@ C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\sr
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\data\PacienteDao.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\presentation\registromedico\Controller.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\data\EspecialidadDao.java
+C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\logic\Horarios.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\presentation\medico\perfil\Model.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\presentation\registromedico\Model.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\presentation\medico\perfil\Controller.java
@@ -40,6 +41,7 @@ C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\sr
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\data\MedicoDao.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\logic\Ciudad.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\logic\Horario.java
+C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\data\HorarioDao.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\presentation\administrador\datos\Model.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\presentation\administrador\especialidad\Model.java
 C:\Users\Usuario\Documents\GitHub\SistemaCitasMedicas\proyecto1P4\proyecto1P4\src\main\java\citas\logic\Service.java

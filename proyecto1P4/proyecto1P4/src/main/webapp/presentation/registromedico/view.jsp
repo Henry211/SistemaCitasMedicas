@@ -66,7 +66,7 @@
                     <% i--;%>
 
                     <div class="col-md-4">
-                        <form class="col-12" method="POST" name="Ver" action="/proyecto1P4/presentation/paciente/cita/selectDate?mid=<%= medicos.get(0).getCedula()%>" >
+                        <form class="col-12" method="POST" name="Ver" action="/proyecto1P4/presentation/paciente/cita/selectDate?mid=<%= medicos.get(i).getCedula()%>" >
                             <!--Cómo pasar el medico seleccionado en el request?-->
                             <div class="card">
                                 <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>

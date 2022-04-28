@@ -6,6 +6,7 @@ package citas.presentation.medico.perfil;
 
 import citas.logic.Ciudad;
 import citas.logic.Especialidad;
+import citas.logic.Horario;
 import citas.logic.Medico;
 import citas.logic.Paciente;
 import citas.logic.Service;
@@ -157,13 +158,6 @@ public class Controller extends HttpServlet {
         viernes = "Viernes " + today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
         sabado = "Sabado " + today.plus(3, ChronoUnit.DAYS).getDayOfMonth();
         
-        System.out.println("L-> " + lunes);
-        System.out.println("M-> " + martes);
-        System.out.println("I-> " + miercoles);
-        System.out.println("J-> " + jueves);
-        System.out.println("V-> " + viernes);
-        System.out.println("S-> " + sabado);
-
         session.setAttribute("lunes", lunes);
         session.setAttribute("martes", martes);
         session.setAttribute("miercoles", miercoles);
@@ -245,13 +239,6 @@ public class Controller extends HttpServlet {
                 break;
         }
 
-        System.out.println("L-> " + lunes);
-        System.out.println("M-> " + martes);
-        System.out.println("I-> " + miercoles);
-        System.out.println("J-> " + jueves);
-        System.out.println("V-> " + viernes);
-        System.out.println("S-> " + sabado);
-
         session.setAttribute("lunes", lunes);
         session.setAttribute("martes", martes);
         session.setAttribute("miercoles", miercoles);
@@ -297,18 +284,76 @@ public class Controller extends HttpServlet {
         String localidad = request.getParameter("localidadCmb");
         String especialidad = request.getParameter("especialidadCmb");
         String estado = request.getParameter("estadoCmb");
+        String iniL = request.getParameter("iniL");
+        String finL = request.getParameter("finL");
+        String iniM = request.getParameter("iniM");
+        String finM = request.getParameter("finM");
+        String iniI = request.getParameter("iniI");
+        String finI = request.getParameter("finI");
+        String iniJ = request.getParameter("iniJ");
+        String finJ = request.getParameter("finJ");
+        String iniV = request.getParameter("iniV");
+        String finV = request.getParameter("finV");
+        String iniS = request.getParameter("iniS");
+        String finS = request.getParameter("finS");
 
         Medico medico = new Medico();
         Ciudad c = new Ciudad(localidad);
         Especialidad e = new Especialidad(especialidad);
+        Horario horario = new Horario();
+        horario.setIniLunes(horaToInteger(iniL));
+        horario.setFinLunes(horaToInteger(finL));
+        horario.setIniMartes(horaToInteger(iniM));
+        horario.setFinMartes(horaToInteger(finM));
+        horario.setIniJueves(horaToInteger(iniI));
+        horario.setFinJueves(horaToInteger(finI));
+        horario.setIniViernes(horaToInteger(iniV));
+        horario.setFinViernes(horaToInteger(finV));
+        horario.setIniSabado(horaToInteger(iniS));
+        horario.setFinSabado(horaToInteger(finS));
+        horario.calcDias();
+        
+        horario.setMedico(medico);      
+        medico.setHorario(horario);
+        
         medico.setCiudad(c);
         medico.setEspecialidad(e);
         medico.setEstado(estado);
         medico.setCedula(medicSession.getCedula());
 
+        service.createHorario(horario);
         service.editarMedico(medico);
 
         return "/presentation/medico/perfil/view.jsp";
+    }
+    
+    public int horaToInteger(String str){
+        
+       
+        switch(str){
+            
+            case "8am":
+                return 8;      
+            case "9am":
+                return 9;          
+            case "10am":
+                return 10;     
+            case "11am":
+                return 11;           
+            case "1pm":
+                return 13;               
+            case "2pm":
+                return 14;               
+            case "3pm":
+                return 15;                
+            case "4pm":
+                return 16;
+            case "5pm":
+                return 17;
+            case "6pm":
+                return 18;   
+        }
+        return 0;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

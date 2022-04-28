@@ -4,6 +4,7 @@ import citas.data.AdministradorDao;
 import citas.data.CitaDao;
 import citas.data.CiudadDao;
 import citas.data.EspecialidadDao;
+import citas.data.HorarioDao;
 import citas.data.MedicoDao;
 import citas.data.PacienteDao;
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ public class Service {
     CiudadDao cidDao = new CiudadDao();
     CitaDao citDao = new CitaDao();
     EspecialidadDao esDao = new EspecialidadDao();
-
+    HorarioDao horDao = new HorarioDao();
+    
     public Service() {
     }
 
@@ -89,5 +91,11 @@ public class Service {
 
     public void createEspecialidad(Especialidad especialidad) throws Exception {
         esDao.create(especialidad);
+    }
+    public void createHorario(Horario horario) throws Exception {
+        horDao.create(horario);
+    }
+    public Horario findHorario(String idMEdico) throws Exception {
+        return horDao.read(idMEdico);
     }
 }
