@@ -1,6 +1,9 @@
 
+<%@page import="citas.logic.Cita"%>
 <%@page import="citas.logic.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Cita cita = (Cita) session.getAttribute("citaConfirm");%>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,10 +22,11 @@
             <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
             <div class="main-text">
                 <h2 style="margin-top: -25px;">Confirmar Asistencia</h2>
-                <p><b>Doctor:</b> Bob Marley </br>
-                    <b>Especialidad:</b> Cardiología </br>
-                    <b>Localidad:</b> San José</br>
-                    <b>Fecha</b> Lunes 8am</p>
+                <p><b>Doctor:</b> <%= cita.getMedico().getNombre() %>
+ </br>
+                    <b>Especialidad:</b> <%= cita.getMedico().getEspecialidad().getEspecialidad() %> </br>
+                    <b>Localidad:</b> <%= cita.getMedico().getCiudad().getProvincia() %></br>
+                    <b>Fecha</b> <%= cita.getDateStr() %> - <%= cita.getHoraStr() %></p>
             </div>
             <button type="submit" name="entrar" class="btn btn-primary" style="margin-top: -40px;"> Confirmar</button>
             <button type="submit" name="entrar" class="btn btn-primary" style="margin-top: -15px;"> Cancelar</button>

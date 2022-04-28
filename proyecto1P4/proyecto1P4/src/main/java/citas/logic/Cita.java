@@ -15,9 +15,20 @@ public class Cita {
     int idCita;
     String estado;
     LocalDateTime fecha;
+    String dateStr;
+    String horaStr;
     Usuario idUsuario;
     Paciente paciente;
     Medico medico;
+
+    public String getDateStr() {
+        return dateStr;
+    }
+
+    public void setDateStr(String DateStr) {
+        this.dateStr = DateStr;
+    }
+    
 
     public Cita() {
     }
@@ -29,6 +40,22 @@ public class Cita {
         this.idUsuario = idUsuario;
         this.paciente = paciente;
         this.medico = medico;
+    }
+    public Cita(int idCita, String estado, String fecha,String hora, Paciente paciente, Medico medico) {
+        this.idCita = idCita;
+        this.estado = estado;
+        this.dateStr = fecha;
+        this.horaStr = hora;
+        this.paciente = paciente;
+        this.medico = medico;
+    }
+
+    public String getHoraStr() {
+        return horaStr;
+    }
+
+    public void setHoraStr(String horaStr) {
+        this.horaStr = horaStr;
     }
 
 

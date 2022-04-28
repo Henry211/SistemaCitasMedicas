@@ -4,8 +4,10 @@
  */
 package citas.presentation.paciente.cita;
 
+import citas.logic.Cita;
 import citas.logic.Horario;
 import citas.logic.Medico;
+import citas.logic.Paciente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.Format;
@@ -56,12 +58,20 @@ public class Controller extends HttpServlet {
         
         //--Esto debe hacerse diferente
         //-- se setean las entidades trayendolas desde BD
-        model.getCita().getMedico().setNombre(request.getAttribute("mid").toString());
+        //model.getCita().getMedico().setNombre(request.getAttribute("mid").toString());
         //model.getCita().setFecha(request.getAttribute("dt"));
                
+        Paciente pacienteTest = new Paciente("654654","PacienteName","password");
+        Medico medicoTest = new Medico("98798","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
+        Cita cita = new Cita(14,"Activo",(String)request.getParameter("day"),(String)request.getParameter("hora"),pacienteTest,medicoTest);
+        
+        System.out.println("day->"+(String)request.getParameter("day"));
+        System.out.println("hora->"+(String)request.getParameter("hora"));
+        
         HttpSession session = request.getSession(true);
-        session.setAttribute("idMed", request.getAttribute("mid"));
-        session.setAttribute("dateTime", request.getAttribute("dt"));
+        session.setAttribute("idMed", request.getParameter("mid"));
+        session.setAttribute("dateTime", request.getParameter("day"));
+        session.setAttribute("citaConfirm", cita);
         
         return "/presentation/paciente/cita/confirmView.jsp";
     }
@@ -69,25 +79,11 @@ public class Controller extends HttpServlet {
     public String selectDate(HttpServletRequest request){
         
         HttpSession session = request.getSession(true);
-        String id = request.getParameter("mid");
+        
+        String id = request.getParameter("mid");// <--- Id del Médico
         System.out.println("Medico--->" + id);
         
         Horario horario = new Horario();//----Cargar aquí horario de Medico
-//        horario.setDateTime("L", "8am");
-//        horario.setDateTime("L", "10am");
-//        horario.setDateTime("L", "1pm");
-//        horario.setDateTime("L", "3pm");
-//        horario.setDateTime("M", "8am");
-//        horario.setDateTime("M", "10am");
-//        horario.setDateTime("I", "10am");
-//        horario.setDateTime("I", "1pm");
-//        horario.setDateTime("J", "8am");
-//        horario.setDateTime("J", "10am");
-//        horario.setDateTime("J", "1pm");
-//        horario.setDateTime("J", "3pm");
-//        horario.setDateTime("V", "1pm");
-
-
         horario.setIniLunes(8);
         horario.setFinLunes(11);
         horario.setIniMartes(13);

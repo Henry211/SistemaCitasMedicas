@@ -30,12 +30,12 @@ public class Horario {
 
     public ArrayList<String> calcArrayHrs(int ini, int fin) {
         
-        int tot, iniAux;
+        int tot, finAux;
         ArrayList<String> arreglo = new ArrayList<String>();
         tot = fin - ini;
-        iniAux = ini;
+        finAux = fin;
         for (int n = 0; n <= tot; n++) {
-            arreglo.add(horasDia.get(iniAux++));
+            arreglo.add(horasDia.get(finAux--));
         }
 
         return arreglo;

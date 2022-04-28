@@ -57,7 +57,7 @@
                     <% while (i != 0) { %>
                     <% i--;%>
                     <div class="cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&dt=2022-04-23T09:00">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
                             <%= horario.getLunes().get(i).toString()%>
                         </a>
                     </div>
