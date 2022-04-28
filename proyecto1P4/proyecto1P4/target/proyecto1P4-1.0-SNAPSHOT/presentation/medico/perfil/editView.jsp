@@ -83,7 +83,7 @@
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 25px;">Lunes</label>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="iniL" class="form-select day" aria-label="Default select example">
                                             <option>Hora de inicio</option>
                                             <option>8am</option>
                                             <option>9am</option>
@@ -95,7 +95,7 @@
                                         </select>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="finL" class="form-select day" aria-label="Default select example">
                                             <option>Hora de finalización</option>
                                             <option>9am</option>
                                             <option>10am</option>
@@ -118,7 +118,7 @@
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 20px;">Martes</label>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="iniM" class="form-select day" aria-label="Default select example">
                                             <option>Hora de inicio</option>
                                             <option>8am</option>
                                             <option>9am</option>
@@ -130,7 +130,7 @@
                                         </select>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="finM" class="form-select day" aria-label="Default select example">
                                             <option>Hora de finalización</option>
                                             <option>9am</option>
                                             <option>10am</option>
@@ -153,7 +153,7 @@
                                         <label class="form-check-label day" for="inlineCheckbox1">Miercoles</label>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="iniI" class="form-select day" aria-label="Default select example">
                                             <option>Hora de inicio</option>
                                             <option>8am</option>
                                             <option>9am</option>
@@ -165,7 +165,7 @@
                                         </select>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="finI" class="form-select day" aria-label="Default select example">
                                             <option>Hora de finalización</option>
                                             <option>9am</option>
                                             <option>10am</option>
@@ -188,7 +188,7 @@
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 23px;">Jueves</label>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="iniJ" class="form-select day" aria-label="Default select example">
                                             <option>Hora de inicio</option>
                                             <option>8am</option>
                                             <option>9am</option>
@@ -200,7 +200,7 @@
                                         </select>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="finJ" class="form-select day" aria-label="Default select example">
                                             <option>Hora de finalización</option>
                                             <option>9am</option>
                                             <option>10am</option>
@@ -223,7 +223,7 @@
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 20px;">Viernes</label>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="iniV" class="form-select day" aria-label="Default select example">
                                             <option>Hora de inicio</option>
                                             <option>8am</option>
                                             <option>9am</option>
@@ -235,7 +235,7 @@
                                         </select>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="finV" class="form-select day" aria-label="Default select example">
                                             <option>Hora de finalización</option>
                                             <option>9am</option>
                                             <option>10am</option>
@@ -258,7 +258,7 @@
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 18px;">Sabado</label>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="iniS" class="form-select day" aria-label="Default select example">
                                             <option>Hora de inicio</option>
                                             <option>8am</option>
                                             <option>9am</option>
@@ -270,7 +270,7 @@
                                         </select>
                                     </div>
                                     <div class="child-day">
-                                        <select class="form-select day" aria-label="Default select example">
+                                        <select name="finS" class="form-select day" aria-label="Default select example">
                                             <option>Hora de finalización</option>
                                             <option>9am</option>
                                             <option>10am</option>

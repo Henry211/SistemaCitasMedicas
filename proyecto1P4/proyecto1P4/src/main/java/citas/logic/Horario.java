@@ -25,6 +25,9 @@ public class Horario {
     int iniViernes, finViernes;
     ArrayList<String> sabado = new ArrayList<String>();
     int iniSabado, finSabado;
+    
+    int frecuencia;
+    Medico medico;
 
     ArrayList<String> horasDia = new ArrayList<String>();
 
@@ -96,6 +99,30 @@ public class Horario {
         horasDia.add(a16);
         horasDia.add(a17);
 
+    }
+    
+     public int getFrecuencia() {
+        return frecuencia;
+    }
+
+    public void setFrecuencia(int frecuencia) {
+        this.frecuencia = frecuencia;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public ArrayList<String> getHorasDia() {
+        return horasDia;
+    }
+
+    public void setHorasDia(ArrayList<String> horasDia) {
+        this.horasDia = horasDia;
     }
 
     public int getIniLunes() {

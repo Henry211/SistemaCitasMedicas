@@ -7,6 +7,7 @@ package citas.data;
 import citas.logic.Cita;
 import citas.logic.Ciudad;
 import citas.logic.Especialidad;
+import citas.logic.Horario;
 import citas.logic.Horarios;
 import citas.logic.Medico;
 import java.sql.PreparedStatement;
@@ -25,15 +26,14 @@ public class HorarioDao {
         this.db = db;
     }
     
-     public void create(Horarios u) throws Exception {
-        String sql = "insert into horario(id_doctor,day,hora_comienzo,hora_finaliza,frecuencia) "
-                + "values(?,?,?,?,?)";
+     public void create(Horario u) throws Exception {
+
+        String sql = "insert into horario(id_doctor,comienzo_lunes,finaliza_lunes,comienzo_martes,finaliza_martes,comienzo_miercoles,finaliza_miercoles,comienzo_jueves,finaliza_jueves,comienzo_viernes,finaliza_viernes,comienzo_sabado,finaliza_sabado,frecuencia) "
+                + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1, u.getIdmedico().getCedula());
-        stm.setInt(2, u.getDia());
-        stm.setInt(3, u.getHora_comienzo());
-        stm.setInt(4, u.getHora_finaliza());
-        stm.setInt(5, u.getFrecuencia());
+//        stm.setString(1, u.getIdmedico().getCedula());
+//        stm.setInt(2, u.getDia());
+        
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Horario ya existe");
