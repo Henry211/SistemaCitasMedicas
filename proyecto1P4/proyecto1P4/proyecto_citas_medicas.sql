@@ -40,10 +40,8 @@ insert into administrador(nombre, idAdministrador,clave) values ('Carolina Herna
 -- Table `usuarios2`.`localidad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuarios2`.`localidad` (
-  `idLocalidad` INT auto_increment NOT NULL,
-  `provincia` VARCHAR(45) NULL DEFAULT NULL,
-  `canton` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`idLocalidad`));
+  `provincia` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`provincia`));
 
 
 -- -----------------------------------------------------
@@ -53,24 +51,24 @@ CREATE TABLE IF NOT EXISTS `usuarios2`.`medico` (
   `nombre` VARCHAR(45) NOT NULL,
   `idMedicos` VARCHAR(45) NOT NULL,
   `clave` VARCHAR(45) NOT NULL,
-  `estado` VARCHAR(20),
-  `localidad_idLocalidad` INT,
-  `id_especialidad` INT ,
+  `estado` VARCHAR(20) ,
+  `nombre_provincia`VARCHAR(45) ,
+  `nombre_especialidad` VARCHAR(45) ,
   PRIMARY KEY (`idMedicos`),
   CONSTRAINT `medico_ibfk_1`
-    FOREIGN KEY (`localidad_idLocalidad`)
-    REFERENCES `usuarios2`.`localidad` (`idLocalidad`),
+    FOREIGN KEY (`nombre_provincia`)
+    REFERENCES `usuarios2`.`localidad` (`provincia`),
      CONSTRAINT `medico_ibfk_2`
-    FOREIGN KEY (`id_especialidad`)
-    REFERENCES `usuarios2`.`especialidad` (`idEspecialidad`));
+    FOREIGN KEY (`nombre_especialidad`)
+    REFERENCES `usuarios2`.`especialidad` (`especialidad`));
 
-CREATE INDEX `localidad_idLocalidad` ON `usuarios2`.`medico` (`localidad_idLocalidad` ASC) VISIBLE;
-CREATE INDEX `id_especialidad` ON `usuarios2`.`medico` (`id_especialidad` ASC) VISIBLE;
+CREATE INDEX `nombre_provincia` ON `usuarios2`.`medico` (`nombre_provincia` ASC) VISIBLE;
+CREATE INDEX `nombre_especialidad` ON `usuarios2`.`medico` (`nombre_especialidad` ASC) VISIBLE;
 
-insert into medico(nombre,idMedicos,clave,estado,localidad_idLocalidad,id_especialidad) values
+insert into medico(nombre,idMedicos,clave,estado,nombre_provincia,nombre_especialidad) values
 ('Martín Elías Acosta','111','11111',null,null,null);
 
-insert into medico(nombre,idMedicos,clave,estado,localidad_idLocalidad,id_especialidad) values
+insert into medico(nombre,idMedicos,clave,estado,nombre_provincia,nombre_especialidad) values
 ('Ana María de la Peña','2234','2222',null,null,null);
 
 
@@ -102,7 +100,7 @@ insert into paciente(nombre,cedula,clave) values ('Maria','123','1111');
 CREATE TABLE IF NOT EXISTS `usuarios2`.`cita` (
   `idCitas` INT auto_increment NOT NULL,
   `estado` VARCHAR(20) NOT NULL,
-  `fecha` DATETIME,
+  `fecha` DATE,
   `Paciente_cedula` VARCHAR(45) NOT NULL,
   `Medico_idMedico` VARCHAR(45)  NOT NULL,
   PRIMARY KEY (`idCitas`),
@@ -122,20 +120,23 @@ CREATE INDEX `Paciente_cedula` ON `usuarios2`.`cita` (`Paciente_cedula` ASC) VIS
 -- Table `usuarios2`.`especialidad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuarios2`.`especialidad` (
-  `idEspecialidad` INT auto_increment NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idEspecialidad`));
+  `especialidad` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`especialidad`));
 
 -- -----------------------------------------------------
 -- Table `usuarios2`.`Horario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuarios2`.`horario` (
   `numero` INT auto_increment NOT NULL,
-  `doctor` VARCHAR(45) NOT NULL,
+  `id_doctor` VARCHAR(45) NOT NULL,
    day int,
-   hora_comienso int,
+   hora_comienzo int,
    hora_finaliza int,
-  PRIMARY KEY (`numero`));
+   frecuencia int,
+  PRIMARY KEY (`numero`),
+  CONSTRAINT `horario_ibfk_1`
+  FOREIGN KEY (`id_doctor`)
+  REFERENCES `usuarios2`.`medico` (`idMedicos`));
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
