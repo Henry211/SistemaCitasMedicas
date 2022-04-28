@@ -1,17 +1,24 @@
 
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="citas.logic.Medico"%>
 <%@page import="citas.logic.Horario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <% Horario horario = (Horario) session.getAttribute("horarioCita"); %>
+
 <% Medico medico = (Medico) session.getAttribute("medicoSelected");%>
+
+<% ArrayList<String> citasOcupadas = (ArrayList<String>) session.getAttribute("citasOcupadas");%>
+
 <% String lunes = (String) session.getAttribute("lunes"); %>
 <% String martes = (String) session.getAttribute("martes"); %>
 <% String miercoles = (String) session.getAttribute("miercoles"); %>
 <% String jueves = (String) session.getAttribute("jueves"); %>
 <% String viernes = (String) session.getAttribute("viernes"); %>
-<% String sabado = (String) session.getAttribute("sabado"); %>
+<% String sabado = (String) session.getAttribute("sabado");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,49 +31,53 @@
         <%@ include file="/Header.jsp" %>
     </head>
     <body>
-        
-        
+
+
 
         <main class="contenedor">
-            
+
             <form method="GET" name="Update" action="/proyecto1P4/presentation/medico/calendario/next">
-            <div class="btn-date">
-                <button type="submit" class="btn btn-primary">Next Week</button>
-            </div>
-        </form>
+                <div class="btn-date">
+                    <button type="submit" class="btn btn-primary">Next Week</button>
+                </div>
+            </form>
 
 
             <section class="dias">
                 <div class="dias_item">
-                    <%= lunes %>
+                    <%= lunes%>
                 </div>
                 <div class="dias_item">
-                    <%= martes %>
+                    <%= martes%>
                 </div>
                 <div class="dias_item">
-                    <%= miercoles %>
+                    <%= miercoles%>
                 </div>
                 <div class="dias_item">
-                    <%= jueves %>
+                    <%= jueves%>
                 </div>
                 <div class="dias_item">
-                    <%= viernes %>
+                    <%= viernes%>
                 </div>
                 <div class="dias_item">
-                    <%= sabado %>
+                    <%= sabado%>
                 </div>
             </section>
 
             <section class="calendario">
-                <% if( horario != null){ %>
+                <% if (horario != null) { %>
                 <div class="calendario_dia">
 
-                    
+
                     <% int i = horario.getLunes().size(); %>
                     <% while (i != 0) { %>
                     <% i--;%>
                     <div class="cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
+                        <a class="item"
+                           <% if (lunes == "Lunes") { %>
+                           style="pointer-events: none;"
+                           <% }%>
+                           href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
                             <%= horario.getLunes().get(i).toString()%>
                         </a>
                     </div>
@@ -78,7 +89,16 @@
                     <% while (i2 != 0) { %>
                     <% i2--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=martes%>&hora=<%=horario.getMartes().get(i2).toString()%>">
+                        <a class="item"
+                          <% int b2 = citasOcupadas.size() - 1; %>
+                           <% String date2 = miercoles + " " + horario.getMiercoles().get(i2).toString(); %>
+                           <% while (b2 != 0) { %>
+                           <% String cita = citasOcupadas.get(b2); %>                                
+                           <% if (martes == "Martes" || date2.equals(cita)) { %>
+                           style="pointer-events: none;"
+                           <% }b2--; %>                          
+                           <% }%>
+                           href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=martes%>&hora=<%=horario.getMartes().get(i2).toString()%>">
                             <%= horario.getMartes().get(i2).toString()%>
                         </a>
                     </div>
@@ -89,7 +109,16 @@
                     <% while (i3 != 0) { %>
                     <% i3--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=miercoles%>&hora=<%=horario.getMiercoles().get(i3).toString()%>">
+                        <a class="item"
+                           <% int b3 = citasOcupadas.size() - 1; %>
+                           <% String date3 = miercoles + " " + horario.getMiercoles().get(i3).toString(); %>
+                           <% while (b3 != 0) { %>
+                           <% String cita = citasOcupadas.get(b3); %>                                
+                           <% if (miercoles == "Miercoles" || date3.equals(cita)) { %>
+                           style="pointer-events: none;"
+                           <% }b3--; %>                          
+                           <% }%>
+                           href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=miercoles%>&hora=<%=horario.getMiercoles().get(i3).toString()%>">
                             <%= horario.getMiercoles().get(i3).toString()%>
                         </a>
                     </div>
@@ -98,10 +127,21 @@
                 </div>
                 <div class="calendario_dia">
                     <% int i4 = horario.getJueves().size(); %>
+
                     <% while (i4 != 0) { %>
                     <% i4--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=jueves%>&hora=<%=horario.getJueves().get(i4).toString()%>">
+                        <a class="item"
+                           <% int bou = citasOcupadas.size() - 1; %>
+                           <% String date = jueves + " " + horario.getJueves().get(i4).toString(); %>
+                           <% while (bou != 0) { %>
+                           <% String cita = citasOcupadas.get(bou); %>                                
+                           <% if (jueves == "Jueves" || date.equals(cita)) { %>
+                           style="pointer-events: none;"
+                           <% }bou--; %>                          
+                           <% }%>
+
+                           href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=jueves%>&hora=<%=horario.getJueves().get(i4).toString()%>">
                             <%= horario.getJueves().get(i4).toString()%>
                         </a>
                     </div>
@@ -112,7 +152,11 @@
                     <% while (i5 != 0) { %>
                     <% i5--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=viernes%>&hora=<%=horario.getViernes().get(i5).toString()%>">
+                        <a class="item"
+                           <% if (viernes == "Viernes") { %>
+                           style="pointer-events: none;"
+                           <% }%>
+                           href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=viernes%>&hora=<%=horario.getViernes().get(i5).toString()%>">
                             <%= horario.getViernes().get(i5).toString()%>
                         </a>
                     </div>
@@ -123,17 +167,21 @@
                     <% while (i6 != 0) { %>
                     <% i6--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=sabado%>&hora=<%=horario.getSabado().get(i6).toString()%>">
+                        <a class="item"
+                           <% if (sabado == "Sabado") { %>
+                           style="pointer-events: none;"
+                           <% }%>
+                           href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=sabado%>&hora=<%=horario.getSabado().get(i6).toString()%>">
                             <%= horario.getSabado().get(i6).toString()%>
                         </a>
                     </div>
                     <% }%>
                 </div>
-                <% } %>
+                <% }%>
 
             </section>
         </main>
-        
+
 
         </br>
 

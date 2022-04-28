@@ -126,6 +126,23 @@ public class Service {
         citDao.create(cita);
     }
     
+    public ArrayList<String> verifyCitasOcupadas(String idMedico) throws Exception{
+        
+        ArrayList<String> str = new ArrayList<String>();
+        ArrayList<Cita> citas = citDao.readByMedico(idMedico);
+        
+        int i = citas.size();
+        while(i != 0){
+            i--;
+            String value = citas.get(i).getDateStr() + " " + citas.get(i).getHoraStr();
+            System.out.println("value->"+value);
+            str.add(value);
+            
+        }
+        
+        return str;
+    }
+    
     public Paciente findPaciente(String str) throws Exception{
         return pDao.find(str);
     }

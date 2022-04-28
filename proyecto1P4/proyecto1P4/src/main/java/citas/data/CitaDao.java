@@ -50,6 +50,7 @@ public class CitaDao {
         return resultado;
     }
 
+    
     public ArrayList<Cita> readByMedico(String cedula) throws Exception {
         ArrayList<Cita> resultado = new ArrayList<>();
         String sql = "select * from cita c inner join paciente p on c.Paciente_cedula= p.cedula "

@@ -62,7 +62,7 @@
                 <div class="row">
 
                     <% int i = medicos.size(); %>
-                    <% do { %>
+                    <%  while (i != 0) { %>
                     <% i--;%>
 
                     <div class="col-md-4">
@@ -88,7 +88,7 @@
                         </form>
                     </div>
 
-                    <% } while (i != 0);%>
+                    <% }%>
 
 
                 </div>

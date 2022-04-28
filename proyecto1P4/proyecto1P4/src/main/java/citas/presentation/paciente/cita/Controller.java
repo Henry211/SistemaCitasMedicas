@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -77,15 +78,11 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
 
         Paciente paciente = (Paciente) session.getAttribute("paciente");
-        Medico medicoTest = new Medico("111","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
         String idMedico = (String) request.getParameter("mid");
         Medico medico = service.findMedico(idMedico);
-        System.out.println("MedicoSelected-->"+idMedico);
-        
         
         Cita cita = new Cita("Activo",(String)request.getParameter("day"),(String)request.getParameter("hora"),paciente,medico);
-        
-     
+    
       
         session.setAttribute("idMed", request.getParameter("mid"));
         session.setAttribute("dateTime", request.getParameter("day"));
@@ -99,17 +96,18 @@ public class Controller extends HttpServlet {
         HttpSession session = request.getSession(true);
         Service service = Service.instance();
         
-        String id = request.getParameter("mid");// <--- Id del Médico
-        System.out.println("Medico--->" + id);
-        
-        
-        Horario horario = service.findHorario(id);//----Cargar aquí horario de Medico
+        String id = request.getParameter("mid");// <--- Id del Médico        
+        Horario horario = service.findHorario(id);//---- horario de Medico
         horario.calcDias();
         
-        
+        ArrayList<String> citasOcupadas = new ArrayList<String>();
         Medico medico = service.findMedico(id);
+        citasOcupadas = service.verifyCitasOcupadas(id);
+        System.out.println("citasOcupadas size: "+citasOcupadas.size());
+        System.out.println("citasOcupadas 0 elements: "+citasOcupadas.get(0));
         session.setAttribute("medicoSelected", medico);
         session.setAttribute("horarioCita", horario);
+        session.setAttribute("citasOcupadas",citasOcupadas);
         
         
         
@@ -130,7 +128,7 @@ public class Controller extends HttpServlet {
                 sabado = "Sabado "+ today.plus(5, ChronoUnit.DAYS).getDayOfMonth();
                 break;
             case "Tuesday":
-                lunes = "Lunes " + today.minus(1,ChronoUnit.DAYS).getDayOfMonth();
+                lunes = "Lunes";
                 martes = "Martes "+ today.getDayOfMonth();
                 miercoles = "Miercoles "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
                 jueves = "Jueves "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
@@ -138,17 +136,17 @@ public class Controller extends HttpServlet {
                 sabado = "Sabado "+ today.plus(4, ChronoUnit.DAYS).getDayOfMonth();
                 break;
             case "Wednesday":
-                lunes = "Lunes " + today.minus(2,ChronoUnit.DAYS).getDayOfMonth();
-                martes = "Martes " + today.minus(1,ChronoUnit.DAYS).getDayOfMonth();
+                lunes = "Lunes";
+                martes = "Martes";
                 miercoles = "Miercoles "+ today.getDayOfMonth();
                 jueves = "Jueves "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
                 viernes = "Viernes "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
                 sabado = "Sabado "+ today.plus(3, ChronoUnit.DAYS).getDayOfMonth();
                 break;
             case "Thursday":
-                lunes = "Lunes " + today.minus(3,ChronoUnit.DAYS).getDayOfMonth();
-                martes = "Martes " + today.minus(2,ChronoUnit.DAYS).getDayOfMonth();
-                miercoles = "Miercoles " + today.minus(1,ChronoUnit.DAYS).getDayOfMonth();
+                lunes = "Lunes";
+                martes = "Martes";
+                miercoles = "Miercoles";
                 jueves = "Jueves "+ today.getDayOfMonth();
                 viernes = "Viernes "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
                 sabado = "Sabado "+ today.plus(2, ChronoUnit.DAYS).getDayOfMonth();
@@ -156,17 +154,17 @@ public class Controller extends HttpServlet {
             case "Friday":
                 lunes = "Lunes";
                 martes = "Martes";
-                miercoles = "Miercoles " + today.minus(2,ChronoUnit.DAYS).getDayOfMonth();
-                jueves = "Jueves " + today.minus(1,ChronoUnit.DAYS).getDayOfMonth();
+                miercoles = "Miercoles";
+                jueves = "Jueves";
                 viernes = "Viernes "+ today.getDayOfMonth();
                 sabado = "Sabado "+ today.plus(1, ChronoUnit.DAYS).getDayOfMonth();
                 break;
             case "Saturday":
-                lunes = "Lunes " + today.minus(5,ChronoUnit.DAYS).getDayOfMonth();
-                martes = "Martes " + today.minus(4,ChronoUnit.DAYS).getDayOfMonth();
-                miercoles = "Miercoles " + today.minus(3,ChronoUnit.DAYS).getDayOfMonth();
-                jueves = "Jueves " + today.minus(2,ChronoUnit.DAYS).getDayOfMonth();
-                viernes = "Viernes " + today.minus(1,ChronoUnit.DAYS).getDayOfMonth();
+                lunes = "Lunes";
+                martes = "Martes";
+                miercoles = "Miercoles";
+                jueves = "Jueves";
+                viernes = "Viernes";
                 sabado = "Sabado "+ today.getDayOfMonth();
                 break;
         }

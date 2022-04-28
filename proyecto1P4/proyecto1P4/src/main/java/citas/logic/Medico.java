@@ -1,6 +1,7 @@
 package citas.logic;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,6 +18,7 @@ public class Medico implements Serializable {
     Especialidad nombre_especialidad;
     String foto;
     Horario horario;
+    ArrayList<String> citasGuardadas = new ArrayList<String>();
 
     public Medico() {
     }
@@ -26,9 +28,9 @@ public class Medico implements Serializable {
         this.cedula = cedula;
         this.nombre = nombre;
         this.clave = clave;
-       
+
     }
-    
+
     public Medico(String cedula, String nombre, String clave, String estado) {
 
         this.cedula = cedula;
@@ -45,7 +47,7 @@ public class Medico implements Serializable {
         this.estado = estado;
         this.nombre_ciudad = new Ciudad(nombre_ciudad);
         this.nombre_especialidad = new Especialidad(nombre_especialidad);
-        
+
     }
 
     public Horario getHorario() {
@@ -55,20 +57,22 @@ public class Medico implements Serializable {
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
-    
-    
 
- 
+    public ArrayList<String> getCitasGuardadas() {
+        return citasGuardadas;
+    }
 
-    public void setCiudad(String c){
+    public void setCitasGuardadas(ArrayList<String> citasGuardadas) {
+        this.citasGuardadas = citasGuardadas;
+    }
+
+    public void setCiudad(String c) {
         this.nombre_ciudad = new Ciudad(c);
     }
-    
-    public void setEspecialidad(String c){
+
+    public void setEspecialidad(String c) {
         this.nombre_especialidad = new Especialidad(c);
     }
-    
-    
 
     public Medico(String cedula, String clave) {
         this.cedula = cedula;
