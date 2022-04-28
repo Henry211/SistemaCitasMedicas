@@ -51,14 +51,14 @@ public class HorarioDao {
         }
     }
      
-     public Horarios read(Horarios u) throws Exception {
+     public Horario read(Horarios u) throws Exception {
         String sql = "select * from horario c where idMedicos=? ";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getIdmedico().getCedula());
       
         ResultSet rs = db.executeQuery(stm);
         if (rs.next()) {
-            Horarios c = from(rs, "c");
+            Horario c = from(rs, "c");
             return c;
         } else {
             throw new Exception("medico existente");
@@ -70,18 +70,18 @@ public class HorarioDao {
         try {
             Horario c= new Horario();
             c.setMedico((Medico) rs.getObject(alias+".id_doctor"));
-            c.setIniLunes(rs.getInt(alias+"comienzo_lunes"));
-            c.setFinLunes(rs.getInt(alias+"finaliza_lunes"));
-            c.setIniMartes(rs.getInt(alias+"comienzo_martes"));
-            c.setFinMartes(rs.getInt(alias+"finaliza_martes"));
-            c.setIniMiercoles(rs.getInt(alias+"comienzo_miercoles"));
-            c.setFinMiercoles(rs.getInt(alias+"finaliza_miercoles"));
-            c.setIniJueves(rs.getInt(alias+"comienzo_jueves"));
-            c.setFinJueves(rs.getInt(alias+"finaliza_jueves"));
-            c.setIniViernes(rs.getInt(alias+"comienzo_viernes"));
-            c.setFinViernes(rs.getInt(alias+"finaliza_viernes"));
-            c.setIniViernes(rs.getInt(alias+"comienzo_sabado"));
-            c.setFinViernes(rs.getInt(alias+"finaliza_sabado"));
+            c.setIniLunes(rs.getInt(alias+".comienzo_lunes"));
+            c.setFinLunes(rs.getInt(alias+".finaliza_lunes"));
+            c.setIniMartes(rs.getInt(alias+".comienzo_martes"));
+            c.setFinMartes(rs.getInt(alias+".finaliza_martes"));
+            c.setIniMiercoles(rs.getInt(alias+".comienzo_miercoles"));
+            c.setFinMiercoles(rs.getInt(alias+".finaliza_miercoles"));
+            c.setIniJueves(rs.getInt(alias+".comienzo_jueves"));
+            c.setFinJueves(rs.getInt(alias+".finaliza_jueves"));
+            c.setIniViernes(rs.getInt(alias+".comienzo_viernes"));
+            c.setFinViernes(rs.getInt(alias+".finaliza_viernes"));
+            c.setIniViernes(rs.getInt(alias+".comienzo_sabado"));
+            c.setFinViernes(rs.getInt(alias+".finaliza_sabado"));
             c.setFrecuencia(rs.getInt(alias+".frecuencia"));
             return c;
         } catch (SQLException ex) {
