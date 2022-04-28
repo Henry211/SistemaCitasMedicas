@@ -65,9 +65,7 @@ public class Controller extends HttpServlet {
         Medico medicoTest = new Medico("98798","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
         Cita cita = new Cita(14,"Activo",(String)request.getParameter("day"),(String)request.getParameter("hora"),pacienteTest,medicoTest);
         
-        System.out.println("day->"+(String)request.getParameter("day"));
-        System.out.println("hora->"+(String)request.getParameter("hora"));
-        
+     
         HttpSession session = request.getSession(true);
         session.setAttribute("idMed", request.getParameter("mid"));
         session.setAttribute("dateTime", request.getParameter("day"));

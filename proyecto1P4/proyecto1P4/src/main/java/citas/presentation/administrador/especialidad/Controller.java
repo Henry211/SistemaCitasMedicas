@@ -105,13 +105,16 @@ public class Controller extends HttpServlet {
 
         Service service = Service.instance();
         String name = request.getParameter("nombre");
+        HttpSession session = request.getSession(true);
         String viewUrl = "";
         try {
 
             Ciudad ciudad = new Ciudad(name);
             service.createCiudad(ciudad);
+            ArrayList<Ciudad> ciudades = service.findAllCyties();
+            session.setAttribute("ciudades", ciudades);
 
-            viewUrl = "/presentation/administrador/especialidades/view.jsp";
+            viewUrl = "/presentation/administrador/ciudad/view.jsp";
 
         } catch (Exception e) {
 
