@@ -101,7 +101,7 @@
 
                    
                     <div class="cita">
-                        Hora Inicio
+                        Hora de Inicio
                     </div>
                    
 
@@ -110,7 +110,26 @@
 
                    
                     <div class="cita">
-                        8am
+                        <% int dato = horario.getIniLunes(); %>
+                        <% if (dato != 0){ %>
+                         <%= horario.getIniLunes() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
+                    </div>
+                   
+
+                </div>
+                <div class="calendario_dia">
+
+                   
+                    <div class="cita">
+                        <% int dato5 = horario.getIniMartes(); %>
+                        <% if (dato5 != 0){ %>
+                         <%= horario.getIniMartes() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                    
 
@@ -118,14 +137,24 @@
                 <div class="calendario_dia">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato4 = horario.getIniMiercoles(); %>
+                        <% if (dato4 != 0){ %>
+                         <%= horario.getIniMiercoles() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                     
                 </div>
                 <div class="calendario_dia">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato3 = horario.getIniJueves(); %>
+                        <% if (dato3 != 0){ %>
+                         <%= horario.getIniJueves() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                    
 
@@ -133,24 +162,29 @@
                 <div class="calendario_dia">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato2 = horario.getIniViernes(); %>
+                        <% if (dato2 != 0){ %>
+                         <%= horario.getIniViernes() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
+                    </div>
+                   
+
+                </div>
+                <div class="calendario_dia">
+                    
+                    <div class=" cita">
+                        <% int dato0 = horario.getIniSabado(); %>
+                        <% if (dato0 != 0){ %>
+                         <%= horario.getIniSabado() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                    
                 </div>
-                <div class="calendario_dia">
-                    
-                    <div class=" cita">
-                        8am
-                    </div>
-                    
-                </div>
-                <div class="calendario_dia">
-                    
-                    <div class=" cita">
-                        8am
-                    </div>
-                    
-                </div>
+
                 
 
             </section>
@@ -172,7 +206,12 @@
 
                    
                     <div class="cita">
-                        8am
+                        <% int dato7 = horario.getFinLunes(); %>
+                        <% if (dato7 != 0){ %>
+                        <%= horario.getFinLunes() %>
+                        <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                    
 
@@ -180,14 +219,25 @@
                 <div class="calendario_dia fin">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato6 = horario.getFinMartes(); %>
+                        <% if (dato6 != 0){ %>
+                        <%= horario.getFinMartes() %>
+                        <% }else{ %>
+                            ...
+                        <% } %>
+                        
                     </div>
                     
                 </div>
                 <div class="calendario_dia fin">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato14 = horario.getFinMiercoles(); %>
+                        <% if (dato14 != 0){ %>
+                         <%= horario.getFinMiercoles() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                    
 
@@ -195,21 +245,36 @@
                 <div class="calendario_dia fin">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato13 = horario.getFinJueves(); %>
+                        <% if (dato13 != 0){ %>
+                         <%= horario.getFinJueves() %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                    
                 </div>
                 <div class="calendario_dia fin">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato12 = horario.getFinViernes(); %>
+                        <% if (dato12 != 0){ %>
+                         <%= dato12 %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                     
                 </div>
                 <div class="calendario_dia fin">
                     
                     <div class=" cita">
-                        8am
+                        <% int dato09 = horario.getFinSabado(); %>
+                        <% if (dato09 != 0){ %>
+                         <%= dato09 %>
+                         <% }else{ %>
+                            ...
+                        <% } %>
                     </div>
                     
                 </div>

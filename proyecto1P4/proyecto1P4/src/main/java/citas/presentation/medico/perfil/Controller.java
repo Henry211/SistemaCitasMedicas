@@ -62,11 +62,11 @@ public class Controller extends HttpServlet {
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
 
-    public String show(HttpServletRequest request) {
+    public String show(HttpServletRequest request) throws Exception {
         return this.showAction(request);
     }
 
-    public String showAction(HttpServletRequest request) {
+    public String showAction(HttpServletRequest request) throws Exception {
 //        Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
@@ -77,7 +77,9 @@ public class Controller extends HttpServlet {
         System.out.println(me.getClave());
         System.out.println(me.getCedula());
 
-        
+        Horario horario = service.findHorario("999");
+        horario.calcDias();
+        session.setAttribute("horario", horario);
         //request.setAttribute("model", model);
         try {
 
