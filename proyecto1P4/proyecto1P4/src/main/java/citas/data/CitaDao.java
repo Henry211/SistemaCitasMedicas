@@ -4,14 +4,10 @@
  */
 package citas.data;
 import citas.logic.Cita;
-import citas.logic.Ciudad;
-import citas.logic.Medico;
-import citas.logic.Paciente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class CitaDao {
     Database db;
@@ -73,7 +69,7 @@ public class CitaDao {
         }
     }
     public void actualizarEstado(Cita u) throws Exception{
-        String sql="update cita set estado=? where idCitas=?";
+        String sql="update cita SET estado=? where idCitas=?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getEstado());  
         stm.setInt(1, u.getIdCita());
@@ -83,11 +79,10 @@ public class CitaDao {
         }        
     }
     
-    public Long consultaEstado(String estado,int idCita) throws Exception{
-        String sql="select estado from cita c where idCitas=?";
+    public Long consultaEstado(int idCita) throws Exception{
+        String sql="select from idCita c where idCita=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1, estado);
-        stm.setInt(2, idCita);
+        stm.setInt(1, idCita);
         ResultSet rs =  db.executeQuery(stm);
         if (rs.next()) {
             return rs.getLong("c.estado");
@@ -97,14 +92,23 @@ public class CitaDao {
         }
     }
     
- 
-        
-    public String cambiarFecha(int idCedula, String dia,String hora) throws Exception{
-        String sql="update cita set dia=?,hora=? where Paciente_cedula=?";
+    public String cambiarEstado(int idCedula, String cambioEstado) throws Exception{
+        String sql="UPDATE idCedula SET estado=? WHERE idCedula=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1,dia);
-        stm.setString(2,hora);
-        stm.setInt(3, idCedula);
+        stm.setString(1, cambioEstado);
+        stm.setInt(2, idCedula);
+        int count=db.executeUpdate(stm);
+        if (count==0){
+            throw new Exception("Cita no existe");
+        }
+        return "Estado actualizado exitosamente";
+    }
+        
+    public String cambiarFecha(int idCedula, String cambioFecha) throws Exception{
+        String sql="UPDATE idCedula SET fecha=? WHERE idCedula=?";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setString(1, cambioFecha);
+        stm.setInt(2, idCedula);
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Cita no existe");
@@ -112,37 +116,13 @@ public class CitaDao {
         return "Fecha actualizada exitosamente";
     }
         
-    
-    public ArrayList<Cita> citasXpaciente(String especialidad, String provincia) {
-        ArrayList<Cita> resultado = new ArrayList<>();
-        try {
-            String sql = "select *from cita c inner join medico m on c.Medico_idMedico= m.idMedicos "+
-          "inner join  paciente p on c.Paciente_cedula= p.cedula where m.nombre_especialidad=? "+
-                    "and m.nombre_provincia=? ";
-            PreparedStatement stm = db.prepareStatement(sql);
-            ResultSet rs = db.executeQuery(stm);
-            Cita c;
-            stm.setString(1,especialidad);
-           stm.setString(2,provincia);
-            while (rs.next()) {
-                c = from(rs, "c");
-                resultado.add(c);
-            }
-        } catch (SQLException ex) {
-        }
-        return resultado;
-    }
-    
-    
+        
     Cita from(ResultSet rs, String alias){
         try {
             Cita c= new Cita();
-            c.setIdCita(rs.getInt(alias+".idCitas"));
+            c.setIdCita(rs.getInt(alias+".IdCita"));
             c.setEstado(rs.getString(alias+".estado"));
-            c.setDateStr(rs.getString(alias+".dia"));
-            c.setHoraStr(rs.getString(alias+".hora"));
-            c.getPaciente().setCedula(rs.getString(alias+".Paciente_cedula"));
-            c.getMedico().setCedula(rs.getString(alias+".Medico_idMedico"));
+            c.setFecha((LocalDateTime) rs.getObject(alias+".fecha"));
             return c;
         } catch (SQLException ex) {
             return null;
