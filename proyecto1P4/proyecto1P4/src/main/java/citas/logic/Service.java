@@ -98,4 +98,8 @@ public class Service {
     public Horario findHorario(String idMEdico) throws Exception {
         return horDao.read(idMEdico);
     }
+    
+    public void updateHorario(Horario horario) throws Exception{
+        horDao.update(horario);
+    }
 }

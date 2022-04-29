@@ -68,17 +68,17 @@ public class Controller extends HttpServlet {
 
     public String showAction(HttpServletRequest request) {
 //        Model model = (Model) request.getAttribute("model");
-//        Service service = Service.instance();
-        //HttpSession session = request.getSession(true);
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
 
 //        Paciente paciente = (Paciente) session.getAttribute("paciente");
-        //Medico me = (Medico) session.getAttribute("medico");
-//        System.out.println(me.getNombre());
-//        System.out.println(me.getClave());
-//        System.out.println(me.getCedula());
-//
-//        model.setMedico(me);
-//        request.setAttribute("model", model);
+        Medico me = (Medico) session.getAttribute("medico");
+        System.out.println(me.getNombre());
+        System.out.println(me.getClave());
+        System.out.println(me.getCedula());
+
+        
+        //request.setAttribute("model", model);
         try {
 
             return "/presentation/medico/perfil/view.jsp";
@@ -311,17 +311,19 @@ public class Controller extends HttpServlet {
         horario.setFinViernes(horaToInteger(finV));
         horario.setIniSabado(horaToInteger(iniS));
         horario.setFinSabado(horaToInteger(finS));
+        horario.setFrecuencia(1);
         horario.calcDias();
         
         horario.setMedico(medico);      
-        medico.setHorario(horario);
+        //medico.setHorario(horario);
         
         medico.setCiudad(c);
         medico.setEspecialidad(e);
         medico.setEstado(estado);
         medico.setCedula(medicSession.getCedula());
 
-        service.createHorario(horario);
+        //service.createHorario(horario);
+        service.updateHorario(horario);
         service.editarMedico(medico);
 
         return "/presentation/medico/perfil/view.jsp";

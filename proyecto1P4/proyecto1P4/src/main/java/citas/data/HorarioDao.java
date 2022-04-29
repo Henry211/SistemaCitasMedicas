@@ -69,7 +69,7 @@ public class HorarioDao {
         String sql = "update horario set comienzo_lunes=?, finaliza_lunes=?,comienzo_martes=?,"+
                 "finaliza_martes=?,comienzo_miercoles=?, finaliza_miercoles=?,"+
                 "comienzo_jueves=?, finaliza_jueves=?, comienzo_viernes=?, finaliza_viernes=?,"+
-                "comienzo_sabado=?, finaliza_sabado=?, frecuencia=?"+
+                "comienzo_sabado=?, finaliza_sabado=?, frecuencia=? "+
                 "where id_doctor=?"; //por id de medico hace el cambio de horario
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setInt(1, u.getIniLunes());
@@ -85,8 +85,13 @@ public class HorarioDao {
         stm.setInt(11, u.getIniSabado());
         stm.setInt(12, u.getFinSabado());
         stm.setInt(13, u.getFrecuencia());
-        stm.setString(14, u.getMedico().getCedula());
+//        stm.setString(14, u.getMedico().getCedula());
+        //stm.setString(14, u.getMedico().getCedula());
+        stm.setObject(14, u.getMedico().getCedula());
+           System.out.println("CEdula->"+ u.getMedico().getCedula());
+           
         int count = db.executeUpdate(stm);
+           System.out.println("count->"+count);
         if (count == 0) {
             throw new Exception("Medico no existe");
         }
