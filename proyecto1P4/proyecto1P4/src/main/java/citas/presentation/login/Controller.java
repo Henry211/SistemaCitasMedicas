@@ -113,7 +113,7 @@ public class Controller extends HttpServlet {
                     Medico m = service.medicoLogin(real2);
                     session.setAttribute("medico", m);
     
-                    viewUrl = "/presentation/medico/perfil/view.jsp";
+                    viewUrl = "/presentation/medico/perfil/show";
                     break;
                 case "3":
                     Administrador real1 = new Administrador(usuario, password);

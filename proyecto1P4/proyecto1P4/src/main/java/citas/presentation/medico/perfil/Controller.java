@@ -73,6 +73,7 @@ public class Controller extends HttpServlet {
 
         Medico me = (Medico) session.getAttribute("medico");
        
+        System.out.println("CedulaHorario->"+me.getCedula());
         Horario horario = service.findHorario(me.getCedula());
         horario.calcDias();
         session.setAttribute("horario", horario);
