@@ -67,11 +67,13 @@
 
 
                                 <div class="row">
+                                    </ br>
+                                    
                                     <p>Horario: 
                                         
                                     </p>
                                     
-                                    <main class="contenedor">
+                                    <main class="contenedor horario-acomodar">
 
                                         
 

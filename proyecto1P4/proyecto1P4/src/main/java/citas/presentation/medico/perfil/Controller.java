@@ -77,7 +77,7 @@ public class Controller extends HttpServlet {
         System.out.println(me.getClave());
         System.out.println(me.getCedula());
 
-        Horario horario = service.findHorario("999");
+        Horario horario = service.findHorario(me.getCedula());
         horario.calcDias();
         session.setAttribute("horario", horario);
         //request.setAttribute("model", model);

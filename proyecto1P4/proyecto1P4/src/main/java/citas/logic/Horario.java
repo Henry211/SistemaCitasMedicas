@@ -37,7 +37,7 @@ public class Horario implements Serializable{
         int tot, finAux;
         ArrayList<String> arreglo = new ArrayList<String>();
         tot = fin - ini;
-        finAux = fin;
+        finAux = fin ;
         for (int n = 0; n <= tot; n++) {
             arreglo.add(horasDia.get(finAux--));
         }
@@ -79,6 +79,7 @@ public class Horario implements Serializable{
         String a15 = "3:00pm";
         String a16 = "4:00pm";
         String a17 = "5:00pm";
+        String a18 = "6:00pm";
 
         this.horasDia = new ArrayList<String>();
         horasDia.add(a0);
@@ -99,6 +100,7 @@ public class Horario implements Serializable{
         horasDia.add(a15);
         horasDia.add(a16);
         horasDia.add(a17);
+        horasDia.add(a18);
 
     }
     
