@@ -71,12 +71,8 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
 
-//        Paciente paciente = (Paciente) session.getAttribute("paciente");
         Medico me = (Medico) session.getAttribute("medico");
-        System.out.println(me.getNombre());
-        System.out.println(me.getClave());
-        System.out.println(me.getCedula());
-
+       
         Horario horario = service.findHorario(me.getCedula());
         horario.calcDias();
         session.setAttribute("horario", horario);

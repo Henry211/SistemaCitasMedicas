@@ -93,7 +93,7 @@ public class Controller extends HttpServlet {
         HttpSession session = request.getSession(true);
         String usuario = request.getParameter("cedulaField");
         String password = request.getParameter("claveField");
-        System.out.println("Datos " + usuario + "+" + password);
+        System.out.println("Datos: " + usuario + "+" + password);
         Service service = Service.instance();
         try {
             //*Paciente real = service.login(model.getUser().getCedula(),model.getUser().getClave());

@@ -4,7 +4,7 @@
 <%@page import="citas.logic.Medico"%>
 <%@page import="citas.logic.Horario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% Horario horario = (Horario) session.getAttribute("horario"); %>
+<% Horario horario = (Horario) session.getAttribute("horarioCita"); %>
 <% Medico medico = (Medico) session.getAttribute("medico");%>
 <% String lunes = (String) session.getAttribute("lunes"); %>
 <% String martes = (String) session.getAttribute("martes"); %>

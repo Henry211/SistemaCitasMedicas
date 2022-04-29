@@ -93,7 +93,8 @@ public class HorarioDao {
         int count = db.executeUpdate(stm);
            System.out.println("count->"+count);
         if (count == 0) {
-            throw new Exception("Medico no existe");
+            this.create(u);
+//            throw new Exception("Horario no existe, creandolo..");
         }
     }
      

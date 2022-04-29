@@ -97,7 +97,7 @@ public class Controller extends HttpServlet {
         
         
         
-        session.setAttribute("horario", horario);
+        session.setAttribute("horarioCita", horario);
         
         
         
