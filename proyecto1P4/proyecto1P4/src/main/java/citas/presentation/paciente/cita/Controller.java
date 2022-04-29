@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "PacienteCitaController", urlPatterns = {"/presentation/paciente/cita/make", "/presentation/paciente/cita/selectDate"})
+@WebServlet(name = "PacienteCitaController", urlPatterns = {"/presentation/paciente/cita/make","/presentation/paciente/cita/confirm", "/presentation/paciente/cita/selectDate"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -48,12 +48,29 @@ public class Controller extends HttpServlet {
             case "/presentation/paciente/cita/selectDate":
                viewUrl = this.selectDate(request);
                 break;
-            case " ":
-               //viewUrl = this.logout(request);
+            case "/presentation/paciente/cita/confirm":
+               viewUrl = this.confirm(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
+    
+    public String confirm(HttpServletRequest request) throws Exception{
+    
+        HttpSession session = request.getSession(true);        
+        Service service = Service.instance();
+        
+        String idMedico = (String) session.getAttribute("idMed");
+        String dateTime = (String) session.getAttribute("dateTime");
+        Cita cita = (Cita) session.getAttribute("citaConfirm");
+        
+        service.crearCita(cita);
+        
+        
+        
+        return "/presentation/paciente/citas/show";
+    }
+    
     
     public String makeCita(HttpServletRequest request){
         
@@ -64,9 +81,9 @@ public class Controller extends HttpServlet {
         //model.getCita().getMedico().setNombre(request.getAttribute("mid").toString());
         //model.getCita().setFecha(request.getAttribute("dt"));
                
-        Paciente pacienteTest = new Paciente("654654","PacienteName","password");
-        Medico medicoTest = new Medico("98798","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
-        Cita cita = new Cita(14,"Activo",(String)request.getParameter("day"),(String)request.getParameter("hora"),pacienteTest,medicoTest);
+        Paciente pacienteTest = new Paciente("123","PacienteName","password");
+        Medico medicoTest = new Medico("999","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
+        Cita cita = new Cita("Activo",(String)request.getParameter("day"),(String)request.getParameter("hora"),pacienteTest,medicoTest);
         
      
         HttpSession session = request.getSession(true);

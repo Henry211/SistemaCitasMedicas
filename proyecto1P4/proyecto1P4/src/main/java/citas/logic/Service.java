@@ -102,4 +102,17 @@ public class Service {
     public void updateHorario(Horario horario) throws Exception{
         horDao.update(horario);
     }
+   
+    public ArrayList<Cita> citaPaciente(String cedula) throws Exception{
+        return citDao.citasPaciente(cedula);
+    }
+    public ArrayList<Cita> readCitas(String cedula) throws Exception{
+        return citDao.read(cedula);
+    }
+    
+    public void crearCita(Cita cita) throws Exception{
+        citDao.create(cita);
+    }
+    
+    
 }

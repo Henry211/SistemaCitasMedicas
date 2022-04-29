@@ -49,7 +49,7 @@ public class Controller extends HttpServlet {
     }
     
     public String showAction(HttpServletRequest request) throws Exception {
-        Model model = (Model) request.getAttribute("model");
+
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
          

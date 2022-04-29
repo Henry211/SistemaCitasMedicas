@@ -31,6 +31,8 @@ public class Cita {
     
 
     public Cita() {
+        this.medico = new Medico();
+        this.paciente = new Paciente();
     }
 
     public Cita(int idCita, String estado, LocalDateTime fecha, Usuario idUsuario, Paciente paciente, Medico medico) {
@@ -43,6 +45,14 @@ public class Cita {
     }
     public Cita(int idCita, String estado, String fecha,String hora, Paciente paciente, Medico medico) {
         this.idCita = idCita;
+        this.estado = estado;
+        this.dateStr = fecha;
+        this.horaStr = hora;
+        this.paciente = paciente;
+        this.medico = medico;
+    }
+    public Cita(String estado, String fecha,String hora, Paciente paciente, Medico medico) {
+
         this.estado = estado;
         this.dateStr = fecha;
         this.horaStr = hora;

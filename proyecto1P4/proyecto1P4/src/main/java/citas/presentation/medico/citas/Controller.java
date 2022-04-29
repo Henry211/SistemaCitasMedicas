@@ -4,10 +4,15 @@
  */
 package citas.presentation.medico.citas;
 
+import citas.logic.Cita;
+import citas.logic.Medico;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "MedicoCitasController", urlPatterns = {"/presentation/medico/citas/show"})
+@WebServlet(name = "MedicoCitasController", urlPatterns = {"/presentation/medico/citas/show","/presentation/paciente/citas/show"})
 public class Controller extends HttpServlet {
 
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         
         
@@ -28,23 +33,27 @@ public class Controller extends HttpServlet {
         String viewUrl = "";
         switch (request.getServletPath()) {
             case "/presentation/medico/citas/show":
-                viewUrl = this.show(request);
+                viewUrl = this.showMedico(request);
+                break;
+            case "/presentation/paciente/citas/show":
+                viewUrl = this.showPaciente(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
     
-    public String show(HttpServletRequest request) {
+    public String showMedico(HttpServletRequest request) throws Exception {
         return this.showAction(request);
     }
     
-    public String showAction(HttpServletRequest request) {
-        citas.presentation.medico.citas.Model model = (citas.presentation.medico.citas.Model) request.getAttribute("model");
+    public String showAction(HttpServletRequest request) throws Exception {
+        
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
  
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        
+//        ArrayList<Cita> citas = (ArrayList<Cita>) service.citaPaciente("123");
+//
+//        session.setAttribute("citasList", citas);
         
         try {     
             
@@ -53,6 +62,22 @@ public class Controller extends HttpServlet {
             return "";
         }
     }
+    
+    public String showPaciente(HttpServletRequest request) throws Exception{
+        
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+ 
+        ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitas("123");
+        
+        System.out.println("citas->"+citas.size());
+
+        session.setAttribute("citasList", citas);
+        
+        return "/presentation/paciente/cita/view.jsp";
+    }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -66,7 +91,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -80,7 +109,11 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

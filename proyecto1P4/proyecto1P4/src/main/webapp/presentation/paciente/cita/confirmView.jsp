@@ -17,19 +17,21 @@
     </head>
     <body>
 
-        <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 20px;">
-            <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-            <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
-            <div class="main-text">
-                <h2 style="margin-top: -25px;">Confirmar Asistencia</h2>
-                <p><b>Doctor:</b> <%= cita.getMedico().getNombre() %>
- </br>
-                    <b>Especialidad:</b> <%= cita.getMedico().getEspecialidad().getEspecialidad() %> </br>
-                    <b>Localidad:</b> <%= cita.getMedico().getCiudad().getProvincia() %></br>
-                    <b>Fecha</b> <%= cita.getDateStr() %> - <%= cita.getHoraStr() %></p>
+        <form action="/proyecto1P4/presentation/paciente/citas/show">
+            <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 20px;">
+                <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
+                <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
+                <div class="main-text">
+                    <h2 style="margin-top: -25px;">Confirmar Asistencia</h2>
+                    <p><b>Doctor:</b> <%= cita.getMedico().getNombre()%>
+                        </br>
+                        <b>Especialidad:</b> <%= cita.getMedico().getEspecialidad().getEspecialidad()%> </br>
+                        <b>Localidad:</b> <%= cita.getMedico().getCiudad().getProvincia()%></br>
+                        <b>Fecha</b> <%= cita.getDateStr()%> - <%= cita.getHoraStr()%></p>
+                </div>
+                <button type="submit"  class="btn btn-primary" style="margin-top: -40px;"> Confirmar</button>
+                <!--<button type="submit" class="btn btn-primary" style="margin-top: -15px;"> Cancelar</button>-->
             </div>
-            <button type="submit" name="entrar" class="btn btn-primary" style="margin-top: -40px;"> Confirmar</button>
-            <button type="submit" name="entrar" class="btn btn-primary" style="margin-top: -15px;"> Cancelar</button>
-        </div>
+        </form>
     </body>
 </html>
