@@ -17,13 +17,14 @@ public class CitaDao {
     }
 
     public void create(Cita u) throws Exception{
-        String sql="insert into Cita (idCita, estado, fecha) "+
-                "values(?,?,?)";
+        String sql="insert into cita (estado,dia,hora,Paciente_cedula, Medico_idMedico) "+
+                "values(?,?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, u.getIdCita());
-        stm.setString(2, u.getEstado());
-        stm.setObject(3, u.getFecha());
-      
+        stm.setString(1, u.getEstado());
+        stm.setString(2, u.getDateStr());
+        stm.setString(3, u.getHoraStr());
+        stm.setObject(4, u.getPaciente().getCedula());
+        stm.setObject(5, u.getMedico().getCedula());
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Cita ya existe");
@@ -31,10 +32,9 @@ public class CitaDao {
     }
     
     public Cita read(Cita u) throws Exception{
-        String sql = "select * from idCita c where idCita=? and estado =?";
+        String sql = "select * from cita c where Paciente_cedula=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, u.getIdCita());
-        stm.setString(2, u.getEstado());
+         stm.setObject(1, u.getPaciente().getCedula());
         ResultSet rs =  db.executeQuery(stm);
         if (rs.next()) {
             Cita c = from(rs, "c"); 
@@ -46,12 +46,13 @@ public class CitaDao {
     }
     
     public void update(Cita u) throws Exception{
-        String sql="update idCita set estado=?, set fecha=? "+
-                "where idCita=?";
+        String sql="update cita set estado=?, dia=?, hora=? "+
+                "where idCitas=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, u.getIdCita());
-        stm.setString(2, u.getEstado());
-        stm.setObject(3, u.getFecha());       
+        stm.setString(1, u.getEstado());
+        stm.setString(2, u.getDateStr());
+        stm.setString(3, u.getHoraStr()); 
+        stm.setInt(4, u.getIdCita());
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Cita no existe");
@@ -59,7 +60,7 @@ public class CitaDao {
     }
 
     public void delete(Cita c) throws Exception{
-        String sql="delete from idCita where idCita=?";
+        String sql="delete from cita where idCitas=?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setInt(1, c.getIdCita());
         int count=db.executeUpdate(stm);
@@ -67,11 +68,11 @@ public class CitaDao {
             throw new Exception("Cita no existe");
         }
     }
-    public void actualizarEstado(int idCita, String estado) throws Exception{
-        String sql="UPDATE idCita SET estado=? where idCita=?";
+    public void actualizarEstado(Cita u) throws Exception{
+        String sql="update cita SET estado=? where idCitas=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setString(1, estado);    
-        stm.setInt(2, idCita);
+        stm.setString(1, u.getEstado());  
+        stm.setInt(1, u.getIdCita());
         int count=db.executeUpdate(stm);
         if (count==0){
             throw new Exception("Cita no existe");
@@ -79,7 +80,7 @@ public class CitaDao {
     }
     
     public Long consultaEstado(int idCita) throws Exception{
-        String sql="select saldo from idCita c where idCita=?";
+        String sql="select from idCita c where idCita=?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setInt(1, idCita);
         ResultSet rs =  db.executeQuery(stm);

@@ -17,6 +17,14 @@ public class Cita {
     LocalDateTime fecha;
     String dateStr;
     String horaStr;
+
+    public Cita(String estado, String dateStr, String horaStr, Paciente paciente, Medico medico) {
+        this.estado = estado;
+        this.dateStr = dateStr;
+        this.horaStr = horaStr;
+        this.paciente = paciente;
+        this.medico = medico;
+    }
     Usuario idUsuario;
     Paciente paciente;
     Medico medico;
