@@ -65,6 +65,33 @@ public class HorarioDao {
         }
     }
      
+       public void update(Horario u) throws Exception {
+        String sql = "update horario set comienzo_lunes=?, finaliza_lunes=?,comienzo_martes=?,"+
+                "finaliza_martes=?,comienzo_miercoles=?, finaliza_miercoles=?,"+
+                "comienzo_jueves=?, finaliza_jueves=?, comienzo_viernes=?, finaliza_viernes=?,"+
+                "comienzo_sabado=?, finaliza_sabado=?, frecuencia=?"+
+                "where id_doctor=?"; //por id de medico hace el cambio de horario
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setInt(1, u.getIniLunes());
+        stm.setInt(2, u.getFinLunes());
+        stm.setInt(3, u.getIniMartes());
+        stm.setInt(4, u.getFinMartes());
+        stm.setInt(5, u.getIniMiercoles());
+        stm.setInt(6, u.getFinMiercoles());
+        stm.setInt(7, u.getIniJueves());
+        stm.setInt(8, u.getFinJueves());
+        stm.setInt(9, u.getIniViernes());
+        stm.setInt(10, u.getFinViernes());
+        stm.setInt(11, u.getIniSabado());
+        stm.setInt(12, u.getFinSabado());
+        stm.setInt(13, u.getFrecuencia());
+        stm.setString(14, u.getMedico().getCedula());
+        int count = db.executeUpdate(stm);
+        if (count == 0) {
+            throw new Exception("Medico no existe");
+        }
+    }
+     
              
     Horario from(ResultSet rs, String alias){
         try {
