@@ -39,9 +39,9 @@
         <% i--;%>
 
         <div class="card">
-            <h5 class="card-header"></h5>
+            <h5 class="card-header"><%= citas.get(i).getMedico().getEspecialidad().getEspecialidad() %></h5>
             <div class="card-body">
-                <h5 class="card-title"><%= citas.get(i).getMedico().getEspecialidad().getEspecialidad() %></h5>
+                <h5 class="card-title"></h5>
                 <p class="card-text">
 
                 <div class="container">

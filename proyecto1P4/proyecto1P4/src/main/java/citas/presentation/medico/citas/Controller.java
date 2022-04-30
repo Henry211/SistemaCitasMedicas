@@ -76,8 +76,8 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
  
-        ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitasByPaciente("123");
-        Paciente paciente = service.findPaciente("123");
+        Paciente paciente = (Paciente) session.getAttribute("paciente");
+        ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitasByPaciente(paciente.getCedula());
         
             
         for(int i=0;i<=citas.size()-1;i++){

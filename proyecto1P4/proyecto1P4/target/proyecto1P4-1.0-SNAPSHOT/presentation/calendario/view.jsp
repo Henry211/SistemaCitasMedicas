@@ -5,7 +5,7 @@
 <%@page import="citas.logic.Horario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Horario horario = (Horario) session.getAttribute("horarioCita"); %>
-<% Medico medico = (Medico) session.getAttribute("medico");%>
+<% Medico medico = (Medico) session.getAttribute("medicoSelected");%>
 <% String lunes = (String) session.getAttribute("lunes"); %>
 <% String martes = (String) session.getAttribute("martes"); %>
 <% String miercoles = (String) session.getAttribute("miercoles"); %>
@@ -57,7 +57,7 @@
                     <% while (i != 0) { %>
                     <% i--;%>
                     <div class="cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=lunes%>&hora=<%=horario.getLunes().get(i).toString()%>">
                             <%= horario.getLunes().get(i).toString()%>
                         </a>
                     </div>
@@ -69,7 +69,7 @@
                     <% while (i2 != 0) { %>
                     <% i2--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=martes%>&hora=<%=horario.getMartes().get(i2).toString()%>">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=martes%>&hora=<%=horario.getMartes().get(i2).toString()%>">
                             <%= horario.getMartes().get(i2).toString()%>
                         </a>
                     </div>
@@ -80,7 +80,7 @@
                     <% while (i3 != 0) { %>
                     <% i3--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=miercoles%>&hora=<%=horario.getMiercoles().get(i3).toString()%>">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=miercoles%>&hora=<%=horario.getMiercoles().get(i3).toString()%>">
                             <%= horario.getMiercoles().get(i3).toString()%>
                         </a>
                     </div>
@@ -92,7 +92,7 @@
                     <% while (i4 != 0) { %>
                     <% i4--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=jueves%>&hora=<%=horario.getJueves().get(i4).toString()%>">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=jueves%>&hora=<%=horario.getJueves().get(i4).toString()%>">
                             <%= horario.getJueves().get(i4).toString()%>
                         </a>
                     </div>
@@ -103,7 +103,7 @@
                     <% while (i5 != 0) { %>
                     <% i5--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=viernes%>&hora=<%=horario.getViernes().get(i5).toString()%>">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=viernes%>&hora=<%=horario.getViernes().get(i5).toString()%>">
                             <%= horario.getViernes().get(i5).toString()%>
                         </a>
                     </div>
@@ -114,7 +114,7 @@
                     <% while (i6 != 0) { %>
                     <% i6--;%>
                     <div class=" cita">
-                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=JPerez&day=<%=sabado%>&hora=<%=horario.getSabado().get(i6).toString()%>">
+                        <a class="item" href="/proyecto1P4/presentation/paciente/cita/make?mid=<%=medico.getCedula()%>&day=<%=sabado%>&hora=<%=horario.getSabado().get(i6).toString()%>">
                             <%= horario.getSabado().get(i6).toString()%>
                         </a>
                     </div>
