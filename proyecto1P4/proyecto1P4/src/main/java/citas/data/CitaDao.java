@@ -37,7 +37,7 @@ public class CitaDao {
     public ArrayList<Cita> read(String cedula) throws Exception {
         ArrayList<Cita> resultado = new ArrayList<>();
         String sql = "select * from cita c inner join medico m on c.Medico_idMedico= m.idMedicos "
-                    + " where c.Paciente_cedula=? ";
+                    + " where c.Paciente_cedula=? order by m.nombre desc";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setObject(1, cedula);
         ResultSet rs = db.executeQuery(stm);
@@ -46,14 +46,7 @@ public class CitaDao {
         while (rs.next()) {
                 c = from2(rs, "c");
                 resultado.add(c);
-                System.out.println("bucle-medico->"+resultado.get(0).getMedico().getNombre());
             }
-//        if (rs.next()) {
-//            Cita c = from(rs, "c");
-//            return c;
-//        } else {
-//            throw new Exception("Cita existente");
-//        }
         return resultado;
     }
 
