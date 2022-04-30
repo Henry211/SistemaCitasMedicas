@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "MedicoCitasController", urlPatterns = {"/presentation/medico/citas/show","/presentation/paciente/citas/show"})
+@WebServlet(name = "MedicoCitasController", urlPatterns = {"/presentation/medico/citas/cancelarCita","/presentation/medico/citas/show","/presentation/paciente/citas/show"})
 public class Controller extends HttpServlet {
 
  
@@ -39,6 +39,9 @@ public class Controller extends HttpServlet {
             case "/presentation/paciente/citas/show":
                 viewUrl = this.showPaciente(request);
                 break;
+            case "/presentation/medico/citas/cancelarCita":
+                viewUrl = this.cancelarCitaMedico(request);
+                break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
@@ -52,8 +55,8 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
  
+        Medico medico = (Medico) session.getAttribute("medico");
         ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitasByMedico("999");
-        Medico medico = service.findMedico("999");
         
             
         System.out.println("sizeArray->"+citas.size());
@@ -88,6 +91,21 @@ public class Controller extends HttpServlet {
         session.setAttribute("citasList", citas);
         
         return "/presentation/paciente/cita/view.jsp";
+    }
+    
+    public String cancelarCitaMedico(HttpServletRequest request) throws Exception{
+        
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+ 
+        String idCita = request.getParameter("citaId");
+        System.out.println("IDCITA->"+idCita);
+        //Cita paciente = service.findPaciente(idPaciente);
+//        Paciente paciente = (Paciente) session.getAttribute("paciente");
+
+        service.eliminarCita(idCita);
+        
+        return "/presentation/medico/citas/view.jsp";
     }
     
     

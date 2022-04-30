@@ -125,5 +125,9 @@ public class Service {
         return mDao.find(str);
     }
     
+    public void eliminarCita(String id){
+        citDao.delete(id);
+    }
+    
     
 }

@@ -80,10 +80,10 @@ public class CitaDao {
         }
     }
 
-    public void delete(Cita c) throws Exception {
+    public void delete(String c) throws Exception {
         String sql = "delete from cita where idCitas=?";
         PreparedStatement stm = db.prepareStatement(sql);
-        stm.setInt(1, c.getIdCita());
+        stm.setInt(1, Integer.valueOf(c));
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Cita no existe");

@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <a href="/proyecto1P4/presentation/medico/citas/confirmView.jsp" class="btn btn-primary">Cancelar</a>
+                <a href="/proyecto1P4/presentation/medico/citas/cancelarCita?citaId=<%=citas.get(i).getIdCita()%>" class="btn btn-primary">Cancelar</a>
             </div>
         </div>
         <% } %>

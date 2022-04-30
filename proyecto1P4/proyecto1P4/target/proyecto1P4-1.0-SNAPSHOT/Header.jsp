@@ -70,19 +70,12 @@
                     </li>
                     <% } %>
                     <% } %>
-                    <% if (usuario != null) { %>
-                    <li class="navbar-item active">
-                        <a href="/proyecto1P4/presentation/medico/calendario/show" class="nav-link">
-                            Calendario
-                        </a>
-                    </li>
-                    <% } %>
 
                     <%  if (usuario != null) { %>
                     <% if (Integer.valueOf(usuario) == 3) { %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/administrador/especialidad/show" class="nav-link">
-                            Solicitudes (admin)
+                            Especialidades y Localidades
                         </a>
                     </li>
                     <% } %>
@@ -91,7 +84,7 @@
                     <% if (Integer.valueOf(usuario) == 3) { %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/administrador/listamedicos/show" class="nav-link">
-                            Solicitudes medicos (admin)
+                            Solicitudes de Medicos 
                         </a>
                     </li>
                     <% } %>
