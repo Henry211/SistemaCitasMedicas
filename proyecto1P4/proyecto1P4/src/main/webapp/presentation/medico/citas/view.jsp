@@ -1,5 +1,9 @@
 
+<%@page import="citas.logic.Cita"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% ArrayList<Cita> citas = (ArrayList<Cita>) session.getAttribute("citasList");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,7 +34,9 @@
             </div>
         </div>
 
-
+        <% int i = citas.size(); %>
+        <% while (i != 0) { %>
+        <% i--;%>
 
         <div class="card">
             <h5 class="card-header">Cita con Will Smith</h5>
@@ -41,69 +47,28 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            Estado: Pendiente </br> 
+                            Estado: <%= citas.get(i).getEstado() %> </br>  </br> 
                         </div>
                         <div class="col">
-                            Fecha y hora: Jueves 8am </br>
+                            Fecha y hora: <%= citas.get(i).getDateStr() %> <%= citas.get(i).getHoraStr()  %></br>
                         </div>
                         <div class="col">
-                            Paciente: Kevin Mora </br>
+                            Paciente: <%= citas.get(i).getPaciente().getNombre() %> </br>
+                        </div>
+                        <div class="col">
+                            Medico: <%= citas.get(i).getMedico().getNombre() %> </br>
+                        </div>
+                        <div class="col">
+                            Localidad <%= citas.get(i).getMedico().getCiudad().getProvincia() %> </br>
                         </div>
 
                     </div>
                 </div>
-                
+
                 <a href="/proyecto1P4/presentation/medico/citas/confirmView.jsp" class="btn btn-primary">Asistir</a>
             </div>
         </div>
-        <div class="card">
-            <h5 class="card-header">Cita con Will Smith</h5>
-            <div class="card-body">
-                <h5 class="card-title">Dermatología</h5>
-                <p class="card-text">
+        <% } %>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            Estado: Pendiente </br> 
-                        </div>
-                        <div class="col">
-                            Fecha y hora: Jueves 8am </br>
-                        </div>
-                        <div class="col">
-                            Paciente: Kevin Mora </br>
-                        </div>
-
-                    </div>
-                </div>
-                
-                <a href="#" class="btn btn-primary">Asistir</a>
-            </div>
-        </div>
-        <div class="card">
-            <h5 class="card-header">Cita con Will Smith</h5>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            Estado: Pendiente </br> 
-                        </div>
-                        <div class="col">
-                            Fecha y hora: Jueves 8am </br>
-                        </div>
-                        <div class="col">
-                            Paciente: Kevin Mora </br>
-                        </div>
-
-                    </div>
-                </div>
-                
-                <a href="#" class="btn btn-primary">Asistir</a>
-            </div>
-        </div>
-        
     </body>
 </html>

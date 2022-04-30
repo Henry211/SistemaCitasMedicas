@@ -106,8 +106,12 @@ public class Service {
     public ArrayList<Cita> citaPaciente(String cedula) throws Exception{
         return citDao.citasPaciente(cedula);
     }
-    public ArrayList<Cita> readCitas(String cedula) throws Exception{
-        return citDao.read(cedula);
+    public ArrayList<Cita> readCitasByPaciente(String cedula) throws Exception{
+        return citDao.readByPaciente(cedula);
+    }
+    
+    public ArrayList<Cita> readCitasByMedico(String cedula) throws Exception{
+        return citDao.readByMedico(cedula);
     }
     
     public void crearCita(Cita cita) throws Exception{

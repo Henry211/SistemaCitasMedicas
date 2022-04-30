@@ -52,9 +52,16 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
  
-//        ArrayList<Cita> citas = (ArrayList<Cita>) service.citaPaciente("123");
-//
-//        session.setAttribute("citasList", citas);
+        ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitasByMedico("999");
+        Medico medico = service.findMedico("999");
+        
+            
+        System.out.println("sizeArray->"+citas.size());
+        for(int i=0;i<=citas.size()-1;i++){
+            citas.get(i).setMedico(medico);
+        }
+        
+        session.setAttribute("citasList", citas);
         
         try {     
             
@@ -69,7 +76,7 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
  
-        ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitas("123");
+        ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitasByPaciente("123");
         Paciente paciente = service.findPaciente("123");
         
             
@@ -78,10 +85,6 @@ public class Controller extends HttpServlet {
             
         }
         
-        
-        System.out.println("citas->"+citas.get(0).getMedico().getCiudad().getProvincia() );
-        System.out.println("citas->"+citas.get(0).getMedico().getEspecialidad().getEspecialidad());
-
         session.setAttribute("citasList", citas);
         
         return "/presentation/paciente/cita/view.jsp";

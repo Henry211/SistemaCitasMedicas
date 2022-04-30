@@ -34,7 +34,7 @@ public class CitaDao {
         }
     }
 
-    public ArrayList<Cita> read(String cedula) throws Exception {
+    public ArrayList<Cita> readByPaciente(String cedula) throws Exception {
         ArrayList<Cita> resultado = new ArrayList<>();
         String sql = "select * from cita c inner join medico m on c.Medico_idMedico= m.idMedicos "
                     + " where c.Paciente_cedula=? order by m.nombre desc";
@@ -42,9 +42,25 @@ public class CitaDao {
         stm.setObject(1, cedula);
         ResultSet rs = db.executeQuery(stm);
         Cita c;
-        int i=0;
+     
         while (rs.next()) {
                 c = from2(rs, "c");
+                resultado.add(c);
+            }
+        return resultado;
+    }
+
+    public ArrayList<Cita> readByMedico(String cedula) throws Exception {
+        ArrayList<Cita> resultado = new ArrayList<>();
+        String sql = "select * from cita c inner join paciente p on c.Paciente_cedula= p.cedula "
+                    + " where c.Medico_idMedico=? ";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setObject(1, cedula);
+        ResultSet rs = db.executeQuery(stm);
+        Cita c;
+        
+        while (rs.next()) {
+                c = from3(rs, "c");
                 resultado.add(c);
             }
         return resultado;
@@ -202,8 +218,32 @@ public class CitaDao {
             return c;
         } catch (SQLException ex) {
             return null;
-        }
-        
+        } 
+    }
+    
+    Cita from3(ResultSet rs, String alias) {
+        try {
+            Cita c = new Cita();
+            c.setIdCita(rs.getInt(alias + ".idCitas"));
+            c.setEstado(rs.getString(alias + ".estado"));
+            c.setDateStr(rs.getString(alias + ".dia"));
+            c.setHoraStr(rs.getString(alias + ".hora"));
+            //-----------
+            Paciente p = new Paciente();
+            p.setCedula(rs.getString(alias + ".Paciente_cedula"));
+            p.setNombre(rs.getString("p.nombre"));
+            c.setPaciente(p);
+            
+            Medico m = new Medico();
+            m.setCedula(rs.getString(alias + ".Medico_idMedico"));
+            c.setMedico(m);
+            //------------
+//            c.getPaciente().setCedula(rs.getString(alias + ".Paciente_cedula"));
+//            c.getMedico().setCedula(rs.getString(alias + ".Medico_idMedico"));
+            return c;
+        } catch (SQLException ex) {
+            return null;
+        } 
     }
   
 }

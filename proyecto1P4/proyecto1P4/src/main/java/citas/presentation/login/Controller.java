@@ -87,20 +87,20 @@ public class Controller extends HttpServlet {
     }
 
     public String loginAction(HttpServletRequest request) {
-        System.out.println("entro");
+        
         Model model = (Model) request.getAttribute("model");
 
         HttpSession session = request.getSession(true);
         String usuario = request.getParameter("cedulaField");
         String password = request.getParameter("claveField");
-        System.out.println("Datos: " + usuario + "+" + password);
+        String tipo = request.getParameter("tipo");
+        session.setAttribute("userType", tipo);
+   
         Service service = Service.instance();
         try {
-            //*Paciente real = service.login(model.getUser().getCedula(),model.getUser().getClave());
-
-            //  session.setAttribute("usuario", real);//ASIGNAR user PARA Header
+            
             String viewUrl = "";
-            switch (request.getParameter("tipo")) {
+            switch (tipo) {
                 case "1":
                     Paciente real = new Paciente(usuario, password);
                     Paciente p = service.pacienteLogin(real);
@@ -119,6 +119,7 @@ public class Controller extends HttpServlet {
                     Administrador real1 = new Administrador(usuario, password);
                     Administrador a = service.administradorLogin(real1);
                     session.setAttribute("admin",a);
+                    
                     viewUrl = "/presentation/administrador/especialidades/view.jsp";
                     break;
 

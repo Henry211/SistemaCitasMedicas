@@ -1,5 +1,5 @@
 <%@page import="citas.logic.Usuario"%>
-<% Usuario usuario=  (Usuario) session.getAttribute("usuario");  %>
+<% String usuario = (String) session.getAttribute("userType");  %>
 
 
 <header>
@@ -20,62 +20,69 @@
                             Inicio
                         </a>
                     </li>
-                    <%  //if( usuario.getTipo() == 1 ){ %>
+                    <%  if( Integer.valueOf(usuario) == 1 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/registromedico/show" class="nav-link">
                             Médicos
                         </a>
                     </li>
-                    <%  //} %>
-                    <% //if( user.getTipo() == 2 ){ %>
+                    <%  } %>
+                    <% if( Integer.valueOf(usuario) == 1 ){ %>
+                    <li class="navbar-item active">
+                        <a href="/proyecto1P4/presentation/paciente/citas/show" class="nav-link">
+                            Citas
+                        </a>
+                    </li>
+                    <% } %>
+                    <% if( Integer.valueOf(usuario) == 2 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/medico/citas/show" class="nav-link">
                             Citas
                         </a>
                     </li>
-                    <% //} %>
-                    <% //if( userLogued == null ){ %>
+                    <% } %>
+                    <% if( usuario == null ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/login/mostrar" class="nav-link">
                             Login
                         </a>
                     </li>
-                    <% //} %>
-                    <% //if( userLogued != null ){ %>
+                    <% } %>
+                    <% if( usuario != null ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/login/logout" class="nav-link">
                             Logout
                         </a>
                     </li>
-                    <% //} %>
-                    <% //if( userLogued != null ){ %>
+                    <% } %>
+                    <% if( Integer.valueOf(usuario) == 2 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/medico/perfil/show" class="nav-link">
                             Perfil
                         </a>
                     </li>
-                    <% //} %>
-                    <% //if( userLogued != null ){ %>
+                    <% } %>
+                    <% //if( usuario == null ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/medico/calendario/show" class="nav-link">
                             Calendario
                         </a>
                     </li>
                     <% //} %>
-                    <% //if( userLogued != null ){ %>
+                    <% if( Integer.valueOf(usuario) == 3 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/administrador/especialidad/show" class="nav-link">
                             Solicitudes (admin)
                         </a>
                     </li>
-                    <% //} %>
-                    <% //if( userLogued != null ){ %>
+                    <% } %>
+                    <% if( Integer.valueOf(usuario) == 3 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/administrador/listamedicos/show" class="nav-link">
                             Solicitudes medicos (admin)
                         </a>
                     </li>
-                    <% //} %>
+                    <% } %>
                 </ul>
 
             </div>
