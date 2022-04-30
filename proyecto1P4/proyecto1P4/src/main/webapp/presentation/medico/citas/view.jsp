@@ -39,9 +39,9 @@
         <% i--;%>
 
         <div class="card">
-            <h5 class="card-header">Cita con Will Smith</h5>
+            <h5 class="card-header"><%= citas.get(i).getMedico().getEspecialidad().getEspecialidad() %></h5>
             <div class="card-body">
-                <h5 class="card-title">Cardiología</h5>
+                <h5 class="card-title"></h5>
                 <p class="card-text">
 
                 <div class="container">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <a href="/proyecto1P4/presentation/medico/citas/confirmView.jsp" class="btn btn-primary">Asistir</a>
+                <a href="/proyecto1P4/presentation/medico/citas/confirmView.jsp" class="btn btn-primary">Cancelar</a>
             </div>
         </div>
         <% } %>

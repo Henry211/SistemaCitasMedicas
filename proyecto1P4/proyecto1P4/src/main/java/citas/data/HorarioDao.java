@@ -61,7 +61,9 @@ public class HorarioDao {
             Horario c = from(rs, "c");
             return c;
         } else {
-            throw new Exception("medico existente");
+//            Horario auxHor = new Horario(0,0,0,0,0,0,0,0,0,0,0,0,0);
+//            this.create(auxHor);
+            return null;
         }
     }
      

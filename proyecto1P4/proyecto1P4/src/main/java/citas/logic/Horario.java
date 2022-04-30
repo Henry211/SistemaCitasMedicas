@@ -30,6 +30,22 @@ public class Horario implements Serializable{
     int frecuencia;
     Medico medico = new Medico();
 
+    public Horario(int iniLunes, int finLunes, int iniMartes, int finMartes, int iniMiercoles, int finMiercoles, int iniJueves, int finJueves, int iniViernes, int finViernes, int iniSabado, int finSabado, int frecuencia) {
+        this.iniLunes = iniLunes;
+        this.finLunes = finLunes;
+        this.iniMartes = iniMartes;
+        this.finMartes = finMartes;
+        this.iniMiercoles = iniMiercoles;
+        this.finMiercoles = finMiercoles;
+        this.iniJueves = iniJueves;
+        this.finJueves = finJueves;
+        this.iniViernes = iniViernes;
+        this.finViernes = finViernes;
+        this.iniSabado = iniSabado;
+        this.finSabado = finSabado;
+        this.frecuencia = frecuencia;
+    }
+
     ArrayList<String> horasDia = new ArrayList<String>();
 
     public ArrayList<String> calcArrayHrs(int ini, int fin) {

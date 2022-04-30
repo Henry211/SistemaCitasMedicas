@@ -67,17 +67,27 @@ public class Controller extends HttpServlet {
     }
 
     public String showAction(HttpServletRequest request) throws Exception {
-//        Model model = (Model) request.getAttribute("model");
+
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
 
         Medico me = (Medico) session.getAttribute("medico");
        
-        System.out.println("CedulaHorario->"+me.getCedula());
+        System.out.println("EspecialidadMedico->"+me.getEspecialidad().getEspecialidad());
         Horario horario = service.findHorario(me.getCedula());
-        horario.calcDias();
-        session.setAttribute("horario", horario);
-        //request.setAttribute("model", model);
+        if(horario == null){
+            Horario auxHor = new Horario(0,0,0,0,0,0,0,0,0,0,0,0,0);
+            auxHor.setMedico(me);
+            auxHor.calcDias();
+            service.createHorario(auxHor);
+            horario = service.findHorario(me.getCedula());
+            session.setAttribute("horario", horario);
+        }else{
+            horario.calcDias();
+            session.setAttribute("horario", horario);
+        }
+        
+
         try {
 
             return "/presentation/medico/perfil/view.jsp";
@@ -296,7 +306,7 @@ public class Controller extends HttpServlet {
         String iniS = request.getParameter("iniS");
         String finS = request.getParameter("finS");
 
-        Medico medico = new Medico();
+        Medico medico = (Medico) session.getAttribute("medico");
         Ciudad c = new Ciudad(localidad);
         Especialidad e = new Especialidad(especialidad);
         Horario horario = new Horario();
@@ -324,8 +334,9 @@ public class Controller extends HttpServlet {
         //service.createHorario(horario);
         service.updateHorario(horario);
         service.editarMedico(medico);
+        session.setAttribute("medico", medico);
 
-        return "/presentation/medico/perfil/view.jsp";
+        return "/presentation/medico/perfil/show";
     }
     
     public int horaToInteger(String str){

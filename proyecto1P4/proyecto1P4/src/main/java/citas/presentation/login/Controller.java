@@ -120,7 +120,7 @@ public class Controller extends HttpServlet {
                     Administrador a = service.administradorLogin(real1);
                     session.setAttribute("admin",a);
                     
-                    viewUrl = "/presentation/administrador/especialidades/view.jsp";
+                    viewUrl = "/presentation/administrador/especialidad/show";
                     break;
 
             }
