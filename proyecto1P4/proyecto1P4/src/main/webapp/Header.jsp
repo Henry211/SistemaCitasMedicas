@@ -20,6 +20,7 @@
                             Inicio
                         </a>
                     </li>
+                    <%  if(  usuario != null  ){ %>
                     <%  if( Integer.valueOf(usuario) == 1 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/registromedico/show" class="nav-link">
@@ -27,6 +28,8 @@
                         </a>
                     </li>
                     <%  } %>
+                    <%  } %>
+                    <%  if(  usuario != null  ){ %>
                     <% if( Integer.valueOf(usuario) == 1 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/paciente/citas/show" class="nav-link">
@@ -34,12 +37,15 @@
                         </a>
                     </li>
                     <% } %>
+                    <% } %>
+                    <%  if(  usuario != null  ){ %>
                     <% if( Integer.valueOf(usuario) == 2 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/medico/citas/show" class="nav-link">
                             Citas
                         </a>
                     </li>
+                    <% } %>
                     <% } %>
                     <% if( usuario == null ){ %>
                     <li class="navbar-item active">
@@ -55,6 +61,7 @@
                         </a>
                     </li>
                     <% } %>
+                    <%  if(  usuario != null  ){ %>
                     <% if( Integer.valueOf(usuario) == 2 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/medico/perfil/show" class="nav-link">
@@ -62,13 +69,16 @@
                         </a>
                     </li>
                     <% } %>
-                    <% //if( usuario == null ){ %>
+                    <% } %>
+                    <% if( usuario != null ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/medico/calendario/show" class="nav-link">
                             Calendario
                         </a>
                     </li>
-                    <% //} %>
+                    <% } %>
+                    
+                    <%  if(  usuario != null  ){ %>
                     <% if( Integer.valueOf(usuario) == 3 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/administrador/especialidad/show" class="nav-link">
@@ -76,12 +86,15 @@
                         </a>
                     </li>
                     <% } %>
+                    <% } %>
+                    <%  if(  usuario != null  ){ %>
                     <% if( Integer.valueOf(usuario) == 3 ){ %>
                     <li class="navbar-item active">
                         <a href="/proyecto1P4/presentation/administrador/listamedicos/show" class="nav-link">
                             Solicitudes medicos (admin)
                         </a>
                     </li>
+                    <% } %>
                     <% } %>
                 </ul>
 
