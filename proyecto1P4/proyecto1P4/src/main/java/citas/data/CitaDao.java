@@ -2,6 +2,7 @@ package citas.data;
 
 import citas.logic.Cita;
 import citas.logic.Ciudad;
+import citas.logic.Especialidad;
 import citas.logic.Medico;
 import citas.logic.Paciente;
 import java.sql.PreparedStatement;
@@ -35,14 +36,17 @@ public class CitaDao {
 
     public ArrayList<Cita> read(String cedula) throws Exception {
         ArrayList<Cita> resultado = new ArrayList<>();
-        String sql = "select * from cita c where Paciente_cedula=?";
+        String sql = "select * from cita c inner join medico m on c.Medico_idMedico= m.idMedicos "
+                    + " where c.Paciente_cedula=? ";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setObject(1, cedula);
         ResultSet rs = db.executeQuery(stm);
         Cita c;
+        int i=0;
         while (rs.next()) {
-                c = from(rs, "c");
+                c = from2(rs, "c");
                 resultado.add(c);
+                System.out.println("bucle-medico->"+resultado.get(0).getMedico().getNombre());
             }
 //        if (rs.next()) {
 //            Cita c = from(rs, "c");
@@ -162,17 +166,51 @@ public class CitaDao {
             c.setEstado(rs.getString(alias + ".estado"));
             c.setDateStr(rs.getString(alias + ".dia"));
             c.setHoraStr(rs.getString(alias + ".hora"));
+            //-----------
             Paciente p = new Paciente();
             p.setCedula(rs.getString(alias + ".Paciente_cedula"));
             c.setPaciente(p);
             Medico m = new Medico();
             m.setCedula(rs.getString(alias + ".Medico_idMedico"));
             c.setMedico(m);
+            //------------
 //            c.getPaciente().setCedula(rs.getString(alias + ".Paciente_cedula"));
 //            c.getMedico().setCedula(rs.getString(alias + ".Medico_idMedico"));
             return c;
         } catch (SQLException ex) {
             return null;
         }
+        
     }
+    Cita from2(ResultSet rs, String alias) {
+        try {
+            Cita c = new Cita();
+            c.setIdCita(rs.getInt(alias + ".idCitas"));
+            c.setEstado(rs.getString(alias + ".estado"));
+            c.setDateStr(rs.getString(alias + ".dia"));
+            c.setHoraStr(rs.getString(alias + ".hora"));
+            //-----------
+            Paciente p = new Paciente();
+            p.setCedula(rs.getString(alias + ".Paciente_cedula"));
+            c.setPaciente(p);
+            Medico m = new Medico();
+            Ciudad ciuu = new Ciudad();
+            ciuu.setProvincia(rs.getString("m.nombre_provincia"));
+            Especialidad esp = new Especialidad();
+            esp.setEspecialidad(rs.getString("m.nombre_especialidad"));
+            m.setCedula(rs.getString(alias + ".Medico_idMedico"));
+            m.setNombre(rs.getString("m.nombre"));
+            m.setCiudad(ciuu);
+            m.setEspecialidad(esp);
+            c.setMedico(m);
+            //------------
+//            c.getPaciente().setCedula(rs.getString(alias + ".Paciente_cedula"));
+//            c.getMedico().setCedula(rs.getString(alias + ".Medico_idMedico"));
+            return c;
+        } catch (SQLException ex) {
+            return null;
+        }
+        
+    }
+  
 }

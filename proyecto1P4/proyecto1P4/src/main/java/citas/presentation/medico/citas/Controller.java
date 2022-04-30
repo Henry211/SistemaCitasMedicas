@@ -6,6 +6,7 @@ package citas.presentation.medico.citas;
 
 import citas.logic.Cita;
 import citas.logic.Medico;
+import citas.logic.Paciente;
 import citas.logic.Service;
 import citas.logic.Usuario;
 import java.io.IOException;
@@ -69,8 +70,17 @@ public class Controller extends HttpServlet {
         HttpSession session = request.getSession(true);
  
         ArrayList<Cita> citas = (ArrayList<Cita>) service.readCitas("123");
+        Paciente paciente = service.findPaciente("123");
         
-        System.out.println("citas->"+citas.size());
+            
+        for(int i=0;i<=citas.size()-1;i++){
+            citas.get(i).setPaciente(paciente);
+            
+        }
+        
+        
+        System.out.println("citas->"+citas.get(0).getMedico().getCiudad().getProvincia() );
+        System.out.println("citas->"+citas.get(0).getMedico().getEspecialidad().getEspecialidad());
 
         session.setAttribute("citasList", citas);
         

@@ -49,6 +49,19 @@ public class PacienteDao {
             throw new Exception ("Paciente existente");
         }
     }
+     public Paciente find(String u) throws Exception{
+        String sql = "select * from paciente c where cedula=?";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setString(1, u);
+        ResultSet rs =  db.executeQuery(stm);
+        if (rs.next()) {
+            Paciente c = from(rs, "c"); 
+            return c;
+        }
+        else{
+            throw new Exception ("Paciente no existe");
+        }
+    }
     
         Paciente from(ResultSet rs, String alias){
         try {

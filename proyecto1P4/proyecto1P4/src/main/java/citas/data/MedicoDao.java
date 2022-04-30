@@ -3,6 +3,7 @@ package citas.data;
 import citas.logic.Ciudad;
 import citas.logic.Especialidad;
 import citas.logic.Medico;
+import citas.logic.Paciente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,6 +48,20 @@ public class MedicoDao {
             return c;
         } else {
             throw new Exception("medico existente");
+        }
+    }
+    
+    public Medico find(String u) throws Exception{
+        String sql = "select * from medico c where idMedicos=?";
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setString(1, u);
+        ResultSet rs =  db.executeQuery(stm);
+        if (rs.next()) {
+            Medico c = from(rs, "c"); 
+            return c;
+        }
+        else{
+            throw new Exception ("MEdico no existe");
         }
     }
 

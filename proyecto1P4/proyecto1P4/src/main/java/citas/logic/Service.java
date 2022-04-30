@@ -114,5 +114,12 @@ public class Service {
         citDao.create(cita);
     }
     
+    public Paciente findPaciente(String str) throws Exception{
+        return pDao.find(str);
+    }
+    public Medico findMedico(String str) throws Exception{
+        return mDao.find(str);
+    }
+    
     
 }

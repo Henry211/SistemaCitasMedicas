@@ -82,7 +82,7 @@ public class Controller extends HttpServlet {
         //model.getCita().setFecha(request.getAttribute("dt"));
                
         Paciente pacienteTest = new Paciente("123","PacienteName","password");
-        Medico medicoTest = new Medico("999","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
+        Medico medicoTest = new Medico("111","MedicoName","password","Activo","Perez Zeledon","Dermatologia");
         Cita cita = new Cita("Activo",(String)request.getParameter("day"),(String)request.getParameter("hora"),pacienteTest,medicoTest);
         
      

@@ -17,7 +17,7 @@
     </head>
     <body>
 
-        <form action="/proyecto1P4/presentation/paciente/citas/show">
+        <form action="/proyecto1P4/presentation/paciente/cita/confirm">
             <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 20px;">
                 <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
                 <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
