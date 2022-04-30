@@ -22,15 +22,13 @@ public class MedicoDao {
     }
 
     public void create(Medico u) throws Exception {
-        String sql = "insert into medico (nombre,idMedicos,clave,estado,nombre_provincia,nombre_especialidad) "
-                + "values(?,?,?,?,?,?)";
+        String sql = "insert into medico (nombre,idMedicos,clave,estado) "
+                + "values(?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());
         stm.setString(2, u.getNombre());
         stm.setString(3, u.getClave());
         stm.setString(4, u.getEstado());
-        stm.setObject(5, u.getCiudad());
-        stm.setObject(6, u.getEspecialidad());
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Medico ya existe");
@@ -78,6 +76,17 @@ public class MedicoDao {
             throw new Exception("Medico no existe");
         }
     }
+    public void setEstado(String estado,String id) throws Exception {
+        String sql = "update medico set estado= ? where idMedicos=?";
+                
+        PreparedStatement stm = db.prepareStatement(sql);
+        stm.setString(1, estado);
+        stm.setString(2, id);
+        int count = db.executeUpdate(stm);
+        if (count == 0) {
+            throw new Exception("Medico no existe");
+        }
+    }
 
     public void delete(Medico c) throws Exception {
         String sql = "delete from medico where idMedicos=?";
@@ -104,7 +113,23 @@ public class MedicoDao {
     public ArrayList<Medico> findAll() {
         ArrayList<Medico> resultado = new ArrayList<>();
         try {
-            String sql = "select * from medico c";
+            String sql = "select * from medico c where c.estado='Activo' ";
+            PreparedStatement stm = db.prepareStatement(sql);
+            ResultSet rs = db.executeQuery(stm);
+            Medico c;
+            while (rs.next()) {
+                c = from(rs, "c");
+                resultado.add(c);
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+    
+    public ArrayList<Medico> findPendiente() {
+        ArrayList<Medico> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from medico c where c.estado='Pendiente' ";
             PreparedStatement stm = db.prepareStatement(sql);
             ResultSet rs = db.executeQuery(stm);
             Medico c;

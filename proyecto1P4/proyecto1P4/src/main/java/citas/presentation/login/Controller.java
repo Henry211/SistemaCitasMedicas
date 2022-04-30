@@ -140,7 +140,9 @@ public class Controller extends HttpServlet {
         String usuario = request.getParameter("nombreField");
         String cedula = request.getParameter("cedulaField");
         String password = request.getParameter("claveField");
-        System.out.println("Datos " + usuario + "+" + password);
+        String tipo = request.getParameter("tipo");
+        session.setAttribute("userType", tipo);
+        
         Service service = Service.instance();
         try {
             //*Paciente real = service.login(model.getUser().getCedula(),model.getUser().getClave());
@@ -152,21 +154,20 @@ public class Controller extends HttpServlet {
                     Paciente real = new Paciente(usuario, cedula,password);
                     service.createPaciente(real);
                     session.setAttribute("paciente", real);
-                    System.out.println("Name-> " + real.getNombre());
                     viewUrl = "/presentation/registromedico/show";
                     break;
                 case "2":
-                    Medico real2 = new Medico(usuario,cedula, password);
+                    Medico real2 = new Medico(usuario,cedula, password,"Pendiente");
                     service.createMedico(real2);
-                    session.setAttribute("medico", real2);
-                    System.out.println("Name-> "+ real2.getCedula());
+                    Medico realAux = new Medico(cedula, password);
+                    Medico m = service.medicoLogin(realAux);
+                    session.setAttribute("medico", m);
                     viewUrl = "/presentation/medico/perfil/editar";
                     break;
                 case "3":
                     Administrador real1 = new Administrador(usuario,cedula, password);
                     service.createAdministrador(real1);
                     session.setAttribute("admin", real1);
-                    System.out.println("Name-> "+ real1.getCedula());
                     viewUrl = "/presentation/administrador/especialidades/view.jsp";
                     break;
 

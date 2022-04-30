@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ESCINF
  */
-@WebServlet(name = "AdministradorListaMedicosController", urlPatterns = {"/presentation/administrador/listamedicos/show"})
+@WebServlet(name = "AdministradorListaMedicosController", urlPatterns = {"/presentation/administrador/listamedicos/update","/presentation/administrador/listamedicos/show"})
 public class Controller extends HttpServlet {
 
 
@@ -35,6 +35,9 @@ public class Controller extends HttpServlet {
         switch (request.getServletPath()) {
             case "/presentation/administrador/listamedicos/show":
                 viewUrl = this.show(request);
+                break;
+            case "/presentation/administrador/listamedicos/update":
+                viewUrl = this.update(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -51,7 +54,7 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
         HttpSession session = request.getSession(true);
 
-        ArrayList<Medico> medicos = service.findAllMedicos();
+        ArrayList<Medico> medicos = service.findMedicosPendiente();
         session.setAttribute("listaMedicos", medicos);
         try {
 
@@ -59,6 +62,17 @@ public class Controller extends HttpServlet {
         } catch (Exception ex) {
             return "";
         }
+    }
+    
+    public String update(HttpServletRequest request) throws Exception{
+        Service service = Service.instance();
+        HttpSession session = request.getSession(true);
+        System.out.println("Entro a UPDATE");
+        String medicoId = request.getParameter("mid");
+        System.out.println("Parameter->"+medicoId);
+        service.setEstadoMedico("Activo", medicoId);
+
+        return "/presentation/administrador/listamedicos/show";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

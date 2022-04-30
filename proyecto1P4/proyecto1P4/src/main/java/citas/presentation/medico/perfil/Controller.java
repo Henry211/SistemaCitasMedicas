@@ -73,7 +73,6 @@ public class Controller extends HttpServlet {
 
         Medico me = (Medico) session.getAttribute("medico");
        
-        System.out.println("EspecialidadMedico->"+me.getEspecialidad().getEspecialidad());
         Horario horario = service.findHorario(me.getCedula());
         if(horario == null){
             Horario auxHor = new Horario(0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -292,7 +291,7 @@ public class Controller extends HttpServlet {
         String nombre = request.getParameter("nameField");
         String localidad = request.getParameter("localidadCmb");
         String especialidad = request.getParameter("especialidadCmb");
-        String estado = request.getParameter("estadoCmb");
+       
         String iniL = request.getParameter("iniL");
         String finL = request.getParameter("finL");
         String iniM = request.getParameter("iniM");
@@ -328,7 +327,6 @@ public class Controller extends HttpServlet {
         
         medico.setCiudad(c);
         medico.setEspecialidad(e);
-        medico.setEstado(estado);
         medico.setCedula(medicSession.getCedula());
 
         //service.createHorario(horario);

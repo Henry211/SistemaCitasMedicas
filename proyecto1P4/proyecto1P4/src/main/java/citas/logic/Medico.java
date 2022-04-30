@@ -26,6 +26,15 @@ public class Medico implements Serializable {
         this.cedula = cedula;
         this.nombre = nombre;
         this.clave = clave;
+       
+    }
+    
+    public Medico(String cedula, String nombre, String clave, String estado) {
+
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.clave = clave;
+        this.estado = estado;
     }
 
     public Medico(String cedula, String nombre, String clave, String estado, String nombre_ciudad, String nombre_especialidad) {

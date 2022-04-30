@@ -81,6 +81,10 @@ public class Service {
         return mDao.findAll();
     }
 
+    public ArrayList<Medico> findMedicosPendiente() throws Exception {
+        return mDao.findPendiente();
+    }
+
     public ArrayList<Medico> medicoBuscar(String ci, String es) throws Exception {
         return mDao.busca(ci,es);
     }
@@ -101,6 +105,10 @@ public class Service {
     
     public void updateHorario(Horario horario) throws Exception{
         horDao.update(horario);
+    }
+    
+    public void setEstadoMedico(String estado,String id) throws Exception{
+        mDao.setEstado(estado, id);
     }
    
     public ArrayList<Cita> citaPaciente(String cedula) throws Exception{
@@ -125,7 +133,7 @@ public class Service {
         return mDao.find(str);
     }
     
-    public void eliminarCita(String id){
+    public void eliminarCita(String id) throws Exception{
         citDao.delete(id);
     }
     
