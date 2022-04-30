@@ -77,7 +77,7 @@ public class Horario implements Serializable{
 
     public void createArrayHoras() {
 
-        String a0 = "0";
+        String a0 = "";
         String a1 = "1";
         String a2 = "2";
         String a3 = "3";

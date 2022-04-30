@@ -79,7 +79,7 @@
                             <div class="form-check form-check-inline">
                                 <div class="parent-day">
                                     <div class="child-day">
-                                        <input name="checkL" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+                                        <input name="checkL" class="form-check-input day" type="checkbox" id="inlineCheckbox1" value="lunes" checked>
                                         <label class="form-check-label day" for="inlineCheckbox1" style="margin-right: 25px;">Lunes</label>
                                     </div>
                                     <div class="child-day">

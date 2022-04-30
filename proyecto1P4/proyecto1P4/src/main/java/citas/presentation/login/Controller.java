@@ -190,7 +190,9 @@ public class Controller extends HttpServlet {
 
     public String logoutAction(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        session.removeAttribute("usuario");
+        session.removeAttribute("paciente");
+        session.removeAttribute("medico");
+        session.removeAttribute("admin");
         session.invalidate();
         return "/proyecto1P4/index.jsp";
     }

@@ -83,6 +83,7 @@ public class Controller extends HttpServlet {
             session.setAttribute("horario", horario);
         }else{
             horario.calcDias();
+            //horaToInteger  - de alguna forma
             session.setAttribute("horario", horario);
         }
         
@@ -304,21 +305,62 @@ public class Controller extends HttpServlet {
         String finV = request.getParameter("finV");
         String iniS = request.getParameter("iniS");
         String finS = request.getParameter("finS");
+        String checkL = request.getParameter("checkL");
+        String checkM = request.getParameter("checkM");
+        String checkI = request.getParameter("checkI");
+        String checkJ = request.getParameter("checkJ");
+        String checkV = request.getParameter("checkV");
+        String checkS = request.getParameter("checkS");
+        System.out.println("checkLunes->"+checkL);
 
         Medico medico = (Medico) session.getAttribute("medico");
         Ciudad c = new Ciudad(localidad);
         Especialidad e = new Especialidad(especialidad);
         Horario horario = new Horario();
-        horario.setIniLunes(horaToInteger(iniL));
-        horario.setFinLunes(horaToInteger(finL));
-        horario.setIniMartes(horaToInteger(iniM));
-        horario.setFinMartes(horaToInteger(finM));
-        horario.setIniJueves(horaToInteger(iniI));
-        horario.setFinJueves(horaToInteger(finI));
-        horario.setIniViernes(horaToInteger(iniV));
-        horario.setFinViernes(horaToInteger(finV));
-        horario.setIniSabado(horaToInteger(iniS));
-        horario.setFinSabado(horaToInteger(finS));
+        if(checkL != null){
+            horario.setIniLunes(horaToInteger(iniL));
+            horario.setFinLunes(horaToInteger(finL));
+        }else{
+            horario.setIniLunes(0);
+            horario.setFinLunes(0);
+        }
+        if(checkM != null){
+            horario.setIniMartes(horaToInteger(iniM));
+            horario.setFinMartes(horaToInteger(finM));
+        }else{
+            horario.setIniMartes(0);
+            horario.setFinMartes(0);
+        }
+        if(checkI != null){
+            horario.setIniMiercoles(horaToInteger(iniI));
+            horario.setFinMiercoles(horaToInteger(finI));
+        }else{
+            horario.setIniMiercoles(0);
+            horario.setFinMiercoles(0);
+        }
+        if(checkJ != null){
+            horario.setIniJueves(horaToInteger(iniJ));
+            horario.setFinJueves(horaToInteger(finJ));
+        }else{
+            horario.setIniJueves(0);
+            horario.setFinJueves(0);
+        }
+        if(checkV != null){
+            horario.setIniViernes(horaToInteger(iniV));
+            horario.setFinViernes(horaToInteger(finV));
+        }else{
+            horario.setIniViernes(0);
+            horario.setFinViernes(0);
+        }
+        if(checkS != null){
+            horario.setIniSabado(horaToInteger(iniS));
+            horario.setFinSabado(horaToInteger(finS));
+        }else{
+            horario.setIniSabado(0);
+            horario.setFinSabado(0);
+        }
+        
+        
         horario.setFrecuencia(1);
         horario.calcDias();
         

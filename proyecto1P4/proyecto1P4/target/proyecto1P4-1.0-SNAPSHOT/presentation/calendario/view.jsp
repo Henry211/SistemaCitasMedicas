@@ -51,8 +51,10 @@
             </section>
 
             <section class="calendario">
+                <% if( horario != null){ %>
                 <div class="calendario_dia">
 
+                    
                     <% int i = horario.getLunes().size(); %>
                     <% while (i != 0) { %>
                     <% i--;%>
@@ -120,6 +122,7 @@
                     </div>
                     <% }%>
                 </div>
+                <% } %>
 
             </section>
         </main>
