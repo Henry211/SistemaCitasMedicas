@@ -64,10 +64,10 @@
                             <div class="mb-2">
                                 <label>Duración de cita</label>
                                 <select name="duracionCmb" class="form-select">
-                                    <option>30 minutos</option>
-                                    <option>1 hora</option>
-                                    <option>1 hora  y 30 minutos</option>
-                                    <option>2 horas</option>
+                                    <option value="2">30 minutos</option>
+                                    <option value="1">1 hora</option>
+<!--                                    <option>1 hora  y 30 minutos</option>
+                                    <option>2 horas</option>-->
                                 </select>
                             </div>
 

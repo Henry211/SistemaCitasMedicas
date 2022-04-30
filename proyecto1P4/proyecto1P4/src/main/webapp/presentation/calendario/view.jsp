@@ -25,8 +25,15 @@
     </head>
     <body>
         
+        
 
         <main class="contenedor">
+            
+            <form method="GET" name="Update" action="/proyecto1P4/presentation/medico/calendario/next">
+            <div class="btn-date">
+                <button type="submit" class="btn btn-primary">Next Week</button>
+            </div>
+        </form>
 
 
             <section class="dias">
@@ -126,11 +133,7 @@
 
             </section>
         </main>
-        <form method="GET" name="Update" action="/proyecto1P4/presentation/medico/calendario/next">
-            <div class="btn-date">
-                <button type="submit" class="btn btn-primary">Next Week</button>
-            </div>
-        </form>
+        
 
         </br>
 

@@ -12,7 +12,7 @@ import java.util.Collections;
  *
  * @author Usuario
  */
-public class Horario implements Serializable{
+public class Horario implements Serializable {
 
     ArrayList<String> lunes = new ArrayList<String>();
     int iniLunes, finLunes;
@@ -26,7 +26,7 @@ public class Horario implements Serializable{
     int iniViernes, finViernes;
     ArrayList<String> sabado = new ArrayList<String>();
     int iniSabado, finSabado;
-    
+
     int frecuencia;
     Medico medico = new Medico();
 
@@ -47,32 +47,41 @@ public class Horario implements Serializable{
     }
 
     ArrayList<String> horasDia = new ArrayList<String>();
+    ArrayList<String> mediasHoras = new ArrayList<String>();
 
     public ArrayList<String> calcArrayHrs(int ini, int fin) {
-        
+
         int tot, finAux;
         ArrayList<String> arreglo = new ArrayList<String>();
         tot = fin - ini;
-        finAux = fin ;
-        for (int n = 0; n <= tot; n++) {
-            arreglo.add(horasDia.get(finAux--));
+        finAux = fin;
+
+        if (frecuencia == 1) {
+
+            for (int n = 0; n <= tot; n++) {
+                arreglo.add(horasDia.get(finAux--));
+            }
+        }else if(frecuencia == 2){
+            for (int n = 1; n <= tot; n++) {
+                arreglo.add(mediasHoras.get(finAux--));
+                arreglo.add(horasDia.get(finAux));
+            }
         }
 
         return arreglo;
     }
-    
-    public void calcDias(){
-        
+
+    public void calcDias() {
+
         createArrayHoras();
-        
-        lunes = calcArrayHrs(iniLunes,finLunes);
-        martes = calcArrayHrs(iniMartes,finMartes);
-        miercoles = calcArrayHrs(iniMiercoles,finMiercoles);
-        jueves = calcArrayHrs(iniJueves,finJueves);
-        viernes = calcArrayHrs(iniViernes,finViernes);
-        sabado = calcArrayHrs(iniSabado,finSabado);
-        
-        
+
+        lunes = calcArrayHrs(iniLunes, finLunes);
+        martes = calcArrayHrs(iniMartes, finMartes);
+        miercoles = calcArrayHrs(iniMiercoles, finMiercoles);
+        jueves = calcArrayHrs(iniJueves, finJueves);
+        viernes = calcArrayHrs(iniViernes, finViernes);
+        sabado = calcArrayHrs(iniSabado, finSabado);
+
     }
 
     public void createArrayHoras() {
@@ -86,41 +95,90 @@ public class Horario implements Serializable{
         String a6 = "6";
         String a7 = "7";
         String a8 = "08:00am";
+        String a8m = "08:30am";
         String a9 = "09:00am";
+        String a9m = "09:30am";
         String a10 = "10:00am";
+        String a10m = "10:30am";
         String a11 = "11:00am";
+        String a11m = "11:30am";
         String a12 = "12:00pm";
+        String a12m = "12:30pm";
         String a13 = "1:00pm";
+        String a13m = "1:30pm";
         String a14 = "2:00pm";
+        String a14m = "2:30pm";
         String a15 = "3:00pm";
+        String a15m = "3:30pm";
         String a16 = "4:00pm";
+        String a16m = "4:30pm";
         String a17 = "5:00pm";
+        String a17m = "5:30pm";
         String a18 = "6:00pm";
+        String a18m = "6:30pm";
 
         this.horasDia = new ArrayList<String>();
+
         horasDia.add(a0);
+        mediasHoras.add(a0);
+
         horasDia.add(a1);
+        mediasHoras.add(a1);
+
         horasDia.add(a2);
+        mediasHoras.add(a2);
+
         horasDia.add(a3);
+        mediasHoras.add(a3);
+
         horasDia.add(a4);
+        mediasHoras.add(a4);
+
         horasDia.add(a5);
+        mediasHoras.add(a5);
+
         horasDia.add(a6);
+        mediasHoras.add(a6);
+
         horasDia.add(a7);
+        mediasHoras.add(a7);
+
         horasDia.add(a8);
+        mediasHoras.add(a0);
+
         horasDia.add(a9);
+        mediasHoras.add(a8m);
+
         horasDia.add(a10);
+        mediasHoras.add(a9m);
+
         horasDia.add(a11);
+        mediasHoras.add(a10m);
+
         horasDia.add(a12);
+        mediasHoras.add(a11m);
+
         horasDia.add(a13);
+        mediasHoras.add(a12m);
+
         horasDia.add(a14);
+        mediasHoras.add(a13m);
+
         horasDia.add(a15);
+        mediasHoras.add(a14m);
+
         horasDia.add(a16);
+        mediasHoras.add(a15m);
+
         horasDia.add(a17);
+        mediasHoras.add(a16m);
+
         horasDia.add(a18);
+        mediasHoras.add(a17m);
 
     }
-    
-     public int getFrecuencia() {
+
+    public int getFrecuencia() {
         return frecuencia;
     }
 
