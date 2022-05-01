@@ -94,10 +94,27 @@ public class CitaDao {
     public ArrayList<Cita> citasPaciente(String cedula) throws Exception {
         ArrayList<Cita> resultado = new ArrayList<>();
         try {
-//            String sql = "select * from cita c  "
-//                    + " where c.Paciente_cedula=? ";
             String sql = "select * from cita c inner join medico m on c.Medico_idMedico= m.idMedicos "
                     + " where c.Paciente_cedula=? ";
+            PreparedStatement stm = db.prepareStatement(sql);
+            ResultSet rs = db.executeQuery(stm);
+            Cita c;
+            stm.setString(1, cedula);
+            while (rs.next()) {
+                c = from(rs, "c");
+                resultado.add(c);
+            }
+        } catch (SQLException ex) {
+            throw new Exception("no hay citas");
+        }
+        return resultado;
+    }
+    
+        public ArrayList<Cita> citasMedico(String cedula) throws Exception {
+        ArrayList<Cita> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from cita c inner join paciente p on c.Paciente_cedula= p.cedula "
+                    + "where c.Medico_idMedico=? ";
             PreparedStatement stm = db.prepareStatement(sql);
             ResultSet rs = db.executeQuery(stm);
             Cita c;

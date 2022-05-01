@@ -70,7 +70,12 @@
                             <!--Cómo pasar el medico seleccionado en el request?-->
                             <div class="card">
                                 <div class="img1"><img src="/proyecto1P4/img/img1fon.jpg"/></div>
-                                <div class="img2"><img src="/proyecto1P4/img/img1.jpg"/></div>
+                                <!--Print user avatar -->
+                                <% if(medicos.get(i).getImage() != null){ %> 
+                                    <div class="img2"><img src="data:image/jpg;base64,<%= medicos.get(i).getBase64Image()%>"/></div> 
+                                <% } if(medicos.get(i).getImage() == null){ %>
+                                    <div class="img2"><img src="/proyecto1P4/img/default.jpg" /></div>
+                                <% }%>
                                 <div class="main-text">
                                     <h2>
                                         <%= medicos.get(i).getNombre()%>
