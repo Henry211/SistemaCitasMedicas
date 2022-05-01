@@ -40,7 +40,7 @@
                                         <% if(medico.getImage() != null){ %> 
                                             <img src="data:image/jpg;base64,${medico.getBase64Image()}" width="240" height="300"/> 
                                         <% } if(medico.getImage() == null){ %>
-                                            <img src="/proyecto1P4/img/default.jpg" />
+                                            <img src="/proyecto1P4/img/default.jpg" width="240" height="300" />
                                         <% }%>
                                     </i>
                                     <h2 class="font-weight-bold mt-4">
