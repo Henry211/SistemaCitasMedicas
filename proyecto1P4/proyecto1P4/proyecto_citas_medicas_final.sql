@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `usuarios2`.`medico` (
   `estado` VARCHAR(20) ,
   `nombre_provincia`VARCHAR(45) ,
   `nombre_especialidad` VARCHAR(45) ,
+  `image` LONGBLOB,
   PRIMARY KEY (`idMedicos`),
   CONSTRAINT `medico_ibfk_1`
     FOREIGN KEY (`nombre_provincia`)

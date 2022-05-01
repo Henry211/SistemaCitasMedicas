@@ -1,8 +1,15 @@
 package citas.logic;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +26,7 @@ public class Medico implements Serializable {
     String foto;
     Horario horario;
     ArrayList<String> citasGuardadas = new ArrayList<String>();
+    byte[] image = null;
 
     public Medico() {
     }
@@ -135,6 +143,14 @@ public class Medico implements Serializable {
         this.foto = foto;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] imageArray) {
+        this.image = imageArray;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -176,6 +192,29 @@ public class Medico implements Serializable {
             return false;
         }
         return Objects.equals(this.nombre_ciudad, other.nombre_ciudad);
+    }
+
+    public String getBase64Image() {
+        if(this.getImage() != null){
+            try {
+                String base64Image;
+                try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                        InputStream targetStream = new ByteArrayInputStream(this.getImage())) {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead = -1;
+                    while ((bytesRead = targetStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }   byte[] imageBytes = outputStream.toByteArray();
+                    base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                }
+
+                return base64Image;
+            } catch (IOException ex) {
+                Logger.getLogger(Especialidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return "";
     }
 
 }

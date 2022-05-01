@@ -4,6 +4,9 @@ import citas.logic.Ciudad;
 import citas.logic.Especialidad;
 import citas.logic.Medico;
 import citas.logic.Paciente;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,13 +25,21 @@ public class MedicoDao {
     }
 
     public void create(Medico u) throws Exception {
-        String sql = "insert into medico (nombre,idMedicos,clave,estado) "
-                + "values(?,?,?,?)";
+
+        String sql = "insert into medico (nombre,idMedicos,clave,estado,nombre_provincia,nombre_especialidad,image) "
+                + "values(?,?,?,?,?,?,?)";
+
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getCedula());
         stm.setString(2, u.getNombre());
         stm.setString(3, u.getClave());
         stm.setString(4, u.getEstado());
+
+        stm.setObject(5, u.getCiudad());
+        stm.setObject(6, u.getEspecialidad());
+        InputStream targetStream = new ByteArrayInputStream(u.getImage());
+        stm.setBlob(7, targetStream);
+
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Medico ya existe");
@@ -64,13 +75,15 @@ public class MedicoDao {
     }
 
     public void update(Medico u) throws Exception {
-        String sql = "update medico set estado=?,nombre_provincia=?,nombre_especialidad=?"
+        String sql = "update medico set estado=?,nombre_provincia=?,nombre_especialidad=?,image=?"
                 + "where idMedicos=?";
         PreparedStatement stm = db.prepareStatement(sql);
         stm.setString(1, u.getEstado());
         stm.setObject(2, u.getCiudad().getProvincia());
         stm.setObject(3, u.getEspecialidad().getEspecialidad());
-        stm.setString(4, u.getCedula());
+        InputStream targetStream = new ByteArrayInputStream(u.getImage());
+        stm.setBlob(4, targetStream);
+        stm.setString(5, u.getCedula());
         int count = db.executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Medico no existe");
@@ -185,11 +198,17 @@ return "Costo de la consulta actualizada exitosamente";
             String str2 = rs.getString(alias + ".nombre_especialidad");
             Especialidad espe = new Especialidad(str2);
             c.setEspecialidad(espe);
-
-// c.setFoto(rs.getString(alias+".foto"));
-// c.setFoto((String) rs.getObject(alias+".foto"));
+            Blob blob = rs.getBlob(alias + ".image");
+            if(blob != null){
+                int blobLength = (int) blob.length();  
+                byte[] blobAsBytes = blob.getBytes(1, blobLength);
+                c.setImage(blobAsBytes);
+                blob.free();
+            }
             return c;
-        } catch (SQLException ex) {
+        }
+    catch ( SQLException ex) {
+            //ex.printStackTrace();
             return null;
         }
     }

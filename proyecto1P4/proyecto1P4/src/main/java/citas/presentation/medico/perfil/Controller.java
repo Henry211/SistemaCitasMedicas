@@ -11,7 +11,10 @@ import citas.logic.Medico;
 import citas.logic.Paciente;
 import citas.logic.Service;
 import citas.logic.Usuario;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -23,17 +26,29 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author ESCINF
  */
-@WebServlet(name = "MedicoPerfilController", urlPatterns = {"/presentation/medico/perfil/show", "/presentation/medico/calendario/show", "/presentation/medico/calendario/next", "/presentation/medico/perfil/editar", "/presentation/medico/perfil/update"})
+@WebServlet(name = "MedicoPerfilController", 
+        urlPatterns = {"/presentation/medico/perfil/show", ""
+                + "/presentation/medico/calendario/show", 
+            "/presentation/medico/calendario/next", 
+            "/presentation/medico/perfil/editar", 
+            "/presentation/medico/perfil/update"})
+@MultipartConfig(
+  fileSizeThreshold = 1024 * 1024 * 10, // 1 MB
+  maxFileSize = 1024 * 1024 * 10,      // 10 MB
+  maxRequestSize = 1024 * 1024 * 10   // 100 MB
+)
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -287,7 +302,7 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();
 
         Medico medicSession = (Medico) session.getAttribute("medico");
-        
+        //No está llegando el 'medico' de session
         String cedula = medicSession.getCedula();
         String nombre = request.getParameter("nameField");
         String localidad = request.getParameter("localidadCmb");
@@ -311,14 +326,14 @@ public class Controller extends HttpServlet {
         String checkJ = request.getParameter("checkJ");
         String checkV = request.getParameter("checkV");
         String checkS = request.getParameter("checkS");
-        
-        int cmbFrecuencia = Integer.valueOf(request.getParameter("duracionCmb"));
-        
-        System.out.println("Frecuencia->"+ cmbFrecuencia );
+        System.out.println("checkLunes->"+checkL);
 
         Medico medico = (Medico) session.getAttribute("medico");
         Ciudad c = new Ciudad(localidad);
-        Especialidad e = new Especialidad(especialidad);
+        if(!especialidad.equals("Seleccione la Especialidad")){
+            Especialidad e = new Especialidad(especialidad);
+            medico.setEspecialidad(e);
+        }
         Horario horario = new Horario();
         if(checkL != null){
             horario.setIniLunes(horaToInteger(iniL));
@@ -364,15 +379,27 @@ public class Controller extends HttpServlet {
         }
         
         
-        horario.setFrecuencia(cmbFrecuencia);
+        horario.setFrecuencia(1);
         horario.calcDias();
         
         horario.setMedico(medico);      
         //medico.setHorario(horario);
         
         medico.setCiudad(c);
-        medico.setEspecialidad(e);
         medico.setCedula(medicSession.getCedula());
+        
+        //String file = request.getParameter("file");
+        
+         /* Receive file uploaded to the Servlet from the HTML5 form */
+        Part filePart = request.getPart("file");
+        InputStream fileInput = filePart.getInputStream();
+        
+        //File file = new File(fileName);
+        byte[] bytes = new byte[(int) filePart.getSize() ];
+        fileInput.read(bytes);
+
+        medico.setImage(bytes);
+            
 
         //service.createHorario(horario);
         service.updateHorario(horario);
@@ -444,6 +471,7 @@ public class Controller extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
+            ex.printStackTrace();
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

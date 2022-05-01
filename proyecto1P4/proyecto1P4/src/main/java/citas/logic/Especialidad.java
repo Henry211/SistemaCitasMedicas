@@ -25,7 +25,7 @@ public class Especialidad implements Serializable{
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;

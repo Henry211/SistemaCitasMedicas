@@ -21,7 +21,7 @@
     </head>
     <body>
         </br>
-        <form method="POST" name="Update" action="/proyecto1P4/presentation/medico/perfil/update">
+        <form method="POST" name="Update" action="/proyecto1P4/presentation/medico/perfil/update" enctype = "multipart/form-data">
 
             <section class="d-flex justify-content-center">
                 <div class="card col-md-5 pad">
@@ -64,10 +64,10 @@
                             <div class="mb-2">
                                 <label>Duración de cita</label>
                                 <select name="duracionCmb" class="form-select">
-                                    <option value="2">30 minutos</option>
-                                    <option value="1">1 hora</option>
-<!--                                    <option>1 hora  y 30 minutos</option>
-                                    <option>2 horas</option>-->
+                                    <option>30 minutos</option>
+                                    <option>1 hora</option>
+                                    <option>1 hora  y 30 minutos</option>
+                                    <option>2 horas</option>
                                 </select>
                             </div>
 
@@ -288,8 +288,8 @@
 
                         </div>
                         <div class="mb-2">
-                            <label for="formFile" class="form-label">Foto de perfil</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <label for="file" class="form-label">Foto de perfil</label>
+                            <input class="form-control" type="file" id="file" name="file">
                         </div>
 
                     </div>
