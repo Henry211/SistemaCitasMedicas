@@ -127,11 +127,14 @@ public class Controller extends HttpServlet {
 
         Service service = Service.instance();
         String name = request.getParameter("nombre");
+         HttpSession session = request.getSession(true);
         String viewUrl = "";
         try {
 
             Especialidad especialidad = new Especialidad(name);
             service.createEspecialidad(especialidad);
+            ArrayList<Especialidad> esp = service.findAllSpetials();
+            session.setAttribute("especialidades", esp);
 
             viewUrl = "/presentation/administrador/especialidades/view.jsp";
 
